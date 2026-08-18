@@ -1,4 +1,4 @@
-# UI Skills Lab
+# UI Direction Lab
 
 **A design pipeline that turns one line of product intent into a locked design system and a full set of production-grade pages** — built as Claude Code skills, with a deterministic gate and a named human decision at every step.
 
