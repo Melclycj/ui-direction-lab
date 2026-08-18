@@ -1,0 +1,59 @@
+{
+  "slug": "fx-bento",
+  "kind": "component",
+  "content_roles": {
+    "hosts": [
+      "comparison",
+      "collection"
+    ],
+    "by_role": {
+      "comparison": {
+        "requires": "一组卡在消费者 DOM(opts.items);trigger 必须是真 <button>(a11y 底线);消费者拥有布局与内容。",
+        "preserves": [
+          "同屏全卡可见(并排比 affordance 活着)",
+          "键盘/aria 披露",
+          "单开互斥"
+        ],
+        "breaks": [
+          "物理/弹性缓动(CSS grid-rows only,做不了 spring)"
+        ],
+        "fit": {
+          "items": "3-8",
+          "density": "card(可含少量键值)",
+          "ordered": false
+        },
+        "affordances": {
+          "viewing": "all",
+          "composition": [
+            "image-only",
+            "text-only",
+            "captioned-image"
+          ]
+        }
+      },
+      "collection": {
+        "requires": "同 comparison。",
+        "preserves": [
+          "逐项身份",
+          "点开看详情"
+        ],
+        "breaks": [
+          "物理/弹性缓动"
+        ],
+        "fit": {
+          "items": "3-N",
+          "density": "card-rich",
+          "ordered": false
+        },
+        "affordances": {
+          "viewing": "all",
+          "composition": [
+            "image-only",
+            "text-only",
+            "captioned-image"
+          ]
+        }
+      }
+    }
+  }
+}

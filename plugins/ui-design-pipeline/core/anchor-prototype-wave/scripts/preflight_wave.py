@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+"""preflight_wave.py — runtime teeth in front of the wave (plan step 10).
+
+SELF-CONTAINED on purpose: skills deploy independently, so this script reads
+the motion artifacts directly instead of importing prototyping-ui-directions
+code. Semantics canon = prototyping-ui-directions/references/
+execution-contracts.md §4/§7 (change both together).
+
+Stages:
+  --stage base-wave   Base Wave may spawn only when the run's design sequence
+                      is settled: chassis locked (approved verbatim),
+                      composition_ready, sectional selected|skipped (approved
+                      when selected), and EVERY selected mechanism carries a
+                      valid resolution record (phase=sectional, produced in
+                      SECTIONAL_OPEN, mechanism listed eligible, sha256 digest).
+                      Legal states: SECTIONAL_LOCKED (first spawn) or
+                      BASE_WAVE_READY (fix-loop respawn).
+  --stage atomic      Atomic authoring may start only at ATOMIC_OPEN (which the
+                      state machine only grants after BASE_WAVE_READY + an
+                      approved atomic policy) with a conformant policy file.
+
+A run WITHOUT a motion/ dir is legacy: exit 0 with a LEGACY note (the
+pipeline-gate sentinel discipline still applies to it unchanged).
+
+Exit 0 = go; exit 1 = BLOCK (reasons printed). Python 3.10+, stdlib only.
+
+Usage:
+    python preflight_wave.py --motion-dir <run>/motion --stage base-wave|atomic
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ORDER = ("CHASSIS_OPEN", "CHASSIS_LOCKED", "SECTIONAL_OPEN", "SECTIONAL_LOCKED",
+         "BASE_WAVE_READY", "ATOMIC_OPEN", "COMPLETE")
+
+
+def load(path: Path, problems: list[str], what: str):
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        problems.append(f"{what} unreadable: {exc}")
+        return None
+
+
+def check_resolution_record(path: Path, mechanism: str, problems: list[str], what: str) -> None:
+    if not path.exists():
+        problems.append(f"{what}: resolution record missing: {path}")
+        return
+    rec = load(path, problems, f"{what} resolution record")
+    if rec is None:
+        return
+    if rec.get("phase") != "sectional":
+        problems.append(f"{what}: resolution phase {rec.get('phase')!r} != sectional")
+    if rec.get("pipeline_state") != "SECTIONAL_OPEN":
+        problems.append(f"{what}: resolution produced in {rec.get('pipeline_state')!r} — stale/out-of-ceremony record")
+    if not str(rec.get("input_digest", "")).startswith("sha256:"):
+        problems.append(f"{what}: resolution record lacks sha256 input_digest")
+    eligible = {e.get("id") for e in rec.get("eligible") or []}
+    if mechanism not in eligible:
+        problems.append(f"{what}: mechanism {mechanism} not in its resolution record's eligible list (tampered/self-served)")
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--motion-dir", required=True)
+    ap.add_argument("--stage", required=True, choices=("base-wave", "atomic"))
+    args = ap.parse_args()
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
+    except Exception:
+        pass
+
+    motion = Path(args.motion_dir)
+    state_path = motion / "pipeline-state.json"
+    if not state_path.exists():
+        print(f"LEGACY: no pipeline-state at {state_path} — pre-contract run, preflight not enforced")
+        return 0
+
+    problems: list[str] = []
+    doc = load(state_path, problems, "pipeline-state.json") or {}
+    state = doc.get("state")
+    appr = doc.get("user_approvals") or {}
+
+    if args.stage == "base-wave":
+        if state not in ("SECTIONAL_LOCKED", "BASE_WAVE_READY"):
+            problems.append(f"state {state!r} — Base Wave spawns only at SECTIONAL_LOCKED (or BASE_WAVE_READY for fix-loop respawns)")
+        if not doc.get("chassis_locked"):
+            problems.append("chassis_locked is false")
+        if not doc.get("composition_ready"):
+            problems.append("composition_ready is false (IA Round-2 Stage-F / single-page structure gate not passed)")
+        if doc.get("sectional_status") not in ("selected", "skipped"):
+            problems.append(f"sectional_status {doc.get('sectional_status')!r} — must be selected|skipped")
+        if not appr.get("chassis"):
+            problems.append("user_approvals.chassis missing (the model may not self-approve the lock)")
+        if doc.get("sectional_status") == "selected":
+            if not appr.get("sectional"):
+                problems.append("sectional selected but user_approvals.sectional missing")
+            ss = load(motion / "sectional-score.json", problems, "sectional-score.json")
+            if ss is not None:
+                any_selected = False
+                for surface, entry in ss.items():
+                    if not isinstance(entry, dict):
+                        continue
+                    # primary slot + optional component tier (contracts §6,
+                    # user-relax 2026-07-18) — every entry needs a valid record
+                    checks = []
+                    sc = entry.get("sectional_score")
+                    if sc is not None:
+                        checks.append((f"sectional[{surface}]", sc))
+                    comps = entry.get("component_scores")
+                    for i, cs in enumerate(comps if isinstance(comps, list) else []):
+                        checks.append((f"component[{surface}#{i}]", cs))
+                    for what, score in checks:
+                        any_selected = True
+                        mech = score.get("mechanism")
+                        rr = score.get("resolution_record")
+                        if not mech or not rr:
+                            problems.append(f"{what}: mechanism/resolution_record missing")
+                            continue
+                        p = motion.parent / rr
+                        if not p.exists():
+                            p = motion / "resolutions" / Path(rr).name
+                        check_resolution_record(p, mech, problems, what)
+                if not any_selected:
+                    problems.append("sectional_status=selected but sectional-score.json carries no selected surface")
+            elif ss is None and not (motion / "sectional-score.json").exists():
+                problems.append("sectional_status=selected but sectional-score.json missing")
+    else:  # atomic
+        if state != "ATOMIC_OPEN":
+            problems.append(f"state {state!r} — Atomic authoring starts only at ATOMIC_OPEN "
+                            "(BASE_WAVE_READY + approved atomic policy + transition first)")
+        if not appr.get("atomic_policy"):
+            problems.append("user_approvals.atomic_policy missing (the user approves the POLICY, not each effect)")
+        pol = load(motion / "atomic-policy.json", problems, "atomic-policy.json")
+        policy = (pol or {}).get("atomic_policy") if isinstance(pol, dict) else None
+        if policy is None:
+            problems.append("atomic-policy.json missing or malformed")
+        else:
+            if policy.get("enabled") is not True:
+                problems.append("atomic_policy.enabled is not true — nothing to author")
+            if policy.get("no_reflow") is not True:
+                problems.append("atomic_policy.no_reflow must be true")
+            if not isinstance(policy.get("max_targets"), int) or policy["max_targets"] < 1:
+                problems.append("atomic_policy.max_targets must be an integer >= 1")
+
+    if problems:
+        for p in problems:
+            print(f"BLOCK: {p}")
+        print(f"PREFLIGHT BLOCK ({len(problems)})")
+        return 1
+    print(f"PREFLIGHT OK: stage={args.stage} state={state}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

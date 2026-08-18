@@ -1,0 +1,30 @@
+{
+  "slug": "fx-gallery",
+  "kind": "component",
+  "content_roles": {
+    "hosts": [
+      "collection"
+    ],
+    "by_role": {
+      "collection": {
+        "requires": "消费者自备内容集(opts.slides);逐项身份 + 滚动浏览。",
+        "preserves": [
+          "逐项身份",
+          "滚动浏览"
+        ],
+        "breaks": [],
+        "fit": {
+          "items": "3-N",
+          "density": "card-rich",
+          "ordered": true
+        },
+        "affordances": {
+          "viewing": "one-at-a-time",
+          "composition": [
+            "captioned-image"
+          ]
+        }
+      }
+    }
+  }
+}

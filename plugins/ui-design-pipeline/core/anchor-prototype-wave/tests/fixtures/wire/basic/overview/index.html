@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Overview</title></head>
+<body>
+<h1>Overview</h1>
+<nav>
+  <!-- built target -> wired -->
+  <a href="#" class="link" data-mock data-nav-target="detail" onclick="return false;" title="mocked: detail">Go to detail</a>
+  <!-- unbuilt target -> kept mock -->
+  <a href="#" class="link" data-mock data-nav-target="ghost" onclick="return false;" title="mocked: ghost (unbuilt)">Go to ghost</a>
+  <!-- mock without a nav-target -> kept mock -->
+  <a href="#" class="link" data-mock onclick="return false;" title="mocked: no target">Placeholder</a>
+  <!-- real external link, not a mock -> untouched -->
+  <a href="https://example.com" class="link">Real external</a>
+</nav>
+</body></html>

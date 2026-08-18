@@ -1,0 +1,15 @@
+{
+  "slug": "fx-legacy",
+  "kind": "component",
+  "content_roles": {
+    "hosts": ["collection"],
+    "by_role": {
+      "collection": {
+        "requires": "消费者内容集;本 fixture 刻意【无 affordances 键】——pin 未打轴素材的向后兼容行为。",
+        "preserves": ["逐项身份"],
+        "breaks": [],
+        "fit": {"items": "3-N", "density": "card-rich", "ordered": false}
+      }
+    }
+  }
+}

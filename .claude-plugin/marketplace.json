@@ -1,0 +1,18 @@
+{
+  "name": "ui-direction-lab",
+  "owner": {
+    "name": "Melclycj"
+  },
+  "metadata": {
+    "description": "UI Direction Lab — a create pipeline for UI direction exploration and hi-fi surface production, distributed as Claude Code skills."
+  },
+  "plugins": [
+    {
+      "name": "ui-design-pipeline",
+      "source": "./plugins/ui-design-pipeline",
+      "category": "design",
+      "license": "MIT",
+      "description": "Idea -> UI direction variants -> locked chassis -> hi-fi surface wave, with deterministic gates and human approval at every lock."
+    }
+  ]
+}

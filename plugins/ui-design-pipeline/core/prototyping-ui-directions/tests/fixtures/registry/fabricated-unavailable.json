@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "records": [
+  {
+   "id": "threed-pool:C-01",
+   "source_pool": "threed-pool",
+   "row_ref": "C-01",
+   "title": "fixture-one",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "perf_cost": "light",
+   "fallback": "static",
+   "mechanism_family": "fam-one"
+  },
+  {
+   "id": "threed-pool:C-02",
+   "source_pool": "threed-pool",
+   "row_ref": "C-02",
+   "title": "fixture-two",
+   "selectable": false,
+   "availability": "unavailable-source",
+   "tag_source": "none",
+   "driver": [
+    "scroll"
+   ]
+  },
+  {
+   "id": "motion-pool:#1",
+   "source_pool": "motion-pool",
+   "row_ref": "#1",
+   "title": "fixture-m1",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "perf_cost": "light",
+   "fallback": "static",
+   "mechanism_family": "fam-m1"
+  }
+ ]
+}

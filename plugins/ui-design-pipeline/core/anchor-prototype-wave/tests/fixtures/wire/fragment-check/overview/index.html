@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Overview</title></head>
+<body>
+<h1 id="top">Overview</h1>
+<!-- Pre-wired DEEP links: the href carries a fragment (and one a query) that
+     addresses a position WITHIN the target page. Both resolve fine in a browser,
+     so `--check` must count them wired and NOT broken. Regression pin for the
+     2026-07-21 false-BROKEN finding (the raw href was resolved against disk, so
+     "index.html#section" was looked up as a filename and never found). -->
+<a href="../detail/index.html#section-two" class="link" data-nav-target="detail" data-nav-wired="true">Deep link</a>
+<a href="../detail/index.html?ref=nav" class="link" data-nav-target="detail" data-nav-wired="true">Query link</a>
+<a href="#top" class="link" data-nav-target="overview" data-nav-wired="true">Same-page anchor</a>
+</body></html>

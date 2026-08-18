@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Broken (escalated)</title></head>
+<body>
+<!-- ESCALATE_HUMAN: 3 retries failed the form-gate; page shipped half-built as
+     the wave's evidence. It still carries a rule-6 mocked back-link, so wiring
+     touches it. The point of this fixture: 7.5 will (a) wire this page's own
+     outbound link, and (b) accept inbound links TO it. -->
+<h1>Payment form</h1>
+<!-- required amount field never rendered — the gate that escalated -->
+<a href="#" class="link" data-mock data-nav-target="overview" onclick="return false;" title="mocked: overview">Back to overview</a>
+</body></html>

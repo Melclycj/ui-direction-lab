@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Overview</title>
+<style>
+/* WRONG per rule 6(a): inert styled via a CLASS, not the [data-mock] attribute.
+   Stripping data-mock revives the live look for attribute-styled links, but this
+   is-mock class stays -> a wired (live) link keeps looking dead. wire_navigation
+   WARNs so the reviewer catches the "live link in dead clothes" case. */
+a.is-mock { opacity: .55; cursor: default; }
+</style></head>
+<body>
+<h1>Overview</h1>
+<a href="#" class="btn is-mock" data-mock data-nav-target="detail" onclick="return false;" title="mocked: detail">Go to detail</a>
+</body></html>

@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "motion-pool:#1",
+      "source_pool": "motion-pool",
+      "row_ref": "#1",
+      "title": "fx-bento",
+      "tag_source": "pool-tags",
+      "reference_scope": "component-demo",
+      "supported_footprints": ["sectional", "atomic"],
+      "preferred_footprint": "sectional",
+      "allowed_phases": ["sectional", "atomic"],
+      "driver": ["click"],
+      "supported_carrier_scopes": ["section", "component"],
+      "perf_cost": "light",
+      "fallback": "static grid",
+      "mechanism_family": "fam-bento",
+      "material": "testbed/material/fx-bento"
+    },
+    {
+      "id": "motion-pool:#2",
+      "source_pool": "motion-pool",
+      "row_ref": "#2",
+      "title": "fx-gallery",
+      "tag_source": "pool-tags",
+      "reference_scope": "component-demo",
+      "supported_footprints": ["sectional"],
+      "preferred_footprint": "sectional",
+      "allowed_phases": ["sectional"],
+      "driver": ["pointer"],
+      "supported_carrier_scopes": ["section", "component"],
+      "perf_cost": "light",
+      "fallback": "static list",
+      "mechanism_family": "fam-gallery",
+      "material": "testbed/material/fx-gallery"
+    },
+    {
+      "id": "motion-pool:#4",
+      "source_pool": "motion-pool",
+      "row_ref": "#4",
+      "title": "fx-legacy",
+      "tag_source": "pool-tags",
+      "reference_scope": "component-demo",
+      "supported_footprints": ["sectional"],
+      "preferred_footprint": "sectional",
+      "allowed_phases": ["sectional"],
+      "driver": ["click"],
+      "supported_carrier_scopes": ["section", "component"],
+      "perf_cost": "light",
+      "fallback": "static list",
+      "mechanism_family": "fam-legacy",
+      "material": "testbed/material/fx-legacy"
+    },
+    {
+      "id": "motion-pool:#3",
+      "source_pool": "motion-pool",
+      "row_ref": "#3",
+      "title": "fx-decor",
+      "tag_source": "pool-tags",
+      "reference_scope": "component-demo",
+      "supported_footprints": ["sectional"],
+      "preferred_footprint": "sectional",
+      "allowed_phases": ["sectional"],
+      "driver": ["scroll"],
+      "supported_carrier_scopes": ["section"],
+      "perf_cost": "light",
+      "fallback": "static",
+      "mechanism_family": "fam-decor",
+      "material": "testbed/material/fx-decor"
+    }
+  ]
+}

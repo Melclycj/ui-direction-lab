@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>Overview</title>
+<style>
+/* BUGGY rule-6 gating (mirrors the real 2026-07-08 payment-method surface): BOTH the
+   show and the styling are gated on `a[data-mock]`, and there is NO bare
+   `.mock-tag { display:none }` default. So once wiring strips data-mock, neither rule
+   applies and the badge falls back to the <span> default (display:inline) = a LIVE link
+   still wearing a visible "mock" badge. wire_navigation must WARN on this. The link's
+   OWN class is clean, so the warn can only come from the inner-badge check. */
+a[data-mock] { opacity: .55; cursor: default; }
+a[data-mock] .mock-tag { display: inline; font-size: .7em; }
+</style></head>
+<body>
+<h1>Overview</h1>
+<a href="#" class="footer-nav__link" data-mock data-nav-target="detail" onclick="return false;" title="mocked">去详情<span class="mock-tag">mock</span></a>
+</body></html>

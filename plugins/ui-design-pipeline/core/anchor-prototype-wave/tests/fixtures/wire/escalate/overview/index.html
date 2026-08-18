@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Overview</title></head>
+<body>
+<h1>Overview</h1>
+<!-- INBOUND link to the escalated ('broken') page. This is the item-4 concern:
+     wire_navigation wires by on-disk existence, NOT by verdict, so this link
+     gets rewritten to point at a page that failed its gates 3x. --check stays
+     green because the file exists. Documented finding, not a script bug. -->
+<a href="#" class="link" data-mock data-nav-target="broken" onclick="return false;" title="mocked: broken page">Open the escalated page</a>
+</body></html>

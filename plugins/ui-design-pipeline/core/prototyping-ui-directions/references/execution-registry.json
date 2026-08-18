@@ -1,0 +1,3025 @@
+{
+ "$contract": "execution-contracts.md §2 (registry record schema; defaults: selectable=true, availability=available, can_bound=true, requires_global=false, requires_existing_ui=false, material=null)",
+ "version": 1,
+ "generated": "2026-07-11",
+ "records": [
+  {
+   "id": "threed-pool:C-01",
+   "source_pool": "threed-pool",
+   "row_ref": "C-01",
+   "title": "scroll-image-tube",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "camera-state-within-owner"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "~260k-vertex bg plane + 72 draw calls + IBL",
+   "fallback": "reduced-detail-static-frame",
+   "register_affinity": [
+    "glass-tech",
+    "instrument"
+   ],
+   "mechanism_family": "image-field-tube",
+   "material": "testbed/material/scroll-image-tube",
+   "evidence": "threed-pool C-01 🏷 (read-code) + material VERIFY",
+   "notes": "chassis only when the image field becomes primary site nav / persistent page world (plan audit table)"
+  },
+  {
+   "id": "threed-pool:C-02",
+   "source_pool": "threed-pool",
+   "row_ref": "C-02",
+   "title": "recycle-tunnel",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit",
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "local-sticky-stage",
+    "local-section-height",
+    "owner-canvas-stage",
+    "camera-state-within-owner"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "hundreds of textured planes; recycle GC churn — reuse material pool",
+   "fallback": "reduced-density-static-frame",
+   "register_affinity": [
+    "saas-tech"
+   ],
+   "mechanism_family": "recycle-tunnel-dolly",
+   "material": "testbed/material/recycle-tunnel",
+   "evidence": "threed-pool C-02 🏷 (read-code) + plan audit row (bounded sectional recipe)"
+  },
+  {
+   "id": "threed-pool:C-03",
+   "source_pool": "threed-pool",
+   "row_ref": "C-03",
+   "title": "bayer-instance-dither",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "load",
+    "click",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "160k instances; ?reduce=1 → 10k; alt: fragment-pass dither (visually equivalent)",
+   "fallback": "instance-count-reduction",
+   "register_affinity": [
+    "generative-art",
+    "lab"
+   ],
+   "mechanism_family": "bayer-ordered-dither",
+   "material": "testbed/material/bayer-instance-dither",
+   "evidence": "threed-pool C-03 🏷 (read-code)",
+   "notes": "chassis only when the generative field defines the entire page system; subject image = asset slot"
+  },
+  {
+   "id": "threed-pool:C-04",
+   "source_pool": "threed-pool",
+   "row_ref": "C-04",
+   "title": "wavy-infinite-carousel",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "light",
+   "perf_note": "72 low-subdiv planes, no post/particles",
+   "fallback": "static-grid-reduced-motion",
+   "register_affinity": [
+    "editorial",
+    "gallery"
+   ],
+   "mechanism_family": "velocity-sin-deform-rgb-split",
+   "material": "testbed/material/wavy-infinite-carousel",
+   "evidence": "threed-pool C-04 🏷 (read-code); family per §同机制族 obs 6",
+   "notes": "chassis only when a gallery-first product adopts the media wall as its page model"
+  },
+  {
+   "id": "threed-pool:C-05",
+   "source_pool": "threed-pool",
+   "row_ref": "C-05",
+   "title": "webgl-magazine",
+   "selectable": false,
+   "availability": "shelved",
+   "tag_source": "none",
+   "evidence": "read-code 🏷 tags live on the pool row; material shelved by user (magazine flip feel failed 5+ live rounds)",
+   "notes": "A-4 user ruling 2026-07-11: NOT nominable until the feel passes and it is promoted — then reclassify from the pool row's 🏷 (follow-up recorded in LEDGER)"
+  },
+  {
+   "id": "threed-pool:C-06",
+   "source_pool": "threed-pool",
+   "row_ref": "C-06",
+   "title": "accessible-webgl-text",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-text-replacement",
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "troika light, but constant EffectComposer full-surface pass",
+   "fallback": "plain-dom-text",
+   "register_affinity": [
+    "dev-tool",
+    "art-forward"
+   ],
+   "mechanism_family": "troika-text-overlay",
+   "material": "testbed/material/accessible-webgl-text",
+   "evidence": "threed-pool C-06 🏷 (read-code)",
+   "notes": "DOM text stays in a11y tree by design; conditional-use row (style>content sites only)"
+  },
+  {
+   "id": "threed-pool:C-07",
+   "source_pool": "threed-pool",
+   "row_ref": "C-07",
+   "title": "shader-scroll-gallery",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll",
+    "click",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "12 planes × 2500 vertices; ~193-199fps headless",
+   "fallback": "static-gallery",
+   "register_affinity": [
+    "art-experiment",
+    "editorial"
+   ],
+   "mechanism_family": "dom-webgl-plane-sync",
+   "material": "testbed/material/shader-scroll-gallery",
+   "evidence": "threed-pool C-07 🏷 (read-code) + material VERIFY (scroll 揭示改造)"
+  },
+  {
+   "id": "threed-pool:C-08",
+   "source_pool": "threed-pool",
+   "row_ref": "C-08",
+   "title": "cinematic-scroll-cylinder",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "local-section-height",
+    "local-sticky-stage",
+    "camera-state-within-owner"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "tiny geometry but constant rAF + per-frame particle writes; atlas up to 8192px",
+   "fallback": "static-chapter-sequence",
+   "register_affinity": [
+    "cinematic",
+    "editorial"
+   ],
+   "mechanism_family": "scroll-scrub-camera-stage",
+   "material": "testbed/material/cinematic-scroll-cylinder",
+   "evidence": "plan §registry canonical example + threed-pool C-08 🏷 (read-code)",
+   "notes": "anti-dizzy speed reduction baked into material (28.27→14)"
+  },
+  {
+   "id": "threed-pool:C-09",
+   "source_pool": "threed-pool",
+   "row_ref": "C-09",
+   "title": "card-3d-showcase",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "pause-offscreen",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "material = shared renderer + scissor; N independent WebGL contexts (source) = heavy",
+   "fallback": "static-card-images",
+   "register_affinity": [
+    "portfolio",
+    "futuristic"
+   ],
+   "mechanism_family": "per-card-3d-stage",
+   "material": "testbed/material/card-3d-showcase",
+   "evidence": "threed-pool C-09 🏷 (read-code)",
+   "notes": "GLB stand-ins + replaceModel() interface; selected-state改造 baked (gray↔color hover)"
+  },
+  {
+   "id": "threed-pool:C-10",
+   "source_pool": "threed-pool",
+   "row_ref": "C-10",
+   "title": "dithered-vessel",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "~206fps dither-on headless; any Bloom ON → heavy (multi-pass blur)",
+   "fallback": "dither-bypass-static",
+   "register_affinity": [
+    "dev-tool",
+    "retro-craft"
+   ],
+   "mechanism_family": "bayer-ordered-dither",
+   "material": "testbed/material/dithered-vessel",
+   "evidence": "threed-pool C-10 🏷 (read-code)",
+   "notes": "DitheringEffect is scene-agnostic (2 portable files); subject swap via createSubject()"
+  },
+  {
+   "id": "threed-pool:C-11",
+   "source_pool": "threed-pool",
+   "row_ref": "C-11",
+   "title": "pointer-dock-grid",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "leaning light: ~190-209 simple planes, 10 shared textures",
+   "fallback": "static-grid",
+   "register_affinity": [
+    "cool-restrained",
+    "dev-tool"
+   ],
+   "mechanism_family": "pointer-proximity-dock",
+   "material": "testbed/material/pointer-dock-grid",
+   "evidence": "threed-pool C-11 🏷 (read-code); 非 scroll confirmed",
+   "notes": "chassis only when the operating grid persists across sections and owns global focus/state"
+  },
+  {
+   "id": "threed-pool:C-12",
+   "source_pool": "threed-pool",
+   "row_ref": "C-12",
+   "title": "letter-bulge-shader",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "paired-asset"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "leaning light: 2 planes ≈ 20k vertices",
+   "fallback": "static-typography-image",
+   "register_affinity": [
+    "warm-retro",
+    "craft-typography"
+   ],
+   "mechanism_family": "raycast-displacement-bulge",
+   "material": "testbed/material/letter-bulge-shader",
+   "evidence": "threed-pool C-12 🏷 (read-code)",
+   "notes": "shadow layer = PRE-DRAWN paired texture; new artwork requires repainting its shadow map"
+  },
+  {
+   "id": "threed-pool:C-13",
+   "source_pool": "threed-pool",
+   "row_ref": "C-13",
+   "title": "perlin-image-reveal",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll",
+    "click",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas",
+    "opacity-filter"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "leaning light: single low-subdiv plane, modest perlin",
+   "fallback": "instant-reveal",
+   "register_affinity": [
+    "clean-dev-tool"
+   ],
+   "mechanism_family": "noise-mask-reveal",
+   "material": "testbed/material/perlin-image-reveal",
+   "evidence": "threed-pool C-13 🏷 (read-code); 载体=无关(任何一张图容器)"
+  },
+  {
+   "id": "threed-pool:C-14",
+   "source_pool": "threed-pool",
+   "row_ref": "C-14",
+   "title": "mini-scene-gallery",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "pause-offscreen",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas",
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "12 concurrent scissor views = medium; one build(id) component = light",
+   "fallback": "pause-offscreen-static-poster",
+   "register_affinity": [
+    "minimal-lab"
+   ],
+   "mechanism_family": "mini-scene-components",
+   "material": "testbed/material/mini-scene-gallery",
+   "evidence": "threed-pool C-14 🏷 (read-code) + integration test (dithered-vessel swap)",
+   "notes": "component LIBRARY: manifest.json + ?only=<id> + build(id) → drop-in single components"
+  },
+  {
+   "id": "threed-pool:C-15",
+   "source_pool": "threed-pool",
+   "row_ref": "C-15",
+   "title": "building-guide-map",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "click",
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "no-nav-replacement",
+    "teardown-on-exit",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "dom-overlay-elements",
+    "nav-replacement"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "small geometry; ~4MB baked textures + soft shadow + fog — compress/KTX2 to degrade",
+   "fallback": "static-map-plus-list-nav",
+   "register_affinity": [
+    "cultural",
+    "museum"
+   ],
+   "mechanism_family": "3d-scene-as-nav",
+   "material": "testbed/material/building-guide-map",
+   "evidence": "threed-pool C-15 🏷 (read-code) + plan audit row",
+   "notes": "chassis ONLY when it intentionally replaces site navigation/page state; stand-in buildings + loadRealModel()"
+  },
+  {
+   "id": "threed-pool:C-16",
+   "source_pool": "threed-pool",
+   "row_ref": "C-16",
+   "title": "css3d-scroll-rotate",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [],
+   "possible_mutations": [
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "perf_note": "pure compositor layers, no WebGL, no heavy rAF",
+   "fallback": "no-rotation-static",
+   "register_affinity": [
+    "editorial",
+    "magazine"
+   ],
+   "mechanism_family": "css3d-scroll-rotate",
+   "material": "testbed/material/css3d-scroll-rotate",
+   "evidence": "threed-pool C-16 🏷 (read-code; engine corrected to CSS-3D)"
+  },
+  {
+   "id": "threed-pool:C-17",
+   "source_pool": "threed-pool",
+   "row_ref": "C-17",
+   "title": "unshift-image-board",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "timeline",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "96 instances × ~100 verts (light-side); constant rAF; ?reduce=1 built-in",
+   "fallback": "reduce-static-board",
+   "register_affinity": [
+    "editorial-showcase",
+    "art-board"
+   ],
+   "mechanism_family": "cell-morph-carousel",
+   "material": "testbed/material/unshift-image-board",
+   "evidence": "observe-rewrite M-37 (deec244); OBSERVATION-level tags — no source ever read; 8-round user eyeball convergence",
+   "notes": "A-6 user ruling 2026-07-11: independent rewrite, zero code/asset copied -> commercially usable; author's stated non-commercial wish kept as provenance record only; WLOP originals stay excluded (picsum stand-ins)"
+  },
+  {
+   "id": "threed-pool:C-18",
+   "source_pool": "threed-pool",
+   "row_ref": "C-18",
+   "title": "webgl-carousel",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "click",
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "~22k tris small; full-screen transmission glass layer is the weight — removable",
+   "fallback": "glass-off-static-carousel",
+   "register_affinity": [
+    "craft-webgl",
+    "dev-tool"
+   ],
+   "mechanism_family": "plane-carousel-lightbox",
+   "material": "testbed/material/webgl-carousel",
+   "evidence": "threed-pool C-18 🏷 (read-code) + material VERIFY (highlight/travel 改造)"
+  },
+  {
+   "id": "threed-pool:C-20/21",
+   "source_pool": "threed-pool",
+   "row_ref": "C-20/21",
+   "title": "polygon-image-transition",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas",
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "triangle count scales with detail (demo0 hundreds → demo4 ~23k); constant rAF",
+   "fallback": "crossfade",
+   "register_affinity": [
+    "experimental-art"
+   ],
+   "mechanism_family": "triangle-mesh-shatter",
+   "material": "testbed/material/polygon-image-transition",
+   "evidence": "threed-pool C-20/21 🏷 (read-code); merged row (one repo, two entrances)"
+  },
+  {
+   "id": "threed-pool:C-22",
+   "source_pool": "threed-pool",
+   "row_ref": "C-22",
+   "title": "cloth-slideshow",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "wheel-interception-local",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "CPU mass-spring solve per frame; FULL/LITE profiles + ?reduce=1 zero-physics; ~191-201fps FULL headless",
+   "fallback": "physics-lite-or-static",
+   "register_affinity": [
+    "street-lookbook"
+   ],
+   "mechanism_family": "cannon-cloth-sim",
+   "material": "testbed/material/cloth-slideshow",
+   "evidence": "threed-pool C-22 🏷 (read-code)",
+   "notes": "fake-scroll design: keyboard/a11y must route through slideTo virtual positioning"
+  },
+  {
+   "id": "threed-pool:C-23",
+   "source_pool": "threed-pool",
+   "row_ref": "C-23",
+   "title": "scroll-refraction",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit",
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "local-sticky-stage",
+    "local-section-height",
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "3 full-scene renders per frame at full DPR; degrade = FBO downsample / frame skip / fewer instances",
+   "fallback": "fbo-downsample-or-static",
+   "register_affinity": [
+    "cyber-narrative",
+    "gem-flamboyant"
+   ],
+   "mechanism_family": "dual-fbo-refraction",
+   "material": "testbed/material/scroll-refraction",
+   "evidence": "threed-pool C-23 🏷 (read-code) + plan audit row",
+   "notes": "plan audit: likely register/perf rejection for restrained products — resolver ⚠ via register_affinity"
+  },
+  {
+   "id": "threed-pool:C-24",
+   "source_pool": "threed-pool",
+   "row_ref": "C-24",
+   "title": "webgl-mask-transition",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "flat quad, single pass; per-pixel 4D noise is the cost",
+   "fallback": "crossfade",
+   "register_affinity": [
+    "dev-experiment"
+   ],
+   "mechanism_family": "flat-quad-mask-wipe",
+   "material": "testbed/material/webgl-mask-transition",
+   "evidence": "threed-pool C-24 🏷 (read-code)",
+   "notes": "NOT triangle-mesh-shatter family (pool 反证 obs 2)"
+  },
+  {
+   "id": "threed-pool:C-25",
+   "source_pool": "threed-pool",
+   "row_ref": "C-25",
+   "title": "gooey-hover-gallery",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "click",
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "5 tiles × 2 simplex per pixel; only hovered tile advances u_time",
+   "fallback": "instant-swap-hover",
+   "register_affinity": [
+    "editorial-dark",
+    "organic"
+   ],
+   "mechanism_family": "hover-noise-mask-blend",
+   "material": "testbed/material/gooey-hover-gallery",
+   "evidence": "threed-pool C-25 🏷 (read-code); repo = 5-shader collection, gooey index extracted"
+  },
+  {
+   "id": "threed-pool:C-26",
+   "source_pool": "threed-pool",
+   "row_ref": "C-26",
+   "title": "motion-hover-distortion",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "light",
+   "perf_note": "≤5 low-subdiv planes; idle loop could pause",
+   "fallback": "static-thumbnail-hover",
+   "register_affinity": [
+    "editorial-restrained"
+   ],
+   "mechanism_family": "velocity-sin-deform-rgb-split",
+   "material": "testbed/material/motion-hover-distortion",
+   "evidence": "threed-pool C-26 🏷 (read-code); family per obs 6",
+   "notes": "floating follower plane ≠ C-25 in-place blend (obs 4); decorates an existing link list/grid"
+  },
+  {
+   "id": "threed-pool:C-27",
+   "source_pool": "threed-pool",
+   "row_ref": "C-27",
+   "title": "svg-depth-pull",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "perf_note": "path-count geometry + two standard lights",
+   "fallback": "instant-reveal",
+   "register_affinity": [
+    "minimal-instrument"
+   ],
+   "mechanism_family": "svg-layer-depth-pull",
+   "material": "testbed/material/svg-depth-pull",
+   "evidence": "threed-pool C-27 🏷 (read-code)",
+   "notes": "机制件: SVG shapes = asset slot (draw your own); no built-in interaction beyond load"
+  },
+  {
+   "id": "threed-pool:C-28",
+   "source_pool": "threed-pool",
+   "row_ref": "C-28",
+   "title": "sticky-image-slideshow",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "click",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "light",
+   "perf_note": "single 3600-vertex plane; ON-DEMAND rendering (no constant rAF)",
+   "fallback": "static-slideshow",
+   "register_affinity": [
+    "travel-editorial"
+   ],
+   "mechanism_family": "velocity-sin-deform-rgb-split",
+   "material": "testbed/material/sticky-image-slideshow",
+   "evidence": "threed-pool C-28 🏷 (read-code); family per obs 6",
+   "notes": "Grab = page-switch gesture, not click-to-zoom; Read-more was decorative in source"
+  },
+  {
+   "id": "threed-pool:C-29",
+   "source_pool": "threed-pool",
+   "row_ref": "C-29",
+   "title": "buildings-wave",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "load",
+    "scroll",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit",
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "camera-state-within-owner"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "1600 independent draw calls + shadowMap + fog + multi-light; degrade = InstancedMesh / shadows off / smaller grid",
+   "fallback": "reduced-draw-static-skyline",
+   "register_affinity": [
+    "cinematic-city"
+   ],
+   "mechanism_family": "city-skyline-dolly",
+   "material": "testbed/material/buildings-wave",
+   "evidence": "threed-pool C-29 🏷 (read-code) + material VERIFY (lookAt 取景修)",
+   "notes": "two-stage design: load-time one-shot wave + scroll camera dolly; chassis only when city world persists beyond hero"
+  },
+  {
+   "id": "threed-pool:C-30",
+   "source_pool": "threed-pool",
+   "row_ref": "C-30",
+   "title": "perlin-landscape",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "160k vertices full-noise per frame + Sky shader; degrade = lower subdivision / baked displacement / static sky",
+   "fallback": "subdivision-reduction-static-sky",
+   "register_affinity": [
+    "vaporwave-immersive"
+   ],
+   "mechanism_family": "procedural-terrain-shader",
+   "material": "testbed/material/perlin-landscape",
+   "evidence": "threed-pool C-30 🏷 (read-code) + material VERIFY (ACESFilmic + rayleigh sky fix)",
+   "notes": "chassis only when the procedural world persists as the page environment"
+  },
+  {
+   "id": "threed-pool:C-31",
+   "source_pool": "threed-pool",
+   "row_ref": "C-31",
+   "title": "fashion-displacement-slider",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "wheel-interception-local",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "light",
+   "perf_note": "one un-subdivided quad + 3 samples; no constant rAF (event/tween-driven)",
+   "fallback": "crossfade",
+   "register_affinity": [
+    "luxury-fashion-editorial"
+   ],
+   "mechanism_family": "displacement-map-crossfade",
+   "material": "testbed/material/fashion-displacement-slider",
+   "evidence": "threed-pool C-31 🏷 (read-code)",
+   "notes": "discrete wheel paging (one wheel = one slide), NOT continuous scrub; chassis only when the single-screen slider IS the product surface"
+  },
+  {
+   "id": "threed-pool:C-32",
+   "source_pool": "threed-pool",
+   "row_ref": "C-32",
+   "title": "unroll-images",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll",
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit",
+    "needs-bundler-inline"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "~6561 vertices per image; idle frames skipped",
+   "fallback": "instant-image",
+   "register_affinity": [
+    "editorial-craft"
+   ],
+   "mechanism_family": "plane-roll-unroll",
+   "material": "testbed/material/unroll-images",
+   "evidence": "threed-pool C-32 🏷 (read-code) + material VERIFY (CanvasTexture fix)",
+   "notes": "material inlines shaders (original needs a bundler); IO-triggered per image in normal flow"
+  },
+  {
+   "id": "threed-pool:C-33",
+   "source_pool": "threed-pool",
+   "row_ref": "C-33",
+   "title": "draggable-rgb-slider",
+   "tag_source": "pool-tags",
+   "reference_scope": "full-page-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "scoped-input-listeners"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "light",
+   "perf_note": "1089 vertices per image; constant ticker could pause at zero velocity",
+   "fallback": "static-row",
+   "register_affinity": [
+    "art-experiment"
+   ],
+   "mechanism_family": "velocity-sin-deform-rgb-split",
+   "material": "testbed/material/draggable-rgb-slider",
+   "evidence": "threed-pool C-33 🏷 (read-code); family per obs 6",
+   "notes": "chassis only when a gallery site adopts the infinite slider as its complete navigation model"
+  },
+  {
+   "id": "threed-pool:scroll-revealed-gallery",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:Scroll-Revealed WebGL Gallery",
+   "title": "scroll-revealed-gallery",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit",
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "dom-text-split"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "8 draw calls, no FBO/post; reveal curve lives entirely in fragment shader (20px pixel-grid scan, 0.2 band + hash flicker); ScrollSmoother persistent in source — enter-viewport tweens work with native scroll too",
+   "fallback": "reduce-static-images",
+   "register_affinity": [
+    "editorial-archival"
+   ],
+   "mechanism_family": "dom-plane-sync-shader-reveal",
+   "material": "testbed/material/scroll-revealed-gallery",
+   "evidence": "threed-pool 已收 row 🏷 (read-code 2026-07-11, J0SUKE/gsap-threejs-codrops); batch7 replica, user eyeball passed (M-38)",
+   "notes": "Barba page transitions are shell only — reveal reuses the same uProgress in reverse; fixed-duration tween (1.6s) NOT scrub"
+  },
+  {
+   "id": "threed-pool:scroll-reactive-3d-gallery",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:Scroll-Reactive 3D Gallery",
+   "title": "scroll-reactive-depth-gallery",
+   "tag_source": "pool-tags",
+   "reference_scope": "tutorial-demo",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "wheel-interception-local",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "dom-overlay-elements",
+    "color-narrative-zones",
+    "body-input-interception"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "calibrated down from pool 中-重: ~25 draws, cheap shaders; real cost = trail tube rebuilt on CPU each frame (~8k verts) + multi-texture VRAM",
+   "fallback": "reduce-static-frame",
+   "register_affinity": [
+    "editorial",
+    "atmospheric"
+   ],
+   "mechanism_family": "depth-stack-velocity-mood",
+   "material": "testbed/material/scroll-reactive-depth-gallery",
+   "evidence": "threed-pool 已收 row 🏷 (read-code 2026-07-11, houmahani/codrops-depth-gallery); batch7 replica, user eyeball passed (M-39)",
+   "notes": "page-level deployment intercepts wheel globally (chassis-forcing body-input-interception); bounded sectional needs wheel-interception-local; velocity pipeline + mood zones are separable sub-mechanisms"
+  },
+  {
+   "id": "threed-pool:vanta-waves",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:vanta.js WAVES",
+   "title": "vanta-waves",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "CPU-bound: 8181-vertex trochoid rewrite + full computeVertexNormals per frame; GPU 1 draw",
+   "fallback": "reduce-static-gradient",
+   "register_affinity": [
+    "fluid-generic"
+   ],
+   "mechanism_family": "cpu-vertex-wave-plane",
+   "material": "testbed/material/vanta-backdrops",
+   "evidence": "threed-pool vanta row 🏷 per-effect (read-code 2026-07-11 @0.5.24); batch7 integration piece, user eyeball passed (M-40, ?effect=waves)",
+   "notes": "plug-and-play lib, CDN-pinned; three LOCKED r134 (r137+ removes RGBFormat/VertexColors). ⚠️ style-collision: stock vanta look — fine as fallback/mood, avoid signature hero unless re-parameterized"
+  },
+  {
+   "id": "threed-pool:vanta-globe",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:vanta.js GLOBE",
+   "title": "vanta-globe",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "lighter end of medium: 121-point grid O(n²)≈7.3k distance checks/frame, LineSegments only; points param is quadratic — careful scaling up",
+   "fallback": "reduce-static-gradient",
+   "register_affinity": [
+    "data-global"
+   ],
+   "mechanism_family": "wireframe-globe-proximity-lines",
+   "material": "testbed/material/vanta-backdrops",
+   "evidence": "threed-pool vanta row 🏷 per-effect (read-code 2026-07-11 @0.5.24); batch7 integration piece, user eyeball passed (M-40, ?effect=globe)",
+   "notes": "three LOCKED r134 (uses VertexColors). ⚠️ style-collision as vanta-waves"
+  },
+  {
+   "id": "threed-pool:vanta-topology",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:vanta.js TOPOLOGY",
+   "title": "vanta-topology",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "中-重 normalized heavy: 4500 particles + 4500 alpha line strokes/frame on 2D canvas, CPU-bound, scales with viewport area; texture accumulates over ~10s before reading as terrain",
+   "fallback": "reduce-static-gradient",
+   "register_affinity": [
+    "tech-texture",
+    "generative-art"
+   ],
+   "mechanism_family": "flowfield-trail-accumulation",
+   "material": "testbed/material/vanta-backdrops",
+   "evidence": "threed-pool vanta row 🏷 per-effect (read-code 2026-07-11 @0.5.24); batch7 integration piece, user eyeball passed (M-40, ?effect=topology)",
+   "notes": "p5 1.1.9 engine (NOT three). READ-CODE CALIBRATIONS: no onMouseMove — pointer has zero effect; register is terrain-texture/generative-art, NOT network-topology (no node/edge structure). Flow field precomputed once at init"
+  },
+  {
+   "id": "threed-pool:vanta-halo",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:vanta.js HALO",
+   "title": "vanta-halo",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "fill-rate bound: 2 fullscreen passes/frame + double RenderTarget feedback; heavy-leaning at high DPR large screens — raise scale option to shed cost",
+   "fallback": "reduce-static-gradient",
+   "register_affinity": [
+    "soft-glow-tech"
+   ],
+   "mechanism_family": "fullscreen-feedback-ring-shader",
+   "material": "testbed/material/vanta-backdrops",
+   "evidence": "threed-pool vanta row 🏷 per-effect (read-code 2026-07-11 @0.5.24); batch7 integration piece, user eyeball passed (M-40, ?effect=halo)",
+   "notes": "three LOCKED r134 (uses RGBFormat). Only effect with mouseEase:true default. ⚠️ dead params: color2/ringFactor/rotationFactor become uniforms but shader never consumes them — tuning them is a no-op"
+  },
+  {
+   "id": "threed-pool:vanta-birds",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:vanta.js BIRDS",
+   "title": "vanta-birds",
+   "tag_source": "pool-tags",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "heavy",
+   "perf_note": "READ-CODE CALIBRATION: desktop cost is GPU compute NOT CPU — GPGPU boids, 1024 birds in float textures, velocity pass O(n²)≈1.05M texel samples/frame; weak iGPU struggles; mobile falls back to 192-bird CPU boids. quantity is exponential (2^q)²",
+   "fallback": "reduce-static-gradient",
+   "register_affinity": [
+    "organic-nature"
+   ],
+   "mechanism_family": "gpgpu-boids-flock",
+   "material": "testbed/material/vanta-backdrops",
+   "evidence": "threed-pool vanta row 🏷 per-effect (read-code 2026-07-11 @0.5.24); batch7 integration piece, user eyeball passed (M-40, ?effect=birds)",
+   "notes": "three LOCKED r134. Upstream bug: crashes on WebGL1 (birds.js:622 missing this.) — WebGL2-only in practice. Pointer = predator scatter, resets each frame (must keep moving)"
+  },
+  {
+   "id": "threed-pool:particle-shape-morph",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:粒子聚形 morph",
+   "title": "particle-shape-morph",
+   "tag_source": "pool-tags",
+   "reference_scope": "section-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "local-pin",
+    "local-section-height"
+   ],
+   "perf_cost": "light",
+   "perf_note": "3200 points = 1 draw call; CPU writes 37.5KB position buffer/frame; additive-blend ember material",
+   "fallback": "reduce-final-ring-frame",
+   "register_affinity": [
+    "ritual-craft",
+    "dark-narrative"
+   ],
+   "mechanism_family": "particle-formation-morph",
+   "material": "testbed/material/particle-shape-morph",
+   "evidence": "lab-built from local jesus-site source (verbatim port, _src hash-equal, 61/61 fidelity strings); user-approved into batch7 + eyeball passed (M-41)",
+   "notes": "provenance: lab 自产经人批通道 (2026-07-11). setProgress(p) interface = any bounded 0..1 progress source can drive it; the 5 formation generator functions are swappable shape slots (cloud/grid/streams/target/ring)"
+  },
+  {
+   "id": "threed-pool:awesome-threejs",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:awesome-threejs",
+   "title": "awesome-threejs-index",
+   "selectable": false,
+   "availability": "index-only",
+   "tag_source": "none",
+   "evidence": "桶 D mine-not-material discipline",
+   "notes": "tool/index entry — never a candidate (plan: explicit selectable:false)"
+  },
+  {
+   "id": "threed-pool:shard-vessel",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:碎片构成物+指针斥力",
+   "title": "shard-vessel",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "84 shards = 1 draw call, 624 tris; idle 240fps / interact 131fps headless; >few hundred shards → vertex shader",
+   "fallback": "shard-count-reduction-static",
+   "register_affinity": [
+    "luxury-craft",
+    "precision"
+   ],
+   "mechanism_family": "shard-repulsion",
+   "material": "testbed/material/shard-vessel",
+   "evidence": "threed-pool 🏷 tags + threejs-scroll-stage Pattern 7 (lab-proven)"
+  },
+  {
+   "id": "threed-pool:blueprint-video-wipe",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:视频蓝图擦除转场",
+   "title": "blueprint-video-wipe",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "pointer",
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "contained-canvas",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "owner-canvas-stage",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "full-viewport fragment + 3×3 Sobel; 250fps @2560×1440 dGPU; ?reduce=1 static built-in",
+   "fallback": "reduce-static-frame",
+   "register_affinity": [
+    "tech-military-archive"
+   ],
+   "mechanism_family": "video-sobel-wipe",
+   "material": "testbed/material/blueprint-video-wipe",
+   "evidence": "threed-pool 🏷 tags (lab-built, user-signed)",
+   "notes": "drive modes: mouse (default) | scroll | hybrid (user-preferred feel); video = wholesale-swappable asset slot"
+  },
+  {
+   "id": "threed-pool:glitch-transition-front",
+   "source_pool": "threed-pool",
+   "row_ref": "已收:glitch 转场前沿",
+   "title": "glitch-transition-front",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "none"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section",
+    "overlay"
+   ],
+   "requires_existing_ui": true,
+   "boundary_requirements": [
+    "contained-canvas"
+   ],
+   "possible_mutations": [
+    "overlay-canvas"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "轻-中: 3× sampling only inside frontier band; zero cost outside (g<0.003 single-sample branch)",
+   "fallback": "single-sample-clean-edge",
+   "register_affinity": [
+    "tech-glitch-cyber"
+   ],
+   "mechanism_family": "glitch-frontier-augment",
+   "material": "testbed/material/blueprint-video-wipe",
+   "evidence": "threed-pool 🏷 tags (lab-built)",
+   "notes": "companion technique — rides ANY host mix(A,B,mask) transition; driver = host frontier velocity; AMBIGUITY-5"
+  },
+  {
+   "id": "motion-pool:#1",
+   "source_pool": "motion-pool",
+   "row_ref": "#1",
+   "title": "typewriter",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "timeline"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-split",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-text",
+   "register_affinity": [
+    "notes-demo-ai"
+   ],
+   "mechanism_family": "typewriter",
+   "evidence": "motion-pool #1 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=typewriter; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#2",
+   "source_pool": "motion-pool",
+   "row_ref": "#2",
+   "title": "blur-in",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-split",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-text",
+   "register_affinity": [
+    "suspense-concept"
+   ],
+   "mechanism_family": "blur-focus-in",
+   "evidence": "motion-pool #2 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=blur-in; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#3",
+   "source_pool": "motion-pool",
+   "row_ref": "#3",
+   "title": "glitch-text",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "timeline"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "transform-only",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-text",
+   "register_affinity": [
+    "tech-ai-cyber"
+   ],
+   "mechanism_family": "glitch-text",
+   "evidence": "motion-pool #3 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=glitch; build(id, el) drop-in API; code fix 2026-07-11: glitch uses red/cyan full-text clones + clip bands (NO SplitText) — was dom-text-split"
+  },
+  {
+   "id": "motion-pool:#4",
+   "source_pool": "motion-pool",
+   "row_ref": "#4",
+   "title": "scramble-text",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "timeline"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-replacement"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-text",
+   "register_affinity": [
+    "decode-complexity"
+   ],
+   "mechanism_family": "scramble-text",
+   "evidence": "motion-pool #4 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=scramble; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#5",
+   "source_pool": "motion-pool",
+   "row_ref": "#5",
+   "title": "flip-card-entrance",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-split",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-swap",
+   "register_affinity": [
+    "contrast-feature"
+   ],
+   "mechanism_family": "flip-card",
+   "evidence": "motion-pool #5 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=flip-in; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#6",
+   "source_pool": "motion-pool",
+   "row_ref": "#6",
+   "title": "slice-clip-stagger",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-text",
+   "register_affinity": [
+    "impact-title"
+   ],
+   "mechanism_family": "slice-clip-stagger",
+   "evidence": "motion-pool #6 🏷 (graduated 2026-07-11)",
+   "notes": "the northway-brutalist locked stance ('Slice') belongs to this family; lab: text-reveal-gallery ?only=slice; build(id, el) drop-in API; code fix 2026-07-11: slice uses clip-path band clones swapped back at end (NO SplitText) — was dom-text-split",
+   "material": "testbed/material/text-reveal-gallery"
+  },
+  {
+   "id": "motion-pool:#7",
+   "source_pool": "motion-pool",
+   "row_ref": "#7",
+   "title": "stroke-draw",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load",
+    "timeline"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "paired-asset"
+   ],
+   "possible_mutations": [
+    "color-border-shadow",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "fallback": "filled-static",
+   "register_affinity": [
+    "brand-script-art"
+   ],
+   "mechanism_family": "stroke-draw",
+   "evidence": "motion-pool #7 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=stroke-draw; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#8",
+   "source_pool": "motion-pool",
+   "row_ref": "#8",
+   "title": "highlight-sweep",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [],
+   "possible_mutations": [
+    "color-border-shadow"
+   ],
+   "perf_cost": "light",
+   "fallback": "static-highlight",
+   "register_affinity": [
+    "keyword-emphasis"
+   ],
+   "mechanism_family": "highlight-sweep",
+   "evidence": "motion-pool #8 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=highlight-sweep; build(id, el) drop-in API; code fix 2026-07-11: sweep animates backgroundPosition on the element itself (background-clip:text, @supports-guarded) — no pseudo-elements"
+  },
+  {
+   "id": "motion-pool:#9",
+   "source_pool": "motion-pool",
+   "row_ref": "#9",
+   "title": "elastic-pop",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-split",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "instant-appear",
+   "register_affinity": [
+    "playful-shortform"
+   ],
+   "mechanism_family": "elastic-pop",
+   "evidence": "motion-pool #9 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/text-reveal-gallery",
+   "notes": "lab: text-reveal-gallery ?only=elastic; build(id, el) drop-in API"
+  },
+  {
+   "id": "motion-pool:#10",
+   "source_pool": "motion-pool",
+   "row_ref": "#10",
+   "title": "depth-parallax",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [],
+   "possible_mutations": [
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "flat-static",
+   "register_affinity": [
+    "premium-opening"
+   ],
+   "mechanism_family": "depth-parallax",
+   "evidence": "motion-pool #10 🏷 (graduated 2026-07-11)",
+   "notes": "northway chassis uses this vocabulary on its hero (locked stance); lab: text-reveal-gallery ?only=depth-shift; build(id, el) drop-in API",
+   "material": "testbed/material/text-reveal-gallery"
+  },
+  {
+   "id": "motion-pool:#11",
+   "source_pool": "motion-pool",
+   "row_ref": "#11",
+   "title": "bg-color-narrative",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "page",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "no-global-scroll-hijack"
+   ],
+   "possible_mutations": [
+    "color-narrative-zones",
+    "cross-section-persistent-state"
+   ],
+   "perf_cost": "light",
+   "fallback": "static-zone-colors",
+   "register_affinity": [
+    "longform-narrative"
+   ],
+   "mechanism_family": "bg-color-narrative",
+   "evidence": "motion-pool #11 🏷 (graduated 2026-07-11)",
+   "notes": "plan: chassis only when zones own persistent page-level state; a bounded color chapter stays sectional",
+   "material": "testbed/material/bg-morph-zones"
+  },
+  {
+   "id": "motion-pool:#12",
+   "source_pool": "motion-pool",
+   "row_ref": "#12",
+   "title": "hero-shrink-exit",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "local-pin",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "static-hero",
+   "register_affinity": [
+    "brand-portfolio"
+   ],
+   "mechanism_family": "hero-shrink-exit",
+   "evidence": "motion-pool #12 🏷 (graduated 2026-07-11)",
+   "notes": "plan: chassis only when the exit choreography structures the whole page; code fix 2026-07-11: pin releases on exit, zero cross-section state — no chassis criterion fires (was sectional/chassis from row inference)",
+   "material": "testbed/material/hero-shrink-exit"
+  },
+  {
+   "id": "motion-pool:#13",
+   "source_pool": "motion-pool",
+   "row_ref": "#13",
+   "title": "pinned-depth-collage",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "local-pin",
+    "local-section-height",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "static-collage",
+   "register_affinity": [
+    "work-wall"
+   ],
+   "mechanism_family": "pinned-depth-collage",
+   "evidence": "motion-pool #13 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/pinned-depth-collage",
+   "notes": "code evidence 2026-07-11: all 10 source variants are pure image grids — center-caption crossfade is a seamora-observed composition addition (built per row text)"
+  },
+  {
+   "id": "motion-pool:#14",
+   "source_pool": "motion-pool",
+   "row_ref": "#14",
+   "title": "sticky-deck-stack",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper"
+   ],
+   "possible_mutations": [
+    "local-pin",
+    "transform-only",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "fallback": "stacked-static",
+   "register_affinity": [
+    "methodology-steps"
+   ],
+   "mechanism_family": "sticky-deck-stack",
+   "evidence": "motion-pool #14 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/sticky-stack-deck",
+   "notes": "code evidence 2026-07-11: row's 'trigger=next card' == source 'trigger:self, start:top top, end:+=100%' — same geometry under CSS sticky (verified across 15 variants)"
+  },
+  {
+   "id": "motion-pool:#15",
+   "source_pool": "motion-pool",
+   "row_ref": "#15",
+   "title": "pinned-stage-chapters",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "local-pin",
+    "local-sticky-stage",
+    "local-section-height"
+   ],
+   "perf_cost": "light",
+   "perf_note": "ScrollSmoother optional",
+   "fallback": "static-chapters",
+   "register_affinity": [
+    "product-narrative"
+   ],
+   "mechanism_family": "pinned-stage-chapters",
+   "evidence": "motion-pool #15 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/pinned-scene-stages",
+   "notes": "lab port 2026-07-11: Lenis→ScrollSmoother (row-named form; speed param verified in 3.13.0 min source), CSS sticky→ST pin equal-geometry (sticky kept as no-JS fallback)"
+  },
+  {
+   "id": "motion-pool:#16",
+   "source_pool": "motion-pool",
+   "row_ref": "#16",
+   "title": "flip-layout-switch",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "layout-state-transition-within-owner",
+    "local-pin"
+   ],
+   "perf_cost": "medium",
+   "fallback": "final-layout-static",
+   "register_affinity": [
+    "portfolio-views"
+   ],
+   "mechanism_family": "flip-layout-switch",
+   "evidence": "motion-pool #16 🏷 (graduated 2026-07-11)",
+   "notes": "REAL layout mutation bounded to its owner — sectional only, never atomic; USER RULING 2026-07-11: dual-footprint — chassis ONLY when the page architecture IS a continuous flip-gallery sequence (9-group source-demo shape deployed page-owning); a single bounded gallery stays sectional (preferred). Never atomic (real layout mutation). perf→medium: scale:false variants tween layout props (reflow) + 80-item filter interpolation (paint)",
+   "material": "testbed/material/flip-layout-switch"
+  },
+  {
+   "id": "motion-pool:#17",
+   "source_pool": "motion-pool",
+   "row_ref": "#17",
+   "title": "element-journey",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "chassis"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "chassis",
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "page"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "stage-releases-on-exit"
+   ],
+   "possible_mutations": [
+    "transform-only",
+    "cross-section-persistent-state"
+   ],
+   "perf_cost": "light",
+   "fallback": "per-section-static-copies",
+   "register_affinity": [
+    "product-protagonist"
+   ],
+   "mechanism_family": "element-journey-flip-fit",
+   "evidence": "motion-pool #17 🏷 (graduated 2026-07-11)",
+   "notes": "plan: signature cross-top-level-section use = chassis; a within-owner waypoint journey stays sectional; code evidence 2026-07-11: lab piece deploys the journey page-owning (element crosses hero→sections→outro; z-index choreography is the occlusion key) = the chassis-grade shape; a bounded journey within one owner stays sectional",
+   "material": "testbed/material/one-element-journey"
+  },
+  {
+   "id": "motion-pool:#18",
+   "source_pool": "motion-pool",
+   "row_ref": "#18",
+   "title": "layered-zoom-reveal",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "local-progress-0..1"
+   ],
+   "possible_mutations": [
+    "transform-only",
+    "opacity-filter"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "multi-layer same-image scaling + blur",
+   "fallback": "static-hero-image",
+   "register_affinity": [
+    "cinematic-opening"
+   ],
+   "mechanism_family": "layered-zoom-reveal",
+   "evidence": "motion-pool #18 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/layered-zoom-reveal",
+   "notes": "row correction 2026-07-11: source has NO SplitText — title counter-move is two hand-authored spans consuming calc(var(--progress)*(∓66vw±100%)); double-easing = parseEase-processed progress written to the CSS var"
+  },
+  {
+   "id": "motion-pool:#19",
+   "source_pool": "motion-pool",
+   "row_ref": "#19",
+   "title": "svg-mask-blinds",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper"
+   ],
+   "possible_mutations": [
+    "opacity-filter"
+   ],
+   "perf_cost": "medium",
+   "fallback": "instant-image",
+   "register_affinity": [
+    "chapter-transition"
+   ],
+   "mechanism_family": "svg-mask-blinds",
+   "evidence": "motion-pool #19 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/svg-mask-blinds",
+   "notes": "row correction 2026-07-11: the 4 source variants are horizontal-blinds/random-grid/vertical-blinds/column-sweep — NO wave/checkerboard; piece exposes ?pattern=. perf→medium: SVG mask re-raster per scrubbed frame"
+  },
+  {
+   "id": "motion-pool:#20",
+   "source_pool": "motion-pool",
+   "row_ref": "#20",
+   "title": "scrub-word-brighten",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "text-split-restores"
+   ],
+   "possible_mutations": [
+    "dom-text-split",
+    "opacity-filter",
+    "color-border-shadow"
+   ],
+   "perf_cost": "light",
+   "fallback": "full-brightness-static",
+   "register_affinity": [
+    "manifesto-longcopy"
+   ],
+   "mechanism_family": "scrub-word-brighten",
+   "evidence": "motion-pool #20 🏷 (graduated 2026-07-11)",
+   "material": "testbed/material/scrub-word-brighten"
+  },
+  {
+   "id": "motion-pool:#21",
+   "source_pool": "motion-pool",
+   "row_ref": "#21",
+   "title": "cursor-xy",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "atomic"
+   ],
+   "driver": [
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "overlay"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "perf_note": "pure transform; headless 223fps mechanism proof; touch degrade built-in",
+   "fallback": "native-cursor",
+   "register_affinity": [
+    "instrument",
+    "dev-tool",
+    "brutalist"
+   ],
+   "mechanism_family": "instrument-cursor",
+   "material": "testbed/material/cursor-xy",
+   "evidence": "motion-pool #21 🏷 (graduated)",
+   "notes": "page-wide overlay with NO structural ownership → atomic by footprint rules; chassis-phase allowed as register-statement vocabulary; AMBIGUITY-7"
+  },
+  {
+   "id": "motion-pool:#22",
+   "source_pool": "motion-pool",
+   "row_ref": "#22",
+   "title": "goo-loader",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "overlay",
+    "component"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "opacity-filter"
+   ],
+   "perf_cost": "medium",
+   "perf_note": "SVG filter rasters per frame — keep the filter box SMALL, never full-page",
+   "fallback": "no-filter-simple-fade",
+   "register_affinity": [
+    "organic-playful"
+   ],
+   "mechanism_family": "goo-metaball",
+   "material": "testbed/material/goo-loader",
+   "evidence": "motion-pool #22 🏷 (graduated; CSS-Tricks goo canon)"
+  },
+  {
+   "id": "motion-pool:#23",
+   "source_pool": "motion-pool",
+   "row_ref": "#23",
+   "title": "tracking-lockbox",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "atomic",
+    "sectional"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "timeline",
+    "pointer"
+   ],
+   "supported_carrier_scopes": [
+    "overlay"
+   ],
+   "requires_existing_ui": true,
+   "boundary_requirements": [
+    "paired-asset",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "perf_note": "DOM transforms × N; heavy lifting is OFFLINE (cv2 baking)",
+   "fallback": "hide-overlay",
+   "register_affinity": [
+    "military-archive-analyzing"
+   ],
+   "mechanism_family": "video-tracking-overlay",
+   "material": "testbed/material/blueprint-video-wipe",
+   "evidence": "motion-pool #23 🏷 (lab-built, user-signed; v2 hover tier)",
+   "notes": "keyframes baked per video (paired asset); ⚠ check collisions with burned-in video text"
+  },
+  {
+   "id": "motion-pool:#24",
+   "source_pool": "motion-pool",
+   "row_ref": "#24",
+   "title": "light-bar-logo-reveal",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "chassis",
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "overlay",
+    "section"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "dom-overlay-elements",
+    "transform-only",
+    "opacity-filter"
+   ],
+   "perf_cost": "light",
+   "perf_note": "one-shot, self-removing (root.remove() when done)",
+   "fallback": "static-logo-fade",
+   "register_affinity": [
+    "brand-launch-tech"
+   ],
+   "mechanism_family": "light-bar-reveal",
+   "material": "testbed/material/blueprint-video-wipe",
+   "evidence": "motion-pool #24 🏷 (lab-built, user approve)"
+  },
+  {
+   "id": "motion-pool:#25",
+   "source_pool": "motion-pool",
+   "row_ref": "#25",
+   "title": "exploded-diagram",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "paired-asset"
+   ],
+   "possible_mutations": [
+    "transform-only",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "light",
+   "perf_note": "SVG transforms ×13; zero cost at rest",
+   "fallback": "full-exploded-static",
+   "register_affinity": [
+    "hardware-engineering-archive"
+   ],
+   "mechanism_family": "exploded-assembly-scroll",
+   "material": "testbed/material/exploded-diagram",
+   "evidence": "motion-pool #25 🏷 (lab-built, mechanism approved)",
+   "notes": "素材槽: demo parts = placeholder art; commercial use swaps layered SVG / cut PNG / real 3D"
+  },
+  {
+   "id": "motion-pool:#26",
+   "source_pool": "motion-pool",
+   "row_ref": "#26",
+   "title": "folder-works",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional",
+    "atomic"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional",
+    "atomic"
+   ],
+   "driver": [
+    "pointer",
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "section",
+    "component"
+   ],
+   "boundary_requirements": [
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "transform-only",
+    "opacity-filter",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "light",
+   "fallback": "plain-index-list",
+   "register_affinity": [
+    "playful-editorial-magazine"
+   ],
+   "mechanism_family": "spotlight-drawer-hover",
+   "material": "testbed/material/folder-works",
+   "evidence": "motion-pool #26 🏷 (graduated from site anchor; lab rebuild v3 + backdrop-twin rule)",
+   "notes": "numbered #26 per user ruling 2026-07-11 (A-3); was slug folder-works"
+  },
+  {
+   "id": "motion-pool:anchor-wildy-folder-works",
+   "source_pool": "motion-pool",
+   "row_ref": "站级锚:Wildy Riftian works 页",
+   "title": "wildy-folder-works-anchor",
+   "selectable": false,
+   "availability": "anchor-only",
+   "tag_source": "none",
+   "evidence": "Framer-platform site; metaphor learned, implementation rebuilt in-lab",
+   "notes": "superseded by #26 folder-works (graduated 2026-07-08, numbered 2026-07-11)"
+  },
+  {
+   "id": "motion-pool:anchor-studio-dialect",
+   "source_pool": "motion-pool",
+   "row_ref": "站级锚:Studio Dialect",
+   "title": "studio-dialect-anchor",
+   "selectable": false,
+   "availability": "anchor-only",
+   "tag_source": "none",
+   "evidence": "no readable source (production bundle); user: only the XY-cursor point is worth learning",
+   "notes": "superseded by #21 cursor-xy (graduated 2026-07-08)"
+  },
+  {
+   "id": "motion-pool:anchor-orlion-loading",
+   "source_pool": "motion-pool",
+   "row_ref": "站级锚:Orlion Studio contact",
+   "title": "orlion-loading-anchor",
+   "selectable": false,
+   "availability": "anchor-only",
+   "tag_source": "none",
+   "evidence": "single-point anchor (loading animation, webgl, no readable source)"
+  },
+  {
+   "id": "motion-pool:anchor-studio-k95",
+   "source_pool": "motion-pool",
+   "row_ref": "站级锚:Studio K95",
+   "title": "studio-k95-anchor",
+   "selectable": false,
+   "availability": "anchor-only",
+   "tag_source": "none",
+   "evidence": "site-level anchor (user liked overall; no single extractable mechanism, no readable source)"
+  },
+  {
+   "id": "motion-pool:#27",
+   "source_pool": "motion-pool",
+   "row_ref": "#27",
+   "title": "css-grid-mask-reveal",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "atomic"
+   ],
+   "preferred_footprint": "atomic",
+   "allowed_phases": [
+    "atomic"
+   ],
+   "driver": [
+    "scroll",
+    "load"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section",
+    "overlay"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "opacity-filter",
+    "dom-overlay-elements"
+   ],
+   "perf_cost": "light",
+   "fallback": "no-tiles-content-visible",
+   "requires_existing_ui": true,
+   "register_affinity": [
+    "technical-archive",
+    "editorial"
+   ],
+   "mechanism_family": "grid-mask-dissolve",
+   "material": "testbed/material/css-grid-mask-reveal",
+   "evidence": "lab-built 2026-07-11 (Averonel new-flow eval run); user-approved promote verbatim; DOM approximation of M-38 pixel-scan visual language",
+   "notes": "reveal AND dissolve directions (tiles fade-out to reveal / fade-in to dissolve); works on arbitrary HTML; shader hash flicker approximated by one steps-keyframe blink"
+  },
+  {
+   "id": "motion-pool:#28",
+   "source_pool": "motion-pool",
+   "row_ref": "#28",
+   "title": "bento-register",
+   "tag_source": "pool-tags",
+   "reference_scope": "technique",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "click"
+   ],
+   "supported_carrier_scopes": [
+    "component",
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "scoped-input-listeners",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "layout-state-transition-within-owner",
+    "local-section-height"
+   ],
+   "perf_cost": "light",
+   "fallback": "static-cards-all-content-visible",
+   "requires_existing_ui": true,
+   "register_affinity": [
+    "editorial",
+    "editorial-showcase",
+    "technical-archive"
+   ],
+   "mechanism_family": "bento-card-disclosure",
+   "material": "testbed/material/bento-register",
+   "evidence": "lab-built 2026-07-18 (Averonel option-2 table→component run); parent headless 22/22 GREEN; user approved the editorial audition on real chassis tokens (「同意variation a」, prototypes/auditions/bento-audition)",
+   "notes": "STRUCTURAL component, not an orchestration: register/flat-table → bento card wall. Module (bento-register.js) owns ONLY click/keyboard disclosure coordination + aria + singleOpen mutex + teardown; bento grid layout & card visuals are consumer CSS re-tokened per chassis. CSS-first: grid-template-rows 0fr→1fr transition, NO GSAP dependency; reduced-motion keeps disclosure working (transition off via media query). Expansion changes owner section height by design (structural component-tier entry, contracts §6 — NOT atomic-safe, never an atomic candidate)."
+  },
+  {
+   "id": "motion-pool:#30",
+   "source_pool": "motion-pool",
+   "row_ref": "#30",
+   "title": "scroll-step-axis",
+   "tag_source": "classified-from-row",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "teardown-on-exit",
+    "no-global-scroll-hijack"
+   ],
+   "possible_mutations": [
+    "color-border-shadow"
+   ],
+   "perf_cost": "light",
+   "fallback": "static filled axis (all nodes lit, no reading-line)",
+   "requires_existing_ui": true,
+   "register_affinity": [],
+   "mechanism_family": "scroll-step-axis",
+   "material": "testbed/material/scroll-step-axis",
+   "evidence": "Lab-authored (Averonel option-2 Phase D, SPEC v9 §1.2 HOW-WE-WORK axis; user eyeball-approved on the Averonel home run). Standard-form verified in B10 (commit ac6ce83, self-comparison receipt hash-bound). Registered 2026-08-01 (the averonel-D6 registration debt; was 'candidate M-56').",
+   "notes": "Numbered step list gains a vertical commit-graph node axis (thin line + node per step + segments). NATURAL page scroll, no pinning: a virtual reading-line at ~40% viewport height scans rows; reaching a row highlights it and fills its node. Default BIDIRECTIONAL (scroll back reverts, user ruling 2026-07-19); opts.accumulate=true keeps the monotonic commit-log mode. Layout-agnostic: rows/nodes/segs/line all consumer DOM (S-8 contract family)."
+  },
+  {
+   "id": "motion-pool:#31",
+   "source_pool": "motion-pool",
+   "row_ref": "#31",
+   "title": "pinned-horizontal-rail",
+   "tag_source": "classified-from-row",
+   "reference_scope": "component-demo",
+   "supported_footprints": [
+    "sectional"
+   ],
+   "preferred_footprint": "sectional",
+   "allowed_phases": [
+    "sectional"
+   ],
+   "driver": [
+    "scroll"
+   ],
+   "supported_carrier_scopes": [
+    "section"
+   ],
+   "boundary_requirements": [
+    "owner-wrapper",
+    "teardown-on-exit"
+   ],
+   "possible_mutations": [
+    "local-pin",
+    "transform-only"
+   ],
+   "perf_cost": "light",
+   "fallback": "static vertical card list (the pre-rail flat table)",
+   "requires_existing_ui": true,
+   "register_affinity": [],
+   "mechanism_family": "pinned-horizontal-rail",
+   "material": "testbed/material/pinned-horizontal-rail",
+   "evidence": "Lab-authored (Averonel option-2 Phase D, SPEC v9 §1.1 WHAT-WE-DO rail; user eyeball-approved on the Averonel run). B10 honest-exempt on the pixel gate (GSAP scrub-lag position not harness-determinable, css-grid #11 family; commit ac6ce83). Registered 2026-08-01 (was mislabelled 'candidate M-55'; M-55 = char-slide-shuffle).",
+   "notes": "Section-scoped ScrollTrigger pin + vertical scroll scrubs horizontal card travel 1:1 (translateX, transform-only). progressBar/counter progress affordances. Card visuals entirely consumer tokens (--phr-*). Pin spacer inserted/removed by GSAP; clean destroy. CAUTION: pin + scroll-jack occupies the page scroll mid-section — one master scroll orchestration per page (taste §8)."
+  }
+ ]
+}
