@@ -78,7 +78,7 @@
 > **「素材化」= 把已读码打标的条目复刻进 `testbed/material/`**(人可预览 + agent 可照抄),
 > 是「读码打标(毕业)」之后的下一道工序。下方 C-* 表每行「状态·发现」列**首带 `【素材化=…】` 徽章**
 > (greppable:`grep 素材化=`);本节 = 全量 rollup + 图例。
-> **复刻工程账本(单一真相源)**:`.goals/plans/threed-materialize.plan.md`。
+> **复刻工程账本(单一真相源)**:lab 私有计划文档（不随包发）。
 > **预览门面**:`testbed/material/index.html`(`python -m http.server 8140 --directory testbed` → `/material/`)。
 
 | 徽章 | 含义 | 计数 | 条目 |

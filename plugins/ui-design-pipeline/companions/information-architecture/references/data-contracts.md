@@ -19,7 +19,7 @@
 > v1.0.1 (2026-07-03): CJK lint terms added to §i.4; tier comment wording PDD-aligned per
 > ratified prior-art (`references/ia-principles.md`). Prose-only — no shape change.
 
-The (F) schemas from `.goals/plans/ia-companion.plan.md` Step 2, finalized. Everything in the
+The (F) schemas, finalized (their derivation lives in the lab's private planning notes). Everything in the
 `information-architecture` skill keys off this file: the SKILL.md prose produces artifacts that
 MUST match these shapes; the deterministic scripts (`scripts/validate_infospec.py`,
 `scripts/render_board.py`) enforce and render them. Change this file only with a version bump +

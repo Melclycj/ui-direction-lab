@@ -87,7 +87,7 @@
   `web-verified`(322 条 + newsletter 更新到 #73) · 全部是**他人商业产品**录像 → **`do-not-copy` 铁定**。
   > ⚠ **注意 UA**:默认 WebFetch 会吃 **403**(Cloudflare 拦),换浏览器 UA 的 curl 即 200。`/rss.xml` 是 404,真 feed 在 **`/feed`**(仅 newsletter 汇总,不含条目)。
 - **🗑 已出库:MotionSites(motionsites.ai)** —— 2026-08-05 被 Design Spells **净零顶替**(桶 E 超载,新增须顶替)。两者同型(👁 动效灵感墙、不可 port、不进 motion-pool),但 MotionSites 是 **AI-prompt 模板**(面向 Lovable/Cursor 生成)而非真实产品实现,且招牌 Neon Pulse / Crystal Wave / Cosmic Ripple / 大渐变 hero **撞 `taste-skill` 硬规则**(无霓虹 · 无渐变大标题 · 单一 accent);另有其创作者自己的提醒作**外部佐证**——"直接用原 prompt 出来的网页几乎和原站一模一样、还共用素材"(**同质化风险**,与本表既有裁定同向)。
-  **⇒ 它没被丢掉,转入 `.goals/LEDGER.md` 的「📌 常设 · 培养审美」清单**(用户个人观看清单:不过 6 闸、不占 cap、不随 skill 部署)。**别再当新源收回本桶。**
+  **⇒ 它没被丢掉,转入维护者私有账本的「📌 常设 · 培养审美」清单**(用户个人观看清单:不过 6 闸、不占 cap、不随 skill 部署)。**别再当新源收回本桶。**
 
 ### ⚠️ 域名纠正记录(2026-08-05 实测,踩过的坑别再踩)
 
@@ -106,7 +106,7 @@
 |---|---|---|
 | **variant.com** | ①保真度 + ③不重叠 + §5 第一性原理 | **它是 AI 设计生成器,不是参考源**。`meta description` 逐字:*"Enter an idea for an app or site and see endless design options just by scrolling."* ⇒ 吐的是**机器现生成的设计**,不是"外部已存在且被认可的范本"。本库价值 = 指向**外部可信标准**;收它 = 把回声室入口焊在库上(只不过回声的是别人的模型)。**不属 A–E 任何一桶。** ⚠ "一键导入 Figma" 是转述、站上无证据、**未核实**——但即便为真,它仍是生成器,判定不变 |
 | **bestdesignsonx.com** | ③不重叠 + ⑥封顶 | 每小时策展 X/Twitter 设计帖。与桶 E 已有的 **Savee / Cosmos 同型**(泛视觉 moodboard)且**更弱** —— 纯二手转发,无策展站自己的判断;版权归原发帖作者。桶 E 已 10/5,**连顶替资格都没有** |
-| **designeverywhere.co** | ①保真度 | 实测条目 = `WK-编号 + 作品名 by 工作室`(Nudo Noodle by Workbyworks …),标签 Typography / Logo Design / Identity ⇒ **平面 / 品牌识别 / 包装设计,不是 web UI**,本仓做不出它;部分内容需 Log In。**⇒ 转 `.goals/LEDGER.md`「培养审美」清单**(用户 2026-08-05:"可以作为人的审美修养,定期去看")——**不入库 ≠ 没价值**,正因它跨出网页,补得上只看网页养不出的审美 |
+| **designeverywhere.co** | ①保真度 | 实测条目 = `WK-编号 + 作品名 by 工作室`(Nudo Noodle by Workbyworks …),标签 Typography / Logo Design / Identity ⇒ **平面 / 品牌识别 / 包装设计,不是 web UI**,本仓做不出它;部分内容需 Log In。**⇒ 转维护者私有账本的「培养审美」清单**(用户 2026-08-05:"可以作为人的审美修养,定期去看")——**不入库 ≠ 没价值**,正因它跨出网页,补得上只看网页养不出的审美 |
 
 ---
 
