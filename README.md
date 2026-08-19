@@ -2,7 +2,7 @@
 
 **A design pipeline that turns one line of product intent into a locked design system and a full set of production-grade pages** — built as Claude Code skills, with a deterministic gate and a named human decision at every step.
 
-The premise: taste is not automatable, but everything around it is. Machines check that the code is correct, that it obeys the locked design chassis, and that nothing drifted since it was last verified. *Which direction is good* stays a human call — at nine explicit decision points, not implicitly buried in a prompt.
+The premise: taste is not automatable, but everything around it is. Machines check that the code is correct, that it obeys the locked design chassis, and that nothing drifted since it was last verified. *Which direction is good* stays a human call — at named decision points (nine on the main line, two more once motion is engaged, two more if the IA companion runs), not implicitly buried in a prompt.
 
 ![Vernata home — WebGL skyline hero, built by this pipeline](docs/media/vernata-home.png)
 
@@ -59,27 +59,85 @@ Seven of them are in production use on the Vernata site.
 
 ## How the pipeline works
 
+`●` = you decide. Everything else runs unattended.
+
 ```
-[one-line idea]
-     ▼
-  intent Q&A ──► ● do you have a reference, or is this exploration?
-     ▼
-  batch 1: 3-4 visual directions  ──► ● pick the LEAD
-     ▼
-  contrast gate (WCAG, computed) ──► ● fix, or accept knowingly (debt is recorded)
-     ▼
-  batch 2: 2-3 motion stances (visual frozen) ──► ● pick one
-     ▼
-  LOCK the chassis  ──► ● explicit approval required; a hook hard-blocks the next step without it
-     ▼
-  surface wave: N pages in parallel, each validated and scored ──► ● accept the gallery
+[one line of product intent]
+   │
+   │   ┌ IA ROUND 1 · optional, for anything past a single screen ──────────┐
+   │   │ Normalise whatever you have — a feature list, rough sections, or a │
+   ├───┤ paragraph of intent — into a whole-product info-spec plus a        │
+   │   │ grey-box review board.                                             │
+   │   │ ● you approve INFORMATION STRUCTURE. Grey on purpose: you judge    │
+   │   │   what each screen holds and what dominates, not how it looks.     │
+   │   └────────────────────────────────────────────────────────────────────┘
+   │     the hero screen's spec enters the main line as a hard constraint
+   ▼
+Stage 0 · intent Q&A ............... ● 4 questions, all defaultable
+   ▼
+gate #0 ............................ ● a reference to work from,
+                                       or open exploration?
+   ▼
+BATCH 1 · 3–4 visual directions .... ● pick the LEAD
+  the exploration branch always
+  includes one ANCHOR — a faithful
+  rebuild of a real product, there
+  to keep the others honest
+   ▼
+contrast gate · WCAG computed ...... ● fix, or accept knowingly — the ratio
+  per text-role token pair,            is written down, because that debt is
+  before anything is frozen            inherited by every page produced later
+   ▼
+BATCH 2 · 2–3 motion stances ....... ● pick one
+  visual frozen pixel-identical
+  to the LEAD
+   ▼
+LOCK THE CHASSIS → tokens + CHASSIS.md
+   │
+   │   ┌ IA ROUND 2 · same swimlane, now that composition is settled ───────┐
+   ├───┤ Generalise the locked composition pattern to every remaining       │
+   │   │ screen as grey-box wireframes — flag gaps, never invent content.   │
+   │   │ ● Stage-F gate: you walk them                                      │
+   │   └────────────────────────────────────────────────────────────────────┘
+   │     wireframes become the wave's production_source: colour only,
+   │     never re-layout
+   ▼
+● Sectional Score .................. at most one bounded section
+                                       choreography — or skip, which is
+                                       the default answer
+   ▼
+● lock → wave ...................... an explicit approval word; a hook
+                                       blocks the fan-out without it
+   ▼
+SURFACE WAVE · N pages in parallel
+  each page: validate → score →      ● you are interrupted only when a page
+  fix-on-fail, up to 3 retries         still fails after the third try
+   ▼
+● Atomic Pass ...................... you approve a BUDGET — how many targets,
+                                       which properties — not each effect
+   ▼
+● accept the gallery
+   │
+   └─►optional, on request: audit & polish ║ visual regression ║ certification
 ```
 
-● = a human decides. Everything else runs unattended.
+**One axis per batch.** Visuals change, then freeze; then motion changes. Deliberate — it is
+what stops the review becoming a combinatorial mess where you cannot tell which change you
+are reacting to.
 
-**One axis per batch.** Visuals change, then freeze; then motion changes. This is deliberate — it is what stops the review turning into a combinatorial mess where you cannot tell which change you are reacting to.
+**Motion is chosen widest-first, and the order is enforced.** Page-level mechanism, then
+bounded section choreography, then small effects on components that already exist — held by
+an irreversible state machine (`CHASSIS_OPEN → CHASSIS_LOCKED → SECTIONAL_OPEN →
+SECTIONAL_LOCKED → BASE_WAVE_READY → ATOMIC_OPEN → COMPLETE`) that only advances on a
+recorded approval of yours. Once the chassis locks, a page-level mechanism can never be
+introduced later; the production wave is barred from improvising small effects at all, and
+a preflight plus a hook stop it from starting early.
 
-An optional information-architecture companion wraps the pipeline at both ends: it settles *what information is on each screen and what dominates* before any visual work, and after the chassis locks it generalises the approved composition to the remaining screens.
+**The IA companion is what makes this work past one screen.** Skip it for a single landing
+page. For anything with several screens it runs twice — settling *what information each
+screen holds and what dominates* before any visual work exists to bias you, then, after the
+chassis locks, generalising that approved composition to the rest so the wave colours
+wireframes you already signed off rather than inventing layouts page by page.
 
 ---
 

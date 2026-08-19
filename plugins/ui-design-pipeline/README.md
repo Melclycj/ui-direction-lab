@@ -41,8 +41,10 @@ knowingly accept · 6. Pick the motion stance · 7. **Approve lock → wave** (a
 fan-out until you say an explicit approval word) · 8. Escalations only, when a surface fails 3 times
 · 9. Accept the gallery.
 
-Two more appear when the motion architecture is engaged: a Sectional Score pick and an Atomic Pass
-budget approval.
+Two more appear once the motion architecture is engaged — a Sectional Score pick and an Atomic Pass
+budget approval — and two more if the information-architecture companion runs: approving the
+information structure before any visual work exists, and walking the round-2 wireframes at the
+Stage-F gate before the wave colours them.
 
 ## Not shipped — nominated
 
