@@ -42,6 +42,19 @@ Seven of them are in production use on the Vernata site.
 
 *Six of fifty-five. Every frame above was captured by running the module's own demo — the same file a consuming page imports.*
 
+> **⚠ The library is not part of the plugin.** Installing `ui-design-pipeline` gets you the
+> pipeline, not these 55 modules — they live in the private lab. This is deliberate: the
+> library grows in batches while the pipeline's 21 skills stay stable, so tying them to one
+> version number would mean bumping the pipeline every time a module lands. A separate
+> `ui-material-library` package in this same marketplace is planned, gated on a per-piece
+> provenance pass; two of the original 57 have already been withdrawn on licence grounds.
+>
+> **What you lose without it:** an optional pre-filter that picks candidate modules by
+> content shape. It is off by default, and when the corpus is absent the resolver says so
+> and refuses rather than quietly returning nothing. The pipeline itself predates the
+> library by two weeks and was built to run without it — the mechanism pools that drive the
+> design decisions all ship with the plugin. What you don't get is ready-made code to reuse.
+
 ---
 
 ## How the pipeline works
@@ -70,19 +83,33 @@ An optional information-architecture companion wraps the pipeline at both ends: 
 
 ---
 
-## What actually makes it work: the verification layer
+## What the machine actually guarantees about the UI
 
-Most of the engineering here is not in generating pages. It is in making sure the generated thing is what it claims to be.
+Generating a page is the easy half. The hard half is that a model asked for "a modern
+landing page" will reliably produce the same page — centred hero, purple-blue gradient,
+emoji bullets, a palette that drifts warm on one section and cool on the next. This
+pipeline treats those as **failures with names**, checked by code, not as taste notes
+someone might remember to apply.
 
-| Mechanism | What it stops |
+Every produced surface runs a validator that returns `BLOCK` / `FIX_NEEDED` / `PASS`.
+The ones that matter visually:
+
+| Enforced | What it stops |
 |---|---|
-| **Hash receipts on every module** | Verify a module, then quietly edit it — the static gate turns red on the next run. Proven by test: add one newline, gate fails; revert, gate passes. |
-| **A hook on the lock→wave transition** | The model may *propose* skipping a step. It cannot *act* on that until the user answers with an explicit approval word. Instruction alone was measured to be insufficient, so this became deterministic code. |
-| **Two-way verbatim assertions** | When a mechanism is extracted from a demo into a reusable module, the load-bearing constants, shaders and timings must survive character-for-character. Upstream quirks are preserved on purpose — they are the regression baseline. |
-| **`companion_skipped`, never silent** | When an optional companion skill is unavailable, the run records that it was skipped. It never proceeds as though the stage ran in full. |
-| **Scoped absence, said out loud** | Scripts that need the lab-only material corpus detect its absence and report `SKIPPED (lab-only check)` rather than passing quietly. |
+| **Contrast, computed before the lock** | Every text-role token pair is run through WCAG *before* the design system is frozen. Failures come back as a list of specific pairs. You may accept one knowingly — and the ratio is written into `CHASSIS.md`, because that debt is inherited by every page produced afterwards. |
+| **Gradients banned unless allowlisted** | Any `linear-gradient` / `radial-gradient` outside a semantic allowlist blocks the page. This is the single most recognisable tell of generated design, so it is a gate, not advice. |
+| **Accessibility floor blocks, not warns** | A `<button>` with no accessible name, an `<input>` with no label or `aria-label`, or any declared motion without a `prefers-reduced-motion` fallback — each stops the page. |
+| **You get the pattern you claimed** | A surface declared as an overlay must actually contain a panel *and* a scrim; a drawer must carry an anchor-side rule. A page cannot claim a UI pattern it did not build. |
+| **Named anti-slop rules** | Enforced by a red-team pass, quoting its own wording: *"the AI Purple/Blue aesthetic is strictly BANNED — no purple button glows, no neon gradients"*; no emoji anywhere including alt text; one palette per project, no drifting between warm and cool greys; centred heroes banned above a layout-variance threshold. |
+| **Content is grounded, not invented** | A surface built from a production source is checked against it. Mock links are labelled as mock rather than looking real. |
 
-**129 automated checks**: 97 pipeline assertions, 16 wave test functions, 16 information-architecture fixtures. All green from a clean install with none of the lab's own data present.
+Behind those sits the part you never see: the lock from design system to page production
+is held by a **hook, not an instruction** — the model may propose skipping a step, but it
+cannot act on that until you answer with an explicit approval word. That one became code
+after instructions alone were measured to be insufficient.
+
+**129 automated checks** cover the machinery itself: 97 pipeline assertions, 16 production
+test functions, 16 information-architecture fixtures. All green from a clean install.
 
 ### Honest boundaries
 
@@ -132,10 +159,8 @@ what a published package should not: the 55-piece material corpus with its demos
 verification receipts, third-party skills kept for local use and deliberately not
 redistributed, and a work ledger that quotes its author and names clients.
 
-That split is also why the pipeline you install has no material library attached — the
-scripts that would read it detect its absence and say so out loud rather than passing
-quietly. Everything here is generated from the lab by a one-way sync; nothing is edited
-here directly.
+Everything here is generated from the lab by a one-way sync; nothing is edited here
+directly.
 
 ---
 
