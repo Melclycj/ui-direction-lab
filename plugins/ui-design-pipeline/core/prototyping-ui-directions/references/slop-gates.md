@@ -1,85 +1,89 @@
-# Slop Gates — 出稿前负面清单 + 六轴 pre-emit 自评（hallmark 适配版）
+# Slop Gates — a pre-ship negative checklist + a six-axis pre-emit self-score (hallmark adaptation)
 
-> 源：[Nutlope/hallmark](https://github.com/Nutlope/hallmark) `slop-test.md`（58 门，MIT）；verbatim 存档见 [`_vendor/hallmark-slop-test.md`](_vendor/hallmark-slop-test.md)（含 commit hash / 拉取日期）。
-> 本文=**本仓适配版**：(a) 桶 = lab core 门（选门标准：本仓真实翻过车 / 最常见 AI 默认）；(b) 桶 = conditional 门；(c) 桶 = 不收门。58 门（1-57 + 38a）全覆盖，被裁的可对回 vendor 原文。
-> **用法**：PUD Batch 出稿 = **每批一次** gate sweep（对本批共性）+ per-variant 六轴 stamp；APW Base Wave = **每 wave 扫一次** (a) 桶 + per-surface stamp。instruction-layer 自查，**非机器 gate**（不进 registry / sync / hook）。
+> Source: [Nutlope/hallmark](https://github.com/Nutlope/hallmark) `slop-test.md` (58 gates, MIT); the verbatim archive is [`_vendor/hallmark-slop-test.md`](_vendor/hallmark-slop-test.md) (with commit hash and pull date).
+> This file is **our adaptation**: bucket (a) = lab core gates (chosen because this repo has actually failed them, or because they are the commonest AI default); bucket (b) = conditional gates; bucket (c) = gates not adopted. All 58 (1-57 plus 38a) are accounted for, and anything cut can be traced back to the vendor original.
+> **How to use it**: on a PUD batch, run a gate sweep **once per batch** (against what the batch has in common) plus a per-variant six-axis stamp; on an APW Base Wave, sweep bucket (a) **once per wave** plus a per-surface stamp. This is an instruction-layer self-check, **not a machine gate** — it never enters the registry, the sync check, or a hook.
 
-## (a) Lab core 门 — 每门答案必须是 no（24 门）
+## (a) Lab core gates — every answer must be no (24 gates)
 
-门号沿用 hallmark 原编号，方便对回原文。
+Gate numbers follow hallmark's originals so you can trace them back.
 
-1. display 字体是 Inter / Roboto / Open Sans / Poppins / Lato / 系统默认？（font-pool「禁 Inter 主字」的扩面）
-2. 任何地方出现紫→蓝（或 cyan→magenta）渐变——包括 `background-clip: text` 渐变标题？
-3. 3 等宽卡片格 + icon-above-heading 瓦片？
-4. 卡片套卡片？
-6. hero 全居中 auto-fail：`min-height:100vh` 全居中，或 eyebrow / 标题 / lede / CTA 全在同一居中竖轴？（至多两个居中元素；eyebrow 或 CTA 必须离轴）
-8. 复用不该复用的结构——generic AI 模板（Hero→3 features→CTA→footer），或与本项目上一个产出同一结构指纹？
-9. 分节只靠等距空白，无 rule / 无 ornament / 无色变，节节同节奏？
-10. 任何地方用 `transition: all`？（必须点名属性）
-11. `hover:scale-105`（或任何统一 hover-scale）铺在多个不相关元素上？
-13. 任一元素同时挂多于一个 hover 效果（translate + scale + shadow + color + rotate）？
-14. 动画 `width` / `height` / `top` / `left` / `margin` / `padding`？（只动 transform / opacity）
-15. focus ring 渐显？（必须瞬时出现——键盘用户要立即指示）
-19. 占位名（Jane Doe / John Smith）或 startup 陈词（Acme / Nexus / Seamless / Unleash）？
-24. 任何 padding / gap / margin 脱离命名 spacing 刻度（4px 倍数）？`padding: 17px` 就是 tell。
-26. 交互元素缺 `:focus-visible` / `:active` / `:disabled` 任一态？
-30. 混用两套以上 icon 库，或 emoji（✨🚀⚡🔥🎯✅）当 feature / step / pricing 图标？
-37. 页面超过 3 个 `font-family` 家族？（display + body + 至多 1 outlier；同族不同字重算 1）
-38a. 任何标题 / display 用斜体？（斜体只许做正文段内 emphasis；标题强调走字重 / accent 色 / 画线）
-40. 任一 (color, background) 对不过对比阈值？body 4.5:1（APCA Lc≥60）；大字 / icon / focus ring 3:1（Lc≥45）
-41. 最常翻车对比三连：按钮文字≈填充色（黑上黑）；accent 面上缺 `--color-accent-ink`；暗底分节没翻文字色（ink-on-ink）？
-42. nav 是 AI 默认指纹（左 wordmark + 4-5 行内链接 + 右按钮 + 1px hairline + 白底）？
-45. hero 装饰无语义锚点（漂浮 cursor / 无来由数字角标 / 随机 ornament）？装饰必须有动机。
-46. 编造数据（"10× faster" / "trusted by 50,000+"）填 stat 位？用户没给的数字一律 `—` 占位或问回；裸数字不得独扛 hero。
-54. eyebrow / 编号与标题同横排（tag-left, header-right）？auto-fail——eyebrow 只许竖排叠在标题正上方同列。
+1. Is the display face Inter / Roboto / Open Sans / Poppins / Lato / a system default? (the wider form of font-pool's "no Inter as primary")
+2. Is there a violet→blue (or cyan→magenta) gradient anywhere — including a `background-clip: text` gradient headline?
+3. A grid of 3 equal-width cards with icon-above-heading tiles?
+4. Cards inside cards?
+6. Fully centred hero, auto-fail: `min-height:100vh` with everything centred, or eyebrow / headline / lede / CTA all on the same centred vertical axis? (at most two centred elements; the eyebrow or the CTA must leave the axis)
+8. Reusing structure that should not be reused — the generic AI template (Hero → 3 features → CTA → footer), or the same structural fingerprint as this project's previous output?
+9. Sections separated by equal whitespace alone: no rule, no ornament, no colour shift, every section at the same rhythm?
+10. `transition: all` anywhere? (name the properties)
+11. `hover:scale-105` (or any uniform hover-scale) applied across unrelated elements?
+13. Any element carrying more than one hover effect at once (translate + scale + shadow + colour + rotate)?
+14. Animating `width` / `height` / `top` / `left` / `margin` / `padding`? (transform and opacity only)
+15. Does the focus ring fade in? (it must appear instantly — keyboard users need an immediate indication)
+19. Placeholder names (Jane Doe / John Smith) or startup clichés (Acme / Nexus / Seamless / Unleash)?
+24. Any padding / gap / margin off the named spacing scale (multiples of 4px)? `padding: 17px` is the tell.
+26. Any interactive element missing `:focus-visible` / `:active` / `:disabled`?
+30. More than one icon library mixed, or emoji (✨🚀⚡🔥🎯✅) used as feature / step / pricing icons?
+37. More than 3 `font-family` families on the page? (display + body + at most 1 outlier; different weights of one family count as one)
+38a. Any headline or display text in italic? (italic is for emphasis inside body copy only; emphasise a headline with weight, accent colour, or a rule)
+40. Does any (color, background) pair fail its contrast threshold? Body 4.5:1 (APCA Lc≥60); large text / icons / focus rings 3:1 (Lc≥45)
+41. The three most-failed contrast cases: button text ≈ its fill (black on black); a missing `--color-accent-ink` on an accent surface; a dark-ground section that never flipped its text colour (ink on ink)?
+42. Is the nav the AI default fingerprint (wordmark left + 4-5 inline links + button right + 1px hairline + white ground)?
+45. Hero decoration with no semantic anchor (a floating cursor, an unexplained numeric corner tag, random ornament)? Decoration must have a reason.
+46. Invented data ("10× faster" / "trusted by 50,000+") filling a stat slot? Any number the user did not supply is a `—` placeholder or a question back; a bare number may never carry the hero alone.
+54. Eyebrow or number on the same line as the headline (tag-left, header-right)? Auto-fail — an eyebrow may only stack directly above the headline in the same column.
 
-## (b) Conditional 门 — 命中条件才查（28 门，紧凑表）
+## (b) Conditional gates — checked when the condition applies (28 gates, compact table)
 
-| 门 | 条件 / 本仓重标定 |
+| Gate | Condition / how we recalibrated it |
 |---|---|
-| 5 | 用卡片列表时：禁粗色左右侧条 border |
-| 7 | 纯 `#000` / `#fff` 作基色——**brutalist chassis 豁免**；纯白纸底对 modern-minimal 派亦允；其余风格禁 |
-| 12 | overshoot / bouncy easing——仅物理隐喻交互允许；按钮 / modal / tooltip 等 UI 状态变化禁 |
-| 16·17·18 | 含 toast / tooltip / 轮播时：可见效果不弹成功 toast；tooltip hover 800-1000ms、focus 0ms；轮播必须 hover+focus 暂停（WCAG 2.2.2） |
-| 22 | 零 chroma 中性色——**Editorial Monochrome / Stripe 派豁免**；其余中性色最少 0.005 chroma 偏 anchor 色相 |
-| 23 | accent 面积 >~5% viewport——**acid / atmospheric 类风格重标定**（bloom 即设计本体时可到 ~20%） |
-| 25 | 有成段正文时：prose measure 45-75ch |
-| 28·29·31 | hero 富化出现时：视频禁自动带声、必须 poster + `fetchpriority="high"`；抽象背景单 accent ≤5% 不动画；插画 hand SVG / 纯 CSS 优先于 Lottie |
-| 33 | 有手绘装饰 SVG / canvas 时：必须 `aria-hidden="true"` 或 `aria-label` |
-| 34·44·49 | 浏览器验证轮查（需真渲染）：320-1920 无横滚（fix = html+body `overflow-x: clip`）；hero 1280×800 折内完整；可点击文案任何宽度不折两行 |
-| 35 | 用文字装饰（highlighter / underline）时视检位置：highlighter 压 x-height 不压 baseline；underline 1-2px、offset 1-2px |
-| 36 | 混高 flex 行（按钮+文字 / icon+文字）必须 `align-items: center` + 内件 `line-height: 1` |
-| 38 | 用 outlier 第三字体时：≤2 个 slot（wordmark + hero stat 是正典对） |
-| 39 | 含表单时查 input 五态：border-width 恒 1px / focus 走 outline 非 border / input 高 = 按钮高（44px 底）/ helper 位 `min-height:1lh` / disabled 三通道 |
-| 43 | 带真实 footer 时：禁 AI 默认指纹（4 列链接 + social 排 + 底部小版权 + 灰底） |
-| 47 | 要展示产品截图 / 设备框时：禁手绘假 chrome（浏览器条 / 手机框 / 终端框）——用真截图或裸内容 |
-| 48 | variant 用 `:root` token 体系时：颜色 / 字体不得中途脱 token 即兴（inline hex / 一次性 font-family = fail） |
-| 50·51·53·55·56 | 命中对应 pattern 时：图像 grid track 用 `minmax(0,1fr)`；display 长词 `overflow-wrap:anywhere`；CSS radio tab 防 scroll-jump；全大写 display `line-height ≥1.0`；双 sticky top:0 错位 `--banner-height` |
+| 5 | When using a card list: no heavy coloured side borders |
+| 7 | Pure `#000` / `#fff` as a base colour — **exempt for a brutalist chassis**; pure white paper is also fine for the modern-minimal school; banned elsewhere |
+| 12 | Overshoot / bouncy easing — allowed only where the interaction is a physical metaphor; banned for UI state changes such as buttons, modals and tooltips |
+| 16·17·18 | When a toast / tooltip / carousel is present: never fire a success toast for a visible effect; tooltip hover 800-1000ms, focus 0ms; a carousel must pause on hover **and** focus (WCAG 2.2.2) |
+| 22 | Zero-chroma neutrals — **exempt for Editorial Monochrome and the Stripe school**; elsewhere neutrals carry at least 0.005 chroma biased toward the anchor hue |
+| 23 | Accent covering more than ~5% of the viewport — **recalibrated for acid / atmospheric styles** (where the bloom is the design itself, up to ~20%) |
+| 25 | When there is running body copy: prose measure 45-75ch |
+| 28·29·31 | When the hero is enriched: video never autoplays with sound and must carry a poster + `fetchpriority="high"`; an abstract background keeps a single accent ≤5% and does not animate; illustration prefers hand SVG or pure CSS over Lottie |
+| 33 | When there is a decorative hand-drawn SVG or canvas: it must carry `aria-hidden="true"` or an `aria-label` |
+| 34·44·49 | Browser-verified round (needs a real render): no horizontal scroll from 320-1920 (fix = `overflow-x: clip` on html+body); the hero is complete above the fold at 1280×800; clickable copy never wraps to two lines at any width |
+| 35 | When using text decoration (highlighter / underline), check placement visually: a highlighter sits on the x-height, not the baseline; an underline is 1-2px with a 1-2px offset |
+| 36 | A flex row of mixed heights (button + text, icon + text) needs `align-items: center` plus `line-height: 1` on the inner items |
+| 38 | When using a third outlier face: ≤2 slots (wordmark + hero stat is the canonical pair) |
+| 39 | When a form is present, check the five input states: border-width constant at 1px / focus uses outline not border / input height = button height (44px floor) / helper slot `min-height:1lh` / disabled across all three channels |
+| 43 | When there is a real footer: no AI default fingerprint (4 link columns + a social row + small copyright at the bottom + a grey ground) |
+| 47 | When showing a product screenshot or a device frame: no hand-drawn fake chrome (browser bars, phone frames, terminal frames) — use a real screenshot or bare content |
+| 48 | When a variant uses a `:root` token system: colour and type may not drop out of tokens mid-page (an inline hex or a one-off font-family is a fail) |
+| 50·51·53·55·56 | When the matching pattern appears: image grid tracks use `minmax(0,1fr)`; long display words get `overflow-wrap:anywhere`; CSS radio tabs guard against scroll-jump; all-caps display keeps `line-height ≥1.0`; two stacked stickies at top:0 offset by `--banner-height` |
 
-## (c) 不收门 — 理由一词（6 门，紧凑表）
+## (c) Gates not adopted — one-word reason (6 gates, compact table)
 
-| 门 | 理由 |
+| Gate | Reason |
 |---|---|
-| 20 | hallmark 专有（macrostructure stamp 机制）——本仓 stamp = 六轴 stamp（见文尾） |
-| 21 | hallmark 专有（Specimen 主题目录 fall-through） |
-| 27 | 重复 → 指针 [motion-pool 三纪律](motion-pool.md)（reduced-motion 分支已是本仓硬纪律） |
-| 32 | hallmark 专有（component-cookbook variation knobs）——概念由 Variety 轴接管 |
-| 52 | hallmark 专有（主题 section-head 覆盖体系） |
-| 57 | hallmark 专有（study 动词 / studied-DNA，不在本次吸收范围） |
+| 20 | hallmark-specific (its macrostructure stamp mechanism) — our stamp is the six-axis stamp at the end of this file |
+| 21 | hallmark-specific (Specimen theme-directory fall-through) |
+| 27 | Duplicate → pointer to [the three motion-pool disciplines](motion-pool.md) (the reduced-motion branch is already a hard rule here) |
+| 32 | hallmark-specific (component-cookbook variation knobs) — the concept is taken over by the Variety axis |
+| 52 | hallmark-specific (its theme section-head override system) |
+| 57 | hallmark-specific (the study verb / studied-DNA, outside what we absorbed this time) |
 
-## 六轴 pre-emit 自评（出稿前跑，不是出稿后）
+## Six-axis pre-emit self-score (run it before shipping, not after)
 
-出稿**前**对计划中的产出逐轴打 1-5 分。**任一轴 <3 → 强制返工一轮再交人评**——别把已知弱点带进 gate sweep。
-原话保留："Two passes is normal. Three is a sign the brief is wrong, not the design — re-read the brief."（两轮正常，三轮说明 brief 错了——回读 brief。）
+**Before** shipping, score the planned output 1-5 on each axis. **Any axis below 3 forces one more
+pass before it goes to a human** — do not carry a known weakness into the gate sweep.
+The original wording, kept: "Two passes is normal. Three is a sign the brief is wrong, not the
+design — re-read the brief."
 
-| 轴 | 打什么分 | 本仓语境注 |
+| Axis | What you are scoring | Note in our context |
 |---|---|---|
-| **P** Philosophy | 页面有没有清晰的 *why*——一个立场？还是只是个 layout？ | 对应 variant 的一句 thesis |
-| **H** Hierarchy | 2 秒内能否分出 primary / secondary / tertiary？ | |
-| **E** Execution | 细节全在 spec 内吗（rule 粗细 / accent 足迹 / text-wrap / focus ring / 对比度）？ | 对应 (a) 桶实现类门 |
-| **S** Specificity | 像*这个 brief*，还是"谁家都能用的页"？ | |
-| **R** Restraint | 没挣到位置的装饰 / 冗余 / 凑数 padding 都删了吗？ | |
-| **V** Variety | 与本项目此前产出共享结构指纹吗？**按结构距离打分，非视觉距离——换色不算 variety**（"colour-swaps don't count as variety"） | 直击 batched exploration「换皮」翻车：同批 variants 结构指纹必须互异 |
+| **P** Philosophy | Does the page have a clear *why* — a position? Or is it just a layout? | Corresponds to the variant's one-line thesis |
+| **H** Hierarchy | Can you separate primary / secondary / tertiary within 2 seconds? | |
+| **E** Execution | Are all the details inside spec (rule weights / accent footprint / text-wrap / focus ring / contrast)? | Corresponds to the implementation gates in bucket (a) |
+| **S** Specificity | Does it look like *this brief*, or like a page anyone could use? | |
+| **R** Restraint | Has every ornament, redundancy and filler padding that did not earn its place been deleted? | |
+| **V** Variety | Does it share a structural fingerprint with this project's earlier output? **Score by structural distance, not visual distance — a colour swap is not variety** ("colour-swaps don't count as variety") | Aimed straight at the reskin failure in batched exploration: variants in one batch must have different structural fingerprints |
 
-**Stamp 格式**（variant / surface 文件头注一行，随件走）：`/* pre-emit critique: P5 H4 E5 S4 R5 V5 */`
-后续 run 应能找到这行、避免重复同一弱点。gate sweep 结果记 run-notes（每批 / 每 wave 一行：`slop sweep: pass` 或 `FAIL: 门号`）。
+**Stamp format** (one comment line at the top of each variant / surface file, travelling with it):
+`/* pre-emit critique: P5 H4 E5 S4 R5 V5 */`
+A later run should be able to find that line and avoid repeating the same weakness. Gate sweep
+results go in run-notes, one line per batch or per wave: `slop sweep: pass` or `FAIL: <gate numbers>`.

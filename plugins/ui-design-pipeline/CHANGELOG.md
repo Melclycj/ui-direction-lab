@@ -3,6 +3,29 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.2.1 — 2026-08-20
+
+Documentation only — no behaviour change.
+
+### Changed
+- **The reference pools read in English.** The skills always did; the pools they draw candidates
+  from did not, so opening `motion-pool` or `style-pool` after installing meant reading Chinese.
+  The descriptive layer is now English across all eight files (23,556 CJK characters → 3,721).
+- Style names got two treatments, because they are two different things. Neo-brutalist, Swiss
+  International, Glassmorphism, Retro-futurism, Y2K and kinetic type were **restored** — the
+  Chinese was the translation, not the original. The labels this lab coined keep theirs alongside:
+  Field engineering (现场工程风), Cosmic archive (宇宙档案风), Bright collaborative (明快协作风),
+  Minimal luxury (极简高级风). What defines a row is its anchor and URL, not the adjective.
+
+### Deliberately not translated
+- **Machine-parsed keys.** `check_registry_sync.py` matches the literal `【⚙执行册】` badge and the
+  `C-NN` / `#N` row ids, so those are byte-identical; the sync is still 77==77.
+- **Verbatim human verdicts**, in the words they were given in. Translating a recorded approval
+  rewrites evidence.
+- **threed-pool's status column**, which is the materialisation ledger and points at `material/…`
+  paths an installer cannot resolve anyway. Its C-NN records had only the use-case call and the
+  five-layer mechanism tag translated; the other cells were rebuilt byte-for-byte by script.
+
 ## 0.2.0 — 2026-08-20
 
 A front door, a resume path, and half the always-on context back.

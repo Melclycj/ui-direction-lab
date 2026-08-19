@@ -1,43 +1,65 @@
-# 视觉风格池(Batch 1 视觉参考)— 可选 base-case
+# Visual style pool (Batch 1 visual reference) — optional base cases
 
-> ⚠️ **这是兜底,不是菜单。** 仅在想不出更好方向时拿来当起点或参照,**不要求**从里面选;
-> 优先提原创方向,把这些当"push past 的跳板"。用在 `prototyping-ui-directions` 的
-> **Batch 1(视觉方向)**——决定 palette / 字体 / 布局 / 密度那一轴。
+> ⚠️ **This is a fallback, not a menu.** Reach for it only when you cannot think of a better
+> direction, as a starting point or a comparison — you are **not required** to pick from it. Propose
+> an original direction first and treat these as a springboard to push past. Used at
+> `prototyping-ui-directions` **Batch 1 (visual direction)** — the axis that settles palette / type /
+> layout / density.
 
-| 大类 | 风格 | 一句话 | 适合 / 倾向 | 范本锚 |
+| Family | Style | In a sentence | Suits / leans | Exemplar anchor |
 |---|---|---|---|---|
-| 经典高级 | 极简高级风 | 大留白、克制、少即是多 | 高端品牌、咨询、奢侈品;浅色为主、低密度 | Vercel · ElevenLabs · Apple · Aesop |
-| 经典高级 | Apple 式产品官网风 | 居中大图 + 短句 + 渐进揭示 | 产品发布页;明暗皆可、强 hero | Apple |
-| 经典高级 | 瑞士国际主义风 | 严格网格、无衬线、左对齐、红黑 | 编辑/机构/作品集;高秩序、低装饰 | — |
-| 产品工具 | Bento 卡片风 | 不规则方格拼贴(Apple 控制中心) | SaaS 功能区、dashboard;中密度 | Apple 控制中心 |
-| 产品工具 | 深色科技 SaaS 风 | 深底 + 单一霓虹 accent + mono 数字 | 开发者工具、AI 产品;暗色、中高密度 | Linear · Raycast · Sentry · xAI · Warp · **e2b**(dev-infra;**营销页浅色 / app 控制台深色**[截图坐实]、橙 `#ff8800`=active·绿=LIVE 状态、IBM Plex Mono 大数字非霓虹——拓宽本行,非典型 dark-neon;控制台**构图**范本已移交 `ia-companion.plan.md` 种子) |
-| 产品工具 | 设计系统风 | token 化、组件齐整、可复用感 | 平台/B2B;中性、强一致 | Stripe · Supabase · Vercel |
-| 产品工具 | 现场工程风 | 浅底工业仪表:分区舞台、长引导线、校准刻度轨、大型编号 | 建设/物流/数据工具/工业产品;米白+炭黑、中高密度、单一信号黄 | 👁 **终末地**(https://endfield.hypergryph.com/ · 生产 CSS 坐实:`#191919`/`#fff`/信号黄 `#fffa00`,Novecento Sans Wide + clip-path 分区 · 闭源游戏 IP,**诠释非复制**) |
-| 未来科技 | 玻璃拟态风 | 毛玻璃、内发光边、层叠透明 | 科技/金融科技;深色背景配 | — |
-| 未来科技 | 3D 沉浸风 | WebGL/3D 场景、空间纵深 | 发布会、概念站;重资源、需 perf 控 | 👁 igloo.inc(https://igloo.inc · Awwwards SOTY 2024 · 全 WebGL:Three.js+GSAP) · Bruno Simon portfolio(https://bruno-simon.com · Awwwards SOTD · Three.js 可驾驶开放世界) · landonorris.com(https://landonorris.com) · Shopify Editions Winter'26(https://www.shopify.com/au/editions/winter2026 · 季节页 URL 会过期,失效即换当期 Editions)——后两个用户 2026-07-07 亲选并判:"非常优秀的向下翻滚式作品,超前 3D 效果"(替换 Seamora;curl 200 核实)。HOW 层见 `three/`(threejs-scroll-stage) |
-| 未来科技 | 宇宙档案风 | 午夜底 + 衬线叙事标题 + 圆形轨道仪表、星图节点 | 叙事档案、文化编辑、天文工具、角色资料;暗色、低密度、大留白 | 👁 **来自星尘**(https://exa.hypergryph.com/ · 生产 CSS 坐实:白/近黑 + 水青 `#46f6e6` 极克制,思源宋 + Sumerhan,44 处 mask + 轨道 keyframe · 闭源游戏 IP,**诠释非复制**) |
-| 未来科技 | 数据可视化风 | 图表即主角、信息密集 | 分析/监控产品;高密度、mono | — |
-| 排版表达 | 杂志编辑风 | 大标题衬线、栏宽、引文 | 内容站、品牌叙事;editorial | Claude · Mistral(编辑衬线 AI) · Hermès·Aesop(编辑奢侈,诠释非复制) |
-| 排版表达 | 动态排版风 | 文字本身在动/变形(kinetic type) | 创意站、活动页;强 motion(接 Batch 2) | — |
-| 排版表达 | 全屏视觉风 | 整屏大图/大字,一屏一观点 | 营销落地、作品集 | Runway(照片/视频驱动) · Ferrari·Lamborghini·Bugatti(奢侈汽车,黑底全屏+单金属 accent,诠释非复制) |
-| 个性潮流 | 新野兽派 | 粗边、硬阴影、原始 HTML 感、高对比 | 个性品牌、潮牌;不怕"丑" | 本 lab Northway(lab) |
-| 个性潮流 | 复古未来主义 | 80s/90s 科幻、网格地平线、霓虹 | 音乐/游戏/活动 | — |
-| 个性潮流 | Y2K 数字风 | 千禧金属、气泡、像素、亮色 | 年轻向、潮流电商 | — |
-| 情感品牌 | 插画品牌风 | 自定义插画主导、暖、人格化 | 消费品牌、教育、儿童 | — |
-| 情感品牌 | 手写涂鸦风 | 手绘笔触、随性、不规则 | 创意工作室、个人站 | — |
-| 情感品牌 | 有机自然风 | 柔色、圆角、自然纹理、慢节奏 | 健康、食品、可持续品牌 | 本 lab Grove(lab) |
-| 情感品牌 | 明快协作风 | 圆角胶囊、粗描边、错位硬阴影、漂浮层与弹跳反馈 | 协作工具、趣味引导、家庭向、活动页;亮底、中密度 | 👁 **POPUCOM**(https://popucom.hypergryph.com/ · 生产 CSS 坐实:蓝 `#3994ff` 撑主结构、黄橙只当动作信号 · ⚠ 原站三色并用,进产品 UI 须先收成**单一 accent**(见 `palette-pool.md` §2)· 闭源游戏 IP,**诠释非复制**) |
+| Classic refined | Minimal luxury (极简高级风) | Generous whitespace, restraint, less is more | Premium brands, consultancies, luxury goods; mostly light, low density | Vercel · ElevenLabs · Apple · Aesop |
+| Classic refined | Apple-style product page | Centred hero imagery + short lines + progressive reveal | Product launch pages; light or dark, strong hero | Apple |
+| Classic refined | Swiss International | Strict grid, sans-serif, left-aligned, red and black | Editorial / institutional / portfolio; high order, low ornament | — |
+| Product tooling | Bento cards | Irregular tiled grid (Apple's Control Centre) | SaaS feature sections, dashboards; medium density | Apple Control Centre |
+| Product tooling | Dark tech SaaS | Dark ground + a single neon accent + mono numerals | Developer tools, AI products; dark, medium-high density | Linear · Raycast · Sentry · xAI · Warp · **e2b** (dev-infra; **light marketing pages / dark app console** [confirmed by screenshot], orange `#ff8800` = active and green = LIVE status, large IBM Plex Mono numerals rather than neon — this widens the row rather than being typical dark-neon; the console's **composition** exemplar has moved to `ia-companion.plan.md` as a seed) |
+| Product tooling | Design-system look | Tokenised, tidy components, a reusable feel | Platforms / B2B; neutral, strongly consistent | Stripe · Supabase · Vercel |
+| Product tooling | Field engineering (现场工程风) | Light industrial instrumentation: zoned stages, long leader lines, calibration tick rails, oversized numerals | Construction / logistics / data tools / industrial products; off-white + charcoal, medium-high density, a single signal yellow | 👁 **Endfield** (https://endfield.hypergryph.com/ · confirmed from production CSS: `#191919`/`#fff`/signal yellow `#fffa00`, Novecento Sans Wide + clip-path zoning · closed-source game IP, **interpret, do not copy**) |
+| Future tech | Glassmorphism | Frosted glass, inner-glow edges, stacked transparency | Tech / fintech; pairs with a dark ground | — |
+| Future tech | 3D immersive | WebGL/3D scenes, spatial depth | Launch events, concept sites; heavy assets, needs perf control | 👁 igloo.inc (https://igloo.inc · Awwwards SOTY 2024 · fully WebGL: Three.js + GSAP) · Bruno Simon portfolio (https://bruno-simon.com · Awwwards SOTD · a drivable Three.js open world) · landonorris.com (https://landonorris.com) · Shopify Editions Winter'26 (https://www.shopify.com/au/editions/winter2026 · seasonal URLs expire; swap in the current Editions when it does) — the last two were picked by the user on 2026-07-07, whose verdict was: "非常优秀的向下翻滚式作品,超前 3D 效果" (replacing Seamora; curl 200 confirmed). The HOW layer is in `three/` (threejs-scroll-stage) |
+| Future tech | Cosmic archive (宇宙档案风) | Midnight ground + serif narrative headlines + circular orbital instruments, star-map nodes | Narrative archives, cultural editorial, astronomy tools, character dossiers; dark, low density, generous whitespace | 👁 **Ex Astris** (https://exa.hypergryph.com/ · confirmed from production CSS: white / near-black + an extremely restrained aqua `#46f6e6`, Source Han Serif + Sumerhan, 44 masks and orbital keyframes · closed-source game IP, **interpret, do not copy**) |
+| Future tech | Data visualisation | The chart is the hero, information-dense | Analytics / monitoring products; high density, mono | — |
+| Typographic | Magazine editorial | Large serif headlines, column measure, pull quotes | Content sites, brand narrative; editorial | Claude · Mistral (editorial-serif AI) · Hermès·Aesop (editorial luxury, interpret don't copy) |
+| Typographic | Kinetic type | The text itself moves or deforms | Creative sites, event pages; motion-heavy (hands off to Batch 2) | — |
+| Typographic | Full-bleed visual | Full-screen imagery or type, one idea per screen | Marketing landings, portfolios | Runway (photo/video driven) · Ferrari·Lamborghini·Bugatti (luxury automotive: black ground, full bleed, a single metallic accent, interpret don't copy) |
+| Character | Neo-brutalist | Heavy borders, hard shadows, a raw-HTML feel, high contrast | Personality brands, streetwear; unafraid of "ugly" | this lab's Northway (lab) |
+| Character | Retro-futurism | 80s/90s sci-fi, grid horizons, neon | Music / games / events | — |
+| Character | Y2K digital | Millennial chrome, bubbles, pixels, bright colour | Youth-facing, trend commerce | — |
+| Emotional brand | Illustration-led | Custom illustration leads, warm, personified | Consumer brands, education, children | — |
+| Emotional brand | Hand-drawn | Hand strokes, casual, irregular | Creative studios, personal sites | — |
+| Emotional brand | Organic natural | Soft colour, rounded corners, natural texture, slow pacing | Wellness, food, sustainability brands | this lab's Grove (lab) |
+| Emotional brand | Bright collaborative (明快协作风) | Rounded pills, heavy strokes, offset hard shadows, floating layers and bouncy feedback | Collaboration tools, playful onboarding, family-facing, event pages; light ground, medium density | 👁 **POPUCOM** (https://popucom.hypergryph.com/ · confirmed from production CSS: blue `#3994ff` carries the structure, yellow and orange act only as action signals · ⚠ the original site runs all three together; before entering a product UI it must be reduced to a **single accent** (see `palette-pool.md` §2) · closed-source game IP, **interpret, do not copy**) |
 
-> **范本锚 provenance**:具名 brand = `web-verified`(从其 DESIGN.md 坐实,含奢侈汽车 Ferrari/Lamborghini/Bugatti);`本 lab X(lab)` = `your-skill`;Apple = canonical memory;**闭源大站(Hermès/Aesop 等)= 逆向 `memory-candidate` + `do-not-copy`,标"诠释非复制"**(视觉 👁 你看,只给 URL);`—` = 留待人工 surface(看视觉是人的活,见 §成长)。
+> **Anchor provenance**: a named brand = `web-verified` (confirmed from its DESIGN.md, including the
+> luxury automotive trio Ferrari/Lamborghini/Bugatti); `this lab's X (lab)` = `your-skill`; Apple =
+> canonical memory; **closed-source majors (Hermès / Aesop and the like) = reverse-engineered
+> `memory-candidate` + `do-not-copy`, marked "interpret, do not copy"** (the visuals are 👁 yours to
+> view, I only give the URL); `—` = still waiting to be surfaced by a human (judging visuals is human
+> work, see §Growth).
 >
-> **游戏 IP 站(终末地/来自星尘/POPUCOM,2026-08-04 入池)= 证据 `web-verified` + 权利 `do-not-copy`,标"诠释非复制"。**
-> 证据档次比 DESIGN.md 更硬:直接下载其**公开生产样式表**并 **SHA-256 逐字节核对**通过(4 份共 353KB,与上游 2026-07 快照完全一致),色值/字体是数出来的不是记的。
-> **但证据强度 ≠ 可复制性** —— 这三家是商业游戏 IP,logo/角色美术/自有字体一律不取,只借构图、层级、几何与配色**语法**。
-> 二手来源 `ark-ui-skill`(github.com/Brandon030722/ark-ui-skill,clean-room 蒸馏)**不当锚**,只作"已有人蒸馏过一遍"的旁证。
+> **The game-IP sites (Endfield / Ex Astris / POPUCOM, added 2026-08-04) = evidence `web-verified`
+> plus rights `do-not-copy`, marked "interpret, do not copy".**
+> The evidence is harder than a DESIGN.md: their **public production stylesheets** were downloaded and
+> **SHA-256 byte-checked** (4 files, 353KB total, identical to the upstream 2026-07 snapshot), so the
+> colour and type values are counted rather than recalled.
+> **But strength of evidence is not permission to copy** — these are commercial game IP. Logos,
+> character art and proprietary faces are never taken; only the composition, hierarchy, geometry and
+> colour **grammar**.
+> The second-hand source `ark-ui-skill` (github.com/Brandon030722/ark-ui-skill, a clean-room
+> distillation) is **not used as an anchor**, only as corroboration that someone has distilled this
+> once already.
 
-**用法提示**:Batch 1 的 3-4 个 variant 应在**这一轴的多个 facet**上拉开差距(如「瑞士国际主义(浅/高秩序) vs 深色科技 SaaS(暗/中密) vs 杂志编辑(衬线/叙事)」),而不是同一风格换三个 accent 色。motion 这批先压成朴素默认(只 load-in 或不动),留给 Batch 2。
+**Usage note**: the 3-4 Batch 1 variants should pull apart across **several facets of this axis**
+(for example "Swiss International (light / high order) vs dark tech SaaS (dark / medium density) vs
+magazine editorial (serif / narrative)") rather than one style in three accent colours. Motion is
+held at a plain default for this batch (load-in only, or nothing) and belongs to Batch 2.
 
-> 守 `taste-skill` 的硬规则不受本池影响:无紫 LILA、单一 accent、数字 mono、禁 Inter、禁 3 等宽卡片栏等——风格池只决定"往哪个方向走",不豁免品味门。
+> The `taste-skill` hard rules are unaffected by this pool: no lilac, one accent, mono numerals, no
+> Inter, no three equal-width card columns, and so on. A style pool decides *which direction to walk
+> in*; it does not exempt you from the taste gate.
 
-## 成长(human-gated,见 `reference-sources.md` §5)
-看视觉风格好坏是**人的活**(我看静态≠会判品味)。所以遇到池里没有的风格时,我**不自行加**——我把它 **surface 给你**(风格名 + URL + 为什么),**你亲自去那站看了再决定加不加**。自产页面跑得再好也不当 standard 入池。
+## Growth (human-gated, see `reference-sources.md` §5)
+Judging whether a visual style is any good is **human work** (I can read a static page, which is not
+the same as having taste). So when a style shows up that this pool does not have, I **do not add it
+myself** — I **surface it to you** (style name + URL + why), and **you go look at that site yourself**
+before deciding. However well a page we produced turned out, it does not enter as a standard.
