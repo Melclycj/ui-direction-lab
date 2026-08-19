@@ -161,7 +161,7 @@
 `vendor/competitive-teardown`(拆参考站——lab 版**只有** Design-Reference Visual Mode,出视觉提取卡;商业记分卡那半边没拷)·
 `vendor/image-to-code-skill`(截图→代码,服务桶 E / 登录墙画廊)· `vendor/shadcn-registry`(桶 B 安装)·
 `vendor/imagegen-frontend-web`(生成参考图)。
-动效品味不外借:lab 内 canonical = `companions/taste-skill` §8。
+动效品味不外借:lab 内 canonical = `authoring/taste-skill` §8。
 另有全局 `development-workflow.md §0 Research & Reuse`(harness 层,不随本仓走)。
 
 ## 5 · 成长治理(库怎么长大 —— human-gated,防自产回声室)

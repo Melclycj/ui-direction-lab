@@ -29,7 +29,7 @@ Takes (a) a directory of frontend files and (b) one or more audit documents list
 4. **Pilot subset** (optional): list of file slugs to patch first as a validation pilot. On pilot success, prompt user before applying to the rest.
 5. **Re-validators** (optional, auto-detected): commands or skill paths to run after patching. Auto-detect:
    - `${CLAUDE_PLUGIN_ROOT}/core/anchor-prototype-wave/scripts/validate_surface.py` → run if `<target>/audits/contracts/<slug>.contract.json` exists.
-   - `${CLAUDE_PLUGIN_ROOT}/companions/taste-skill/SKILL.md` → Read + apply (light pass) if present.
+   - `${CLAUDE_PLUGIN_ROOT}/authoring/taste-skill/SKILL.md` → Read + apply (light pass) if present.
    - `<target>/verify/` → run `frontend-visual-regression` in `run` mode if present.
 
 ## Expected audit doc structure

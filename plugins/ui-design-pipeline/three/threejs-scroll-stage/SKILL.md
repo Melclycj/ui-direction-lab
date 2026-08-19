@@ -570,7 +570,7 @@ shader (`threejs-shaders`).
 - `threejs-lighting`, `threejs-materials` — for lit-object stages (vessel-class hero objects)
 - `threejs-shaders` — where the morph goes when particle counts outgrow CPU lerp (≥50k)
 - `gsap-scrolltrigger` — the driver side of the bridge (pin/scrub/refresh)
-- `companions/taste-skill` §8 — WHEN to use 3D at all (this skill is only HOW)
+- `authoring/taste-skill` §8 — WHEN to use 3D at all (this skill is only HOW)
 
 ## Consolidated learning sources
 

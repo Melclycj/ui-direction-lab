@@ -2,7 +2,7 @@
 
 Three.js 是这个 lab 的 **canvas/3D 引擎**。这组 = 10 个 vendored 基础 skill(讲「**怎么把 Three.js 写对**」,
 API/cleanup/perf = HOW)+ **1 个 lab 自写件**补真空(粒子阵型 morph / scroll→canvas 桥 / 鼠标视差)。
-**什么时候该上 3D / 上哪种(品味 + 政策 = WHEN)由 `companions/taste-skill` §8 管**——两层不重叠。
+**什么时候该上 3D / 上哪种(品味 + 政策 = WHEN)由 `authoring/taste-skill` §8 管**——两层不重叠。
 
 ## Provenance(出处)
 
@@ -59,7 +59,7 @@ scroll / GreenSock 官方文档,每 pattern 附引用),jesus-site 只当"栈能�
 
 | 层 | 谁管 |
 |---|---|
-| 上不上 3D、什么风格(WHEN / 品味) | `companions/taste-skill` §8(路由行「3D/Canvas → ThreeJS/WebGL」在此落地) |
+| 上不上 3D、什么风格(WHEN / 品味) | `authoring/taste-skill` §8(路由行「3D/Canvas → ThreeJS/WebGL」在此落地) |
 | Three.js 怎么写对(HOW / API) | **本组 `three/*`(canonical)** |
 | 招牌 scroll-driven 3D stage 怎么搭(pattern) | `threejs-scroll-stage`(纯实现:Quick Start + Pattern 1-7 + 其 pattern 相关 anti-pattern) |
 | **跨切面陷阱 + 3D 验证纪律**(任意 three+GSAP+GLSL demo 通用,非某一 pattern 专属) | **`three/GOTCHAS.md`**(2026-07-09 从 scroll-stage 拆出,保持后者聚焦) |

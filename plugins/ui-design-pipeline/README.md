@@ -20,16 +20,28 @@ You only need a one-line description of the product — the pipeline asks for th
 
 Prerequisite: **Python ≥ 3.9** on PATH (the validators). No pip packages — standard library only.
 
-## What's inside (21 skills)
+## What's inside (22 skills, 6 registered)
 
-| Group | Skills | Role |
-|---|---|---|
-| `core/` | `prototyping-ui-directions`, `anchor-prototype-wave` | The pipeline: divergence engine, then production engine |
-| `companions/` | `information-architecture`, `taste-skill`, `design-system`, `frontend-audit-polish`, `frontend-visual-regression` | Optional quality companions, invoked at named seams |
-| `extensions/` | `anchor-prototype-wave-{dark-mode,elements,versions}` | Opt-in add-ons to the production wave |
-| `three/` | 11 Three.js / WebGL skills | The canvas/3D HOW layer (see `three/README.md`) |
+| Group | Skills | Registered? | Role |
+|---|---|---|---|
+| `core/` | `ui-pipeline`, `prototyping-ui-directions`, `anchor-prototype-wave` | **yes** | The front door, then the divergence engine, then the production engine |
+| `companions/` | `information-architecture`, `frontend-audit-polish`, `frontend-visual-regression` | **yes** | Invoked on their own: IA is the multi-screen entry, the other two run before or after a wave on any frontend directory |
+| `authoring/` | `taste-skill`, `design-system` | no | Rulebooks the parent reads while authoring — anti-slop red-team, ~165-system catalog |
+| `extensions/` | `anchor-prototype-wave-{dark-mode,elements,versions}` | no | Opt-in add-ons, switched on by the wave's `extensions:` input |
+| `three/` | 11 Three.js / WebGL skills | no | The canvas/3D HOW layer (see `three/README.md`) |
 
-Skills are namespaced: `/ui-design-pipeline:prototyping-ui-directions`.
+Registered skills are namespaced: `/ui-design-pipeline:prototyping-ui-directions`.
+
+**Start at `ui-pipeline`** — or just describe the product. It establishes the run root, routes by
+screen count (one screen → directions; two or more → IA round 1 first), and owns `RUN.md`, the
+resume pointer that lets a cleared session pick the run back up.
+
+**Why only 6 of 22 are registered.** The other 16 ship with the plugin and resolve at their normal
+paths, but they are deliberately kept out of the manifest's `skills` array: nothing ever
+auto-invokes them — the parent reads them by path (`Read ${CLAUDE_PLUGIN_ROOT}/three/…`,
+`${CLAUDE_PLUGIN_ROOT}/authoring/…`, `${CLAUDE_PLUGIN_ROOT}/extensions/…`) — so registering their
+descriptions would buy always-on context for discovery that never happens. That is ~1,010 tokens
+of every session instead of ~2,020 — the entry skill pays for itself twice over. The trade-off is that the 16 cannot be called by name.
 
 ## The nine decision points
 

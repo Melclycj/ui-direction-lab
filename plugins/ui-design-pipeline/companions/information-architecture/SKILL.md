@@ -324,6 +324,23 @@ python ${CLAUDE_PLUGIN_ROOT}/companions/information-architecture/scripts/check_w
                                   flag resolutions + pattern-card extensions
 ```
 
+## Run pointer (`RUN.md`)
+
+If a `RUN.md` exists at the run root (a run started by `ui-pipeline`), **re-render it** at each
+stage boundary — never hand-edit it:
+
+```bash
+python ${CLAUDE_PLUGIN_ROOT}/core/ui-pipeline/scripts/render_run.py --run-root <run-root>
+```
+
+It is generated from the machine state plus what is on disk, so the statuses, the pointer and
+the verbatim approvals are recomputed rather than remembered. Editing it by hand produces
+exactly the lying resume pointer the generator exists to prevent, and `preflight_wave.py`
+rejects a pointer with no render stamp or a stale one.
+
+`RUN.md` is a resume pointer, never a gate input. Gate decisions read the machine state
+(`pipeline_state.py`); if the two ever disagree, the machine state wins.
+
 ## Trigger phrases
 
 English: "design the information architecture" / "what goes on each screen" / "info spec" /

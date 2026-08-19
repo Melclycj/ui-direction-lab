@@ -8,7 +8,10 @@ description: >
   mocks + palette.json + token-candidates + readme + comparison report).
   Pairs downstream with `anchor-prototype-wave` — once the user picks a
   winning variant, that variant's token-candidates become the chassis
-  for the anchor-wave run. Trigger: "explore N UI directions",
+  for the anchor-wave run. NORMALLY ENTERED VIA `ui-pipeline`, which routes
+  here directly only for a SINGLE-screen product; with a second screen
+  `information-architecture` round 1 runs first and its approved hero spec
+  becomes this skill's intake. Trigger: "explore N UI directions",
   "generate variant prototypes for review", "from idea to prototype package".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, WebFetch
 ---
@@ -81,7 +84,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   section is wanted here; read that section only.
   **If it does not resolve**: fall back to model-prior and record
   `companion_skipped: competitive-teardown` on the stage output.
-- Stage 2: `Read ${CLAUDE_PLUGIN_ROOT}/companions/design-system/SKILL.md` to shortlist 3-5
+- Stage 2: `Read ${CLAUDE_PLUGIN_ROOT}/authoring/design-system/SKILL.md` to shortlist 3-5
   reference systems from its catalog matching the brief's stance.
 - Stage 3 authoring: `Read` **`frontend-design`** — NOT shipped (nominated).
   It is Anthropic's own skill, Apache-2.0, kept current upstream; install with
@@ -93,7 +96,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   exploration is THIS skill's job; chassis-locked multi-surface production is
   `anchor-prototype-wave`'s. When the task is pipeline-shaped, `frontend-design`
   supplies only the anti-slop authoring instinct — it does not take over.
-  **If it does not resolve**: author from `${CLAUDE_PLUGIN_ROOT}/companions/taste-skill/SKILL.md`
+  **If it does not resolve**: author from `${CLAUDE_PLUGIN_ROOT}/authoring/taste-skill/SKILL.md`
   alone (it carries the anti-slop rules that gate this lab) and record
   `companion_skipped: frontend-design`.
 - Stage 3 authoring (motion): when a variant's **Motion** dimension weight
@@ -102,7 +105,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   upstream; install with `/plugin marketplace add greensock/gsap-skills`
   (the lab checkout also has a copy at `gsap-*`).
   **If they do not resolve**: still author with GSAP from the engine rules in
-  `${CLAUDE_PLUGIN_ROOT}/companions/taste-skill/SKILL.md` §8, and record
+  `${CLAUDE_PLUGIN_ROOT}/authoring/taste-skill/SKILL.md` §8, and record
   `companion_skipped: gsap-*`. Author motion with **GSAP** — that is the engine the Motion
   dimension compiles to. For HTML output GSAP is the default (Framer Motion
   is React-only and won't run in plain HTML). Start with `gsap-core` +
@@ -121,7 +124,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   static frame — and never Framer Motion in the same tree. Honest boundary:
   deterministic validators cannot see inside a `<canvas>`; a 3D variant's
   look is judged by human eyes in the gallery.
-- Stage 3 red-team: `Read ${CLAUDE_PLUGIN_ROOT}/companions/taste-skill/SKILL.md` and apply
+- Stage 3 red-team: `Read ${CLAUDE_PLUGIN_ROOT}/authoring/taste-skill/SKILL.md` and apply
   its full ruleset (Inter ban, anti-emoji policy, hardware acceleration,
   card-overuse, tactile feedback, brand naming) to each variant. This
   catches ~6 findings main-thread audit typically misses.
@@ -667,6 +670,23 @@ Single message:
    drop it or revise the direction.
 
 No other approval gates.
+
+## Run pointer (`RUN.md`)
+
+If a `RUN.md` exists at the run root (a run started by `ui-pipeline`), **re-render it** at each
+stage boundary — never hand-edit it:
+
+```bash
+python ${CLAUDE_PLUGIN_ROOT}/core/ui-pipeline/scripts/render_run.py --run-root <run-root>
+```
+
+It is generated from the machine state plus what is on disk, so the statuses, the pointer and
+the verbatim approvals are recomputed rather than remembered. Editing it by hand produces
+exactly the lying resume pointer the generator exists to prevent, and `preflight_wave.py`
+rejects a pointer with no render stamp or a stale one.
+
+`RUN.md` is a resume pointer, never a gate input. Gate decisions read the machine state
+(`pipeline_state.py`); if the two ever disagree, the machine state wins.
 
 ## Trigger phrases
 
