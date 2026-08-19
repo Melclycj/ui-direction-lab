@@ -3,6 +3,23 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.2.2 — 2026-08-20
+
+Documentation only — no behaviour change.
+
+### Added
+- **The GSAP licence is now stated, and it is not the one the table already showed.** The
+  nominated-skills table credits `gsap-*` as MIT, which is true of those eight skills and says
+  nothing about the library the motion they teach runs on. Anyone installing this pipeline ships
+  GSAP in what they build, so the terms belong here rather than in a reader's assumption.
+- Verified against `gsap.com/community/standard-license/` and `gsap.com/licensing/`: free for
+  commercial use since 2025-04-30 under Webflow, explicitly including the plugins that used to
+  require a paid Club membership — SplitText and ScrollSmoother among them, both of which the
+  generated motion already reaches for.
+- Named as **proprietary, not MIT**, with its one prohibited use written down: a no-code visual
+  animation builder competing with Webflow. That is not what this pipeline is, but writing it down
+  means a later change of product shape re-opens the question instead of inheriting a stale yes.
+
 ## 0.2.1 — 2026-08-20
 
 Documentation only — no behaviour change.

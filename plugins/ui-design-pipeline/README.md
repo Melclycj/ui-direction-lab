@@ -76,6 +76,16 @@ publisher. Each call site says how to install it, and what happens if you don't.
 **A missing nominated skill is a normal state, not a failure.** It is recorded as
 `companion_skipped: <name>` on the stage output, never silently dropped.
 
+The `gsap-*` row above is the licence of those eight **skills**, which is not the licence of the
+**library** the motion they describe runs on. GSAP itself is free for commercial use — including
+the plugins that used to require a paid Club membership, such as SplitText and ScrollSmoother —
+under the [Standard "No Charge" GSAP License](https://gsap.com/community/standard-license/),
+effective 2025-04-30 under Webflow. It is proprietary, not MIT: read it rather than assuming
+open-source terms. Its one prohibited use is building a no-code visual animation builder that
+competes with Webflow — which is not what this pipeline is, but is worth re-reading if what you
+build with it ever becomes one. Verified 2026-08-20; generated code loads GSAP from a CDN, so
+nothing here redistributes it.
+
 ## Path conventions
 
 - `${CLAUDE_PLUGIN_ROOT}/…` — files inside this plugin. Always resolve.

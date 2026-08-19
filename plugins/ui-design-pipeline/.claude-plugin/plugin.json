@@ -2,7 +2,7 @@
   "name": "ui-design-pipeline",
   "displayName": "UI Direction Lab — design pipeline",
   "description": "Turn a one-line product idea into N variant UI direction prototypes, pick one, lock a design chassis, then produce a parallel hi-fi surface wave — with deterministic validators and human approval gates at every step. Ships the information-architecture companion, an anti-AI-slop taste red-team, a ~165-system design-system catalog, audit/polish and visual-regression companions, and the Three.js / WebGL HOW layer.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "Melclycj"
   },
