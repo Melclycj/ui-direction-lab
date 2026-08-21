@@ -3,6 +3,20 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.1 — 2026-08-21
+
+### Fixed
+- **The landing-marketing and bubble-physics rule sets were partly invented, and are now
+  transcribed.** They were written from each source file's opening lines plus inference rather
+  than read in full — five of nine landing rules and three of eight bubble rules were mine, not
+  the source's. Among the real ones that were missing: a 5-9 section count, CTA rhythm at
+  1.5-2.5 viewport heights, an LCP and hero-media budget, F/Z reading path, and for physics the
+  keyboard-completes-the-task-with-no-physics rule, throw friction and clamping, and settling
+  within 1.2s. Caught by a pre-clear audit the same day, not by a reader.
+- The provenance note claimed everything was carried over. Two of the seven weight-prior rows
+  (narrative-scrolly, bubble-physics) have no row in the source and are this lab's proposal —
+  now labelled as such, with the instruction to read a source rule in full before adding one.
+
 ## 0.3.0 — 2026-08-21
 
 ### Added

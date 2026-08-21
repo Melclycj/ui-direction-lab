@@ -1,9 +1,21 @@
 # Surface archetypes — what a surface must DO, per kind
 
 > **Provenance**: condensed from this lab's earlier `~/.claude/skills/prototyping-ui-directions/templates/product-archetypes/`
-> (7 archetypes, ~4835 lines). Only the iron rules and the weight priors are carried over —
-> the layout-engine notes, pattern indexes and reference anchors stayed behind. Backported
-> 2026-08-21 after an audit found the repo copy had no archetype axis at all.
+> (7 archetypes, ~4835 lines). The iron rules and the weight priors are carried over; the
+> layout-engine notes, pattern indexes and reference anchors stayed behind. Backported 2026-08-21
+> after an audit found the repo copy had no archetype axis at all.
+>
+> **Two of the weight-prior rows are not carried, they are proposed.** The source table had rows
+> for landing / dashboard / canvas / creative / game-like — those five are verbatim. It had no
+> row for `narrative-scrolly` or `bubble-physics`, so those two are this lab's judgement and
+> should be corrected on contact with a real surface. It also had rows for "mobile-first
+> consumer" and "internal tool", which are not archetypes here and were dropped.
+>
+> **The rules themselves are transcribed, not paraphrased from memory.** An earlier version of
+> this file had the landing-marketing and bubble-physics sections written from their opening
+> lines plus inference — five of the nine landing rules and three of the eight bubble rules were
+> invented and are now replaced with what the source actually says. If you extend this file,
+> read the source rule you are adding, in full, first.
 
 An archetype answers **"what kind of thing is this surface, and what must it therefore do"**.
 It is not a look. A dashboard can wear any visual direction; it still owes you tabular figures,
@@ -39,15 +51,15 @@ they already walk.
 
 **Nine iron rules** (structure and conversion discipline, orthogonal to the L3 skin):
 
-- Above-the-fold value prop ≤ 8 words (≤16 CJK chars); no "We empower teams to…" / "The future of X"
-- Headline + subhead + ≥1 primary CTA all visible at 0 scroll, at **both** 1440×900 and 390×844
-- **One** primary-CTA colour, unique on the page
-- Every claim carries evidence, or it is cut — see slop-gate #46: an unsupplied number is `—`
-- Social proof is real and attributable, or absent
-- One idea per section; a section that argues two things is two sections
-- The scroll has a spine: each section answers the objection the previous one raised
-- Forms ask for the minimum that makes the next step possible
-- The footer is navigable, not a sitemap dump
+1. Above-the-fold value prop ≤ 8 words (≤16 CJK chars); no "We empower teams to…" / "The future of X". Headline + subhead + ≥1 primary CTA all visible at 0 scroll, at **both** 1440×900 and 390×844
+2. **One** primary-CTA colour, unique on the page
+3. The hero does not stack: at most 1 headline + 1 subhead + 1 primary CTA (+≤1 secondary) + 1 micro-proof line + 1 visual anchor. A feature grid, 3+ body paragraphs or a second CTA group above the fold is a FAIL — and the anchor must be real product or real evidence, never a gradient blob or abstract isometric
+4. Social proof is specific and real — recognisable logos, traceable numbers, fully attributed testimonials (name + role + company). Grey placeholder blocks posing as logos, "trusted by many", anonymous "— A User" are FAILs. With no real data yet, use a **labelled** placeholder (`[CLIENT LOGO]`) and flag it in the report; never fabricate
+5. Section count **5 ≤ N ≤ 9**. Above 9 means two pages in one — split it. Must include hero + ≥1 social proof + a final CTA
+6. CTA rhythm: ≥3 conversion opportunities (fold, middle, final), consecutive primary CTAs **1.5–2.5 viewport heights** apart
+7. Performance budget: LCP < 2.5s, hero media ≤ 200KB
+8. Layout follows an F or Z reading path — the eye's route is designed, not incidental
+9. Scroll-reveal is enhancement, not a gate: **content is visible with JS off**
 
 ### `data-dashboard` — read state and act on it
 
@@ -119,14 +131,14 @@ carry an absolute veto — there is no "style exception" to them**:
 **Eight iron rules**. The philosophy: physics is **enhancement, not access** — it may never become
 the only route to completing a task, nor perpetual visual noise:
 
-- Physics drives `transform` / `opacity` only (`filter` / `clip-path` sparingly, ≤2 per screen)
-- Every physics-driven affordance has a non-physics route to the same outcome
-- Simulation stops when off-screen or when the tab is hidden
-- `prefers-reduced-motion` replaces simulation with its end state, not with nothing
-- Collision / overlap never hides content permanently
-- Input stays responsive while the simulation runs
-- Budgeted body count — a page-wide simulation is one, not several
-- No perpetual motion as decoration: the system settles
+1. Physics drives `transform` / `opacity` only (`filter` / `clip-path` sparingly, ≤2 per screen)
+2. Every drag has a non-physics equivalent: keyboard (focus → arrow keys → Enter to place, Esc to cancel) **and** tap-to-select/place. Draggables are real focusable controls with role, `aria-label` and grab state. **The keyboard must complete the task 100% without triggering any physics**
+3. Collision is budgeted: ≤30 active bodies on mobile, a broadphase (never O(n²) all-pairs), `forceCollide` iterations ≤3, and a freeze/sleep degrade when over budget
+4. It **must settle** — motion converges within **1.2s** (velocity < 0.01 → sleep, stop the rAF; `simulation.stop()` after alphaMin), CPU back to ~0. No perpetual ambient float, jitter or infinite keyframes
+5. `prefers-reduced-motion` gives the **static end layout, not slower physics** — physics genuinely removed, drag degrades to select-then-place, and states like selection or grouping stay legible without motion
+6. Physics never traps or steals focus, never intercepts clicks on controls beneath it, never lets a moving element occlude or push away the primary CTA, is interruptible at any time, and never lets a re-layout scramble tab order
+7. Throws are bounded: friction decay (≈0.92-0.96 per frame), centres clamped inside the container, rubber-band resistance ≤0.5× overshoot capped at 16% of container size, and a thrown body may not knock another out of bounds
+8. Do not pollute the main visual — spring presets stay inside what the locked L3 style allows (a luxury chassis takes no wobbly/bouncy preset)
 
 ---
 
