@@ -3,6 +3,31 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.0 — 2026-08-21
+
+### Added
+- **Surfaces have a kind, and it constrains what they must do.** Seven archetypes —
+  landing-marketing, data-dashboard, canvas, narrative-scrolly, creative-eye, game-style,
+  bubble-physics — each with iron rules carrying concrete numbers, plus six-dimension weight
+  priors. `references/archetype-rules.md`.
+- Assigned **per screen**, because a product has a marketing front page and an editor and they
+  owe different things. Derived by the IA companion from the `primary_task` it already writes,
+  and corrected by you at the review gate you already walk: **you are never asked to score
+  anything.** The board shows the kind beside the task it came from, in both languages.
+- Consumed at **both ends from one source** — Sectional Score will not propose a mechanism a
+  surface's kind forbids, and slop-gates section (d) checks the kind's own rules at review.
+- Two archetypes carry ethics rules with an absolute veto rather than a score: game-style's
+  honest-progress / no-dark-pattern / no-streak-hostage, and creative-eye's never-block-access.
+  No visual direction exempts a variant from those.
+
+### Notes
+- **Absence is a first-class answer.** No IA spec, or a screen whose kind is genuinely unclear,
+  means the flat prior and the corpus-wide rules — an archetype asserted with nothing behind it
+  would be a guess wearing a contract's clothes. An unknown *value*, by contrast, is blocked:
+  nothing downstream has rules for a kind that does not exist.
+- Style conflicts resolve one way: the locked L3 style wins the skin, the archetype wins the
+  skeleton. A brutalist dashboard is still `tabular-nums`.
+
 ## 0.2.2 — 2026-08-20
 
 Documentation only — no behaviour change.

@@ -42,6 +42,11 @@ EXPECT = {
     "entry-ok.json":           ("PASS", 0, 0, 0, None),
     "entry-hero-noback.json":  ("FAIL", 1, 0, 0, "cannot walk back to the entry (home)"),
     "entry-unknown.json":      ("FAIL", 1, 0, 0, "not a screens[].id"),
+    # archetype (v1.3) -- a known kind passes; an invented one BLOCKs rather than passing
+    # quietly, because nothing downstream would have rules for it. Absence stays silent:
+    # a screen whose kind is genuinely unclear should say nothing rather than pick.
+    "arch-ok-inline":          ("PASS", 0, 0, 0, None),
+    "arch-bad-inline":         ("FAIL", 1, 0, 0, "unknown archetype"),
 }
 
 
@@ -52,7 +57,16 @@ def make_inline_fixtures(tmpdir):
     noback.pop("return_convention", None)
     p = os.path.join(tmpdir, "ret-noback-inline.json")
     json.dump(noback, open(p, "w", encoding="utf-8"), ensure_ascii=False)
-    return {"ret-noback-inline": p}
+    out = {"ret-noback-inline": p}
+
+    for name, value in (("arch-ok-inline", "data-dashboard"),
+                        ("arch-bad-inline", "dashboard")):   # near-miss spelling, not a kind
+        spec = json.loads(json.dumps(conv))                  # deep copy; fixtures stay untouched
+        spec["screens"][0]["archetype"] = value
+        q = os.path.join(tmpdir, name + ".json")
+        json.dump(spec, open(q, "w", encoding="utf-8"), ensure_ascii=False)
+        out[name] = q
+    return out
 
 
 def run_one(path):

@@ -72,9 +72,19 @@ publisher. Each call site says how to install it, and what happens if you don't.
 | `competitive-teardown` | user-installed (⚠ upstream is the full business-intelligence skill; only its Design-Reference Visual Mode is wanted here) | Falls back to model prior |
 | `codex-dispatch` | user-installed | The cross-AI review pass is skipped — never silently replaced by a self-review |
 | `shadcn-registry` | user-installed | Component install is done by hand |
+| `ui-material-library` (54 built pieces) | `/plugin marketplace add Melclycj/ui-material-library` | The reference pools still describe every mechanism; what you lose is the built, human-reviewed implementation behind the `material/<slug>` pointers. `check_registry_sync.py` prints `material paths SKIPPED` instead of pretending to verify them |
 
 **A missing nominated skill is a normal state, not a failure.** It is recorded as
 `companion_skipped: <name>` on the stage output, never silently dropped.
+
+`ui-material-library` is the one row here that is ours rather than someone else's. It is separate for
+a reason of release rhythm, not of licence: the pieces grow in batches while the instruction layer
+above them stays still, and folding them together would let a material batch drive the version number
+of a package most of whose users never asked for one. Installed alongside this one, it is found automatically: the two land as siblings under the
+plugin cache, so the sync gate resolves the corpus without being told where it is, and says which
+route found it. `--material-root <path>` or `UI_MATERIAL_ROOT` still wins when given, and is the
+guaranteed answer — auto-discovery reads an install layout that is internal rather than promised,
+so it is a convenience that degrades to SKIP, never something a result depends on being there.
 
 The `gsap-*` row above is the licence of those eight **skills**, which is not the licence of the
 **library** the motion they describe runs on. GSAP itself is free for commercial use — including

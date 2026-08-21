@@ -67,6 +67,26 @@ Gate numbers follow hallmark's originals so you can trace them back.
 | 52 | hallmark-specific (its theme section-head override system) |
 | 57 | hallmark-specific (the study verb / studied-DNA, outside what we absorbed this time) |
 
+## (d) Archetype gates — the surface's KIND adds its own, and they are not optional
+
+Everything above applies to every surface. A surface also owes whatever its **kind** owes: a
+dashboard owes tabular figures and three async states, a scrollytelling section owes a readable
+story with JS off, a game-style surface owes honest progress. Those live in
+[`archetype-rules.md`](archetype-rules.md), assigned per screen by IA Stage B and visible on the
+review board.
+
+- **Where it comes from**: `info-spec.json` → `screens[].archetype`. **No IA spec, or no archetype
+  on this screen → this section adds nothing**, and that is the designed degrade, not a gap to
+  paper over by guessing a kind.
+- **Style conflicts**: the locked L3 style wins the skin, the archetype wins the skeleton. A
+  brutalist dashboard is still `tabular-nums`.
+- **Two of the seven carry ethics rules with an absolute veto** — `game-style`'s honest-progress /
+  no-dark-pattern / no-streak-hostage rules, and `creative-eye`'s never-block-access rule. There
+  is no visual-direction exception to those; a variant that trips one is rejected, not scored.
+
+Check them at the same moment as the gates above, and note in the report which archetype was
+applied — or that none was, which is a fact about the run and not an omission to hide.
+
 ## Six-axis pre-emit self-score (run it before shipping, not after)
 
 **Before** shipping, score the planned output 1-5 on each axis. **Any axis below 3 forces one more

@@ -39,6 +39,14 @@ WARN_WORDS_CJK = [
 VALID_TIERS = {1, 2, 3}
 
 
+# The seven surface kinds. Iron rules and six-dimension weight priors for each live in
+# prototyping-ui-directions/references/archetype-rules.md — this list only guards the
+# spelling, because a kind nothing downstream has rules for is worse than no kind at all.
+ARCHETYPES = {
+    "landing-marketing", "data-dashboard", "canvas", "narrative-scrolly",
+    "creative-eye", "game-style", "bubble-physics",
+}
+
 def _rx(word):
     return re.compile(r"(?<![\w-])" + re.escape(word) + r"(?![\w-])", re.IGNORECASE)
 
@@ -126,6 +134,18 @@ def validate(spec, report):
             if not isinstance(scr.get(field), str) or not scr[field].strip():
                 report.block("%s.%s" % (spath, field), "missing/empty")
         lint_text(report, spath + ".primary_task", scr.get("primary_task", ""), overrides_l)
+
+        # archetype (v1.3, optional): WHAT KIND of surface this is, derived from primary_task.
+        # Absence is a legitimate answer — a screen whose kind is genuinely unclear should say
+        # nothing rather than pick, and downstream degrades to the flat weight prior. A value
+        # outside the known set is a different thing: it is a typo or an invented kind, and
+        # nothing downstream would have rules for it, so it BLOCKs rather than passing quietly.
+        if "archetype" in scr:
+            arch = scr.get("archetype")
+            if not isinstance(arch, str) or arch not in ARCHETYPES:
+                report.block(spath + ".archetype",
+                             "unknown archetype %r — one of: %s (or omit the field)"
+                             % (arch, " / ".join(sorted(ARCHETYPES))))
 
         blocks = scr.get("blocks")
         if not isinstance(blocks, list) or not blocks:

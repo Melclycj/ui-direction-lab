@@ -34,6 +34,7 @@ STRINGS = {
         "hero_tag": "&#9733; HERO",
         "hero_title": "hero screen",
         "primary_task": "PRIMARY TASK",
+        "archetype": "KIND",
         "flow": "Within-page flow",
         "arrivals": "How you get here (arrivals)",
         "departures": "Where you can go (departures)",
@@ -74,6 +75,7 @@ STRINGS = {
         "hero_tag": "&#9733; 主屏",
         "hero_title": "主屏（hero）",
         "primary_task": "主任务",
+        "archetype": "类型",
         "flow": "页内流",
         "arrivals": "怎么到我这来（入边）",
         "departures": "从我能去哪（出边）",
@@ -217,6 +219,12 @@ def render_screen(screen, hero_id, S, links=None):
                % (esc(screen.get("title", sid)), star, esc(sid), esc(screen.get("route", ""))))
     out.append('<p class="task"><b>%s</b> &mdash; %s</p>'
                % (S["primary_task"], esc(screen.get("primary_task", ""))))
+    # The archetype is DERIVED from the task above, so it is rendered right beside it: the gate
+    # asks the human to judge the derivation, and a field they cannot see is a field they cannot
+    # correct. Absent stays absent — no placeholder inviting someone to fill a guess in.
+    if screen.get("archetype"):
+        out.append('<p class="task"><b>%s</b> &mdash; %s</p>'
+                   % (S["archetype"], esc(screen["archetype"])))
     out.append('<div class="strip">')
     blocks, scan_no = ordered_blocks(screen)
     for b in blocks:
@@ -378,6 +386,8 @@ def render_outline(spec, spec_name, S):
         L.append("## %s%s%s — `%s`" % (s.get("title"), hero, noback, s.get("route")))
         L.append("")
         L.append("- **%s**: %s" % (S["o_primary"], s.get("primary_task")))
+        if s.get("archetype"):
+            L.append("- **%s**: %s" % (S["archetype"], s.get("archetype")))
         scan = s.get("scan_path") or []
         if scan:
             L.append("- **%s**: %s" % (S["o_scan"], " → ".join(scan)))

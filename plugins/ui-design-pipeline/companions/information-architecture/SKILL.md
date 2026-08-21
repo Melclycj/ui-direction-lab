@@ -122,6 +122,16 @@ Design the information structure for EVERY screen of this register, per contract
   where the eye must land first/second/third to serve the primary task; NOT visual reading order);
   `within_page_flow` (information relationships: what surfaces what, what's subordinate — never
   the widget mechanism).
+- **`archetype` (optional, contract v1.3)**: what KIND of surface this is, **derived from the
+  `primary_task` you just wrote** — one of `landing-marketing` / `data-dashboard` / `canvas` /
+  `narrative-scrolly` / `creative-eye` / `game-style` / `bubble-physics`. Never ask the user for
+  it: the task you already wrote is the evidence, and the human corrects it at the Stage C gate
+  they already walk. **Omit it when the task does not clearly imply a kind** — downstream degrades
+  honestly to a flat prior, whereas an archetype asserted with nothing behind it is a guess wearing
+  a contract's clothes. It is assigned PER SCREEN, because a product has surfaces of different
+  kinds; and it is orthogonal both to the L3 style (what it looks like) and to `content_shape`
+  (what shape of content it carries). Kinds, iron rules and the six-dimension weight priors:
+  `prototyping-ui-directions/references/archetype-rules.md`.
 - **`link_map`**: every cross-screen information hand-off (`from`/`to`/`via`), `external: true`
   for exits out of the register.
 - **`task_paths[]` (optional, contract v1.1)**: declared task journeys — for each core job, the

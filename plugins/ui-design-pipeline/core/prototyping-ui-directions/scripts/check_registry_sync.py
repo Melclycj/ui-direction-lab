@@ -24,6 +24,8 @@ No third-party dependencies. Python 3.10+.
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -61,6 +63,53 @@ def parse_pool(path: Path, pool: str) -> tuple[set[str], list[str]]:
     return ids, problems
 
 
+def find_installed_corpus(here: Path):
+    """Locate an installed ui-material-library, returning (path, how_it_was_found).
+
+    The two packages are siblings once installed: Claude Code lays plugins out as
+    <plugins>/cache/<marketplace>/<plugin>/<version>/, so from this script inside
+    ui-design-pipeline the corpus is reachable without anyone passing a path. Two
+    ways, most authoritative first.
+
+    Both read INTERNAL layout that is not a promised interface, which is why
+    --material-root exists and always wins: this is a convenience, never the
+    contract. Returning None is a normal outcome, not an error.
+    """
+    plugins_dir = None
+    for cand in here.parents:
+        if cand.name == "cache" and cand.parent.name == "plugins":
+            plugins_dir = cand.parent
+            break
+    if plugins_dir is None:
+        return None, ""
+
+    # 1) the installed-plugins record, which stores installPath outright.
+    record = plugins_dir / "installed_plugins.json"
+    if record.is_file():
+        try:
+            doc = json.loads(record.read_text(encoding="utf-8"))
+            for key, entries in (doc.get("plugins") or {}).items():
+                if not key.startswith("ui-material-library@"):
+                    continue
+                for entry in entries or []:
+                    p = entry.get("installPath")
+                    if p and (Path(p) / "material").is_dir():
+                        return Path(p) / "material", "installed_plugins.json"
+        except Exception:
+            pass  # malformed or a changed schema: fall through to the walk
+
+    # 2) walk the sibling layout directly. The version segment is not always a
+    #    semver — an installed plugin can carry the literal "unknown" — so it is
+    #    listed rather than guessed.
+    base = plugins_dir / "cache" / "ui-material-library" / "ui-material-library"
+    if base.is_dir():
+        for version_dir in sorted(base.iterdir()):
+            corpus = version_dir / "material"
+            if corpus.is_dir():
+                return corpus, "sibling plugin layout"
+    return None, ""
+
+
 def main() -> int:
     here = Path(__file__).resolve().parent
     refs = here.parent / "references"
@@ -80,6 +129,13 @@ def main() -> int:
     ap.add_argument("--threed-pool", default=str(refs / "threed-pool.md"))
     ap.add_argument("--motion-pool", default=str(refs / "motion-pool.md"))
     ap.add_argument("--repo-root", default=str(default_repo))
+    # The material corpus ships as its OWN plugin (ui-material-library), so when
+    # both are installed it does not sit under this repo at all. Point at it and
+    # the same path check runs against the installed copy; leave it unset and the
+    # behaviour is exactly what it was — verified in the lab, SKIPPED elsewhere.
+    # There is no cross-plugin path resolution to infer here, so it is explicit.
+    ap.add_argument("--material-root", default=os.environ.get("UI_MATERIAL_ROOT", ""),
+                    help="directory holding the material pieces as <root>/<slug>/index.html")
     args = ap.parse_args()
 
     try:
@@ -119,7 +175,21 @@ def main() -> int:
 
     # 4) material paths (lab-only; see default_repo above)
     checked = 0
-    material_scope = bool(args.repo_root) and (Path(args.repo_root) / "testbed" / "material").is_dir()
+    found_how = "--material-root"
+    mat_root = Path(args.material_root) if args.material_root else None
+    if mat_root is not None and not mat_root.is_dir():
+        # An explicit path that does not exist is a mistake worth surfacing, never a
+        # reason to quietly fall back to skipping.
+        problems.append(f"--material-root does not exist: {mat_root}")
+        mat_root = None
+        material_scope = False
+    elif mat_root is not None:
+        material_scope = True
+    elif bool(args.repo_root) and (Path(args.repo_root) / "testbed" / "material").is_dir():
+        material_scope = True
+    else:
+        mat_root, found_how = find_installed_corpus(Path(__file__).resolve())
+        material_scope = mat_root is not None
     if material_scope:
         repo = Path(args.repo_root)
         for rec in records:
@@ -127,8 +197,16 @@ def main() -> int:
             if not mat:
                 continue
             checked += 1
-            if not (repo / mat / "index.html").exists():
-                problems.append(f"{rec.get('id')}: material path not found: {mat}/index.html")
+            # --material-root addresses pieces by slug; the in-repo layout keeps the
+            # registry's own relative path. Same check, two possible homes.
+            target = (mat_root / Path(mat).name) if mat_root else (repo / mat)
+            if not (target / "index.html").exists():
+                # Report the registry's own relative path: that is what a reader
+                # checks the registry against. Where it actually looked is added
+                # only when that is not derivable from the registry entry.
+                where = f" (looked in {target})" if mat_root else ""
+                problems.append(
+                    f"{rec.get('id')}: material path not found: {mat}/index.html{where}")
 
     if problems:
         for p in problems:
@@ -136,8 +214,13 @@ def main() -> int:
         print(f"FAIL ({len(problems)} problem{'s' if len(problems) != 1 else ''})")
         return 1
 
-    material_note = (f"material paths verified ({checked})" if material_scope
-                     else "material paths SKIPPED (no testbed/material in scope — lab-only check)")
+    if material_scope and mat_root is not None:
+        material_note = f"material paths verified ({checked}) against {mat_root} (found via {found_how})"
+    elif material_scope:
+        material_note = f"material paths verified ({checked})"
+    else:
+        material_note = ("material paths SKIPPED (no material corpus in scope — pass "
+                         "--material-root or UI_MATERIAL_ROOT if ui-material-library is installed)")
     print(f"OK registry sync: {len(reg_ids)} records == {len(pool_ids)} covered pool rows; "
           f"badges present; {material_note}")
     return 0

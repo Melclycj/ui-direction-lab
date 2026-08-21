@@ -49,52 +49,7 @@
    "evidence": "threed-pool C-01 🏷 (read-code) + material VERIFY",
    "notes": "chassis only when the image field becomes primary site nav / persistent page world (plan audit table)"
   },
-  {
-   "id": "threed-pool:C-02",
-   "source_pool": "threed-pool",
-   "row_ref": "C-02",
-   "title": "recycle-tunnel",
-   "tag_source": "pool-tags",
-   "reference_scope": "full-page-demo",
-   "supported_footprints": [
-    "sectional",
-    "chassis"
-   ],
-   "preferred_footprint": "sectional",
-   "allowed_phases": [
-    "chassis",
-    "sectional"
-   ],
-   "driver": [
-    "scroll",
-    "load"
-   ],
-   "supported_carrier_scopes": [
-    "section",
-    "page"
-   ],
-   "boundary_requirements": [
-    "owner-wrapper",
-    "local-progress-0..1",
-    "stage-releases-on-exit",
-    "contained-canvas"
-   ],
-   "possible_mutations": [
-    "local-sticky-stage",
-    "local-section-height",
-    "owner-canvas-stage",
-    "camera-state-within-owner"
-   ],
-   "perf_cost": "medium",
-   "perf_note": "hundreds of textured planes; recycle GC churn — reuse material pool",
-   "fallback": "reduced-density-static-frame",
-   "register_affinity": [
-    "saas-tech"
-   ],
-   "mechanism_family": "recycle-tunnel-dolly",
-   "material": "testbed/material/recycle-tunnel",
-   "evidence": "threed-pool C-02 🏷 (read-code) + plan audit row (bounded sectional recipe)"
-  },
+  
   {
    "id": "threed-pool:C-03",
    "source_pool": "threed-pool",

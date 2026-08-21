@@ -93,7 +93,7 @@ def sync_case(name: str, registry: str, exp_code: int, needles,
 def test_sync_real_green():
     code, out = run(SYNC)
     expect("sync: real registry + real pools green", code, out, 0,
-           ["OK registry sync", "77 records == 77 covered pool rows"])
+           ["OK registry sync", "76 records == 76 covered pool rows"])
 
 
 def test_sync_fixture_cases():

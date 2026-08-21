@@ -363,6 +363,15 @@ paper. Shapes: `references/execution-contracts.md` §3/§4/§6.
 --require-composition-ready`); the ceremony moves the state
 `SECTIONAL_OPEN → SECTIONAL_LOCKED`.
 
+**Read the surface's `archetype` first (if an IA spec is present).** It is per-screen, derived
+from that screen's `primary_task`, and it constrains what this surface must DO regardless of the
+locked style — `references/archetype-rules.md` carries the iron rules and the six-dimension weight
+priors. Two consequences here: a candidate that cannot satisfy the surface's iron rules is not a
+candidate (a `narrative-scrolly` surface may not take a mechanism that hijacks scroll velocity;
+a `data-dashboard` surface may not take one that animates layout under a scrub), and the weight
+prior says where this surface's exploration budget goes. **No archetype = flat prior + corpus-wide
+rules only** — do not invent one to fill the slot; the honest degrade is the designed path.
+
 Per nominated surface (nominate FEW — most surfaces need none):
 1. Build the deployment proposal honestly (owner scope, bounded container, local
    progress, releases-on-exit, global side effects) + a shortlist of pool

@@ -71,6 +71,16 @@ One JSON file per run: `<out>/info-spec.json`.
       "title": "Reconcile",
       "route": "/reconcile",
       "primary_task": "clear yesterday's mismatches before standup",   // ONE user job, one sentence
+      "archetype": "data-dashboard",  // OPTIONAL (v1.3) — what KIND of surface this is, derived
+      // from primary_task, never asked of the user. One of: landing-marketing / data-dashboard /
+      // canvas / narrative-scrolly / creative-eye / game-style / bubble-physics. Omit when the
+      // primary_task does not clearly imply one — an asserted archetype with nothing to derive it
+      // from is a guess wearing a contract's clothes, and downstream treats absence honestly
+      // (flat weight prior, corpus-wide rules only).
+      // Downstream: the iron rules and six-dimension weight priors live in prototyping's
+      // references/archetype-rules.md, consumed at BOTH generation and review.
+      // ORTHOGONAL to content_shape (what shape of content) and to the L3 style (what it looks
+      // like). Conflict rule: style wins the skin, archetype wins the skeleton.
       "scan_path": ["unreconciled-total", "recon-items", "item-detail"],
       // ordered blocks[].id refs — where the eye must land 1st, 2nd, 3rd to serve primary_task.
       // INFORMATION priority order, NOT visual/reading order (composition decides where things sit).
@@ -137,7 +147,9 @@ Required: `spec_version` (=1) · `register` (single string) · `product` · `her
 (≥1) · per screen `id/title/route/primary_task/blocks[]` (≥1 block) · per block
 `id/label/tier/group/content_hint`. Optional: `scan_path` (WARN if absent — a screen without a
 priority path is usually under-designed) · `within_page_flow` · `link_map` · `lint_overrides` ·
-`task_paths` (v1.1 — per entry `id/label/path[]` all required).
+`task_paths` (v1.1 — per entry `id/label/path[]` all required) · `archetype` (v1.3 — per screen;
+BLOCK if present and not one of the seven known kinds, silent if absent, because a screen whose
+kind is genuinely unclear should say nothing rather than pick).
 Every screen SHOULD have ≥1 tier-1 block (WARN otherwise: a screen where nothing dominates has no
 information hierarchy yet).
 
