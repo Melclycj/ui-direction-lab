@@ -3,6 +3,17 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.2 — 2026-08-21
+
+### Changed
+- **The landing-marketing reading-path rule no longer prescribes an F or Z pattern.** Those shapes
+  assume a top-sweep-and-left-fall layout, which contradicts a perfectly legitimate chassis built
+  on a strong left rail — the one archetype rule that reached into what the chassis owns.
+  It now states the intent it was there for: the headline, the primary CTA and the first proof
+  element land on the route the eye actually takes, never in a dead zone.
+- It points at `scan_path` instead, which the IA companion already declares per screen against
+  real block ids and the validator already enforces. A declared, checkable order beats a shape.
+
 ## 0.3.1 — 2026-08-21
 
 ### Fixed

@@ -58,7 +58,7 @@ they already walk.
 5. Section count **5 ≤ N ≤ 9**. Above 9 means two pages in one — split it. Must include hero + ≥1 social proof + a final CTA
 6. CTA rhythm: ≥3 conversion opportunities (fold, middle, final), consecutive primary CTAs **1.5–2.5 viewport heights** apart
 7. Performance budget: LCP < 2.5s, hero media ≤ 200KB
-8. Layout follows an F or Z reading path — the eye's route is designed, not incidental
+8. The headline, the primary CTA and the first proof element sit **on the route the eye actually takes**, never in a dead zone. Where the IA declared a `scan_path` for this screen, the layout honours that order; where it did not, you must still be able to name the route and point at where each of those three lands on it. **(Deliberately not the source's rule.** It prescribed an F or Z pattern, which assumes a top-sweep-and-left-fall layout and so contradicts a legitimate chassis with a strong left rail — and the repo already expresses this more precisely: `scan_path` is declared per screen against real block ids and the validator enforces that those ids exist, where F/Z is a shape. User ruling 2026-08-21.) Centre-stacking everything is covered by slop-gate #6, not restated here
 9. Scroll-reveal is enhancement, not a gate: **content is visible with JS off**
 
 ### `data-dashboard` — read state and act on it
