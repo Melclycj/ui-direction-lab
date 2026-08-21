@@ -1,8 +1,8 @@
 # Slop Gates — a pre-ship negative checklist + a six-axis pre-emit self-score (hallmark adaptation)
 
 > Source: [Nutlope/hallmark](https://github.com/Nutlope/hallmark) `slop-test.md` (58 gates, MIT); the verbatim archive is [`_vendor/hallmark-slop-test.md`](_vendor/hallmark-slop-test.md) (with commit hash and pull date).
-> This file is **our adaptation**: bucket (a) = lab core gates (chosen because this repo has actually failed them, or because they are the commonest AI default); bucket (b) = conditional gates; bucket (c) = gates not adopted. All 58 (1-57 plus 38a) are accounted for, and anything cut can be traced back to the vendor original.
-> **How to use it**: on a PUD batch, run a gate sweep **once per batch** (against what the batch has in common) plus a per-variant six-axis stamp; on an APW Base Wave, sweep bucket (a) **once per wave** plus a per-surface stamp. This is an instruction-layer self-check, **not a machine gate** — it never enters the registry, the sync check, or a hook.
+> This file is **our adaptation**: bucket (a) = lab core gates (chosen because this repo has actually failed them, or because they are the commonest AI default); bucket (b) = conditional gates; bucket (c) = gates not adopted. All 58 (1-57 plus 38a) are accounted for, and anything cut can be traced back to the vendor original. Two buckets are this lab's own: **(d)** the surface kind's rules, **(e)** the accessibility axes.
+> **How to use it**: on a PUD batch, run a gate sweep **once per batch** (against what the batch has in common) plus a per-variant six-axis stamp; on an APW Base Wave, sweep buckets (a) + (e) **once per wave** plus a per-surface stamp. (a) + (e) always sweep together; (b) only when its condition fires, (d) only when the screen has an archetype. This is an instruction-layer self-check, **not a machine gate** — it never enters the registry, the sync check, or a hook.
 
 ## (a) Lab core gates — every answer must be no (24 gates)
 
@@ -46,7 +46,7 @@ Gate numbers follow hallmark's originals so you can trace them back.
 | 25 | When there is running body copy: prose measure 45-75ch |
 | 28·29·31 | When the hero is enriched: video never autoplays with sound and must carry a poster + `fetchpriority="high"`; an abstract background keeps a single accent ≤5% and does not animate; illustration prefers hand SVG or pure CSS over Lottie |
 | 33 | When there is a decorative hand-drawn SVG or canvas: it must carry `aria-hidden="true"` or an `aria-label` |
-| 34·44·49 | Browser-verified round (needs a real render): no horizontal scroll from 320-1920 (fix = `overflow-x: clip` on html+body); the hero is complete above the fold at 1280×800; clickable copy never wraps to two lines at any width |
+| 34·44·49 + E6 (lab) | Browser-verified round (needs a real render): no horizontal scroll from 320-1920 (fix = `overflow-x: clip` on html+body); the hero is complete above the fold at 1280×800; clickable copy never wraps to two lines at any width; **console carries no 404 or failed font / icon / image**. Nothing in the pipeline opens a browser for you — if this round did not run, the report says so instead of answering it |
 | 35 | When using text decoration (highlighter / underline), check placement visually: a highlighter sits on the x-height, not the baseline; an underline is 1-2px with a 1-2px offset |
 | 36 | A flex row of mixed heights (button + text, icon + text) needs `align-items: center` plus `line-height: 1` on the inner items |
 | 38 | When using a third outlier face: ≤2 slots (wordmark + hero stat is the canonical pair) |
@@ -86,6 +86,20 @@ review board.
 
 Check them at the same moment as the gates above, and note in the report which archetype was
 applied — or that none was, which is a fact about the run and not an omission to hide.
+
+## (e) Lab-added gates — the accessibility axes hallmark does not cover (5 gates)
+
+> Sweep these with bucket (a); every answer must be no. `E*` numbering so they cannot be mistaken
+> for a hallmark gate. What was NOT carried over from the source checklist, and why, is in
+> CHANGELOG 0.3.3.
+
+- **E1 · Semantic structure.** `<div>` where a landmark or heading belongs? (one `<h1>`, no skipped level)
+- **E2 · Keyboard reach.** A core action the keyboard alone cannot complete? (tab order = visual order, no `tabindex` > 0, `Esc` releases any trap)
+- **E3 · Accessible name.** A button or link a screen reader announces as nothing? (icon-only → `aria-label`; a placeholder is not a `<label>`; decorative is the opposite case, gate 33)
+- **E4 · Touch target.** Any interactive element with a hit area under 44×44 px? The visible glyph
+  may be smaller — pad the clickable area up to the floor. Audit all of them: checkboxes, kebab
+  buttons, filter chips, nav links, toggles, sort carets, close buttons.
+- **E5 · Interruptibility.** An animation that cannot be cancelled, or that freezes input while it plays?
 
 ## Six-axis pre-emit self-score (run it before shipping, not after)
 

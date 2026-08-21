@@ -3,6 +3,70 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.3 — 2026-08-22
+
+Backport from the pre-plugin copy of this skill, after reading all 3181 lines of the source.
+Each rule is one line in its file; the reasoning lives here so the skill files stay scannable.
+The bar for admitting a rule was not "the repo lacks it" but **"something reads it during a real
+run and behaves differently"** — several rules that passed the first bar failed the second and
+are listed as rejected below.
+
+### Added
+- **Five accessibility gates** (`slop-gates.md` bucket (e), sweeps with (a)): semantic structure,
+  keyboard reach, accessible name, 44×44 touch target, interruptibility. A review that never asks
+  these ships prototypes that only work for a mouse. Repo-wide grep first: `screen reader` 0 hits,
+  `tabindex` 0 hits.
+- **Broken resources** joins the browser-verified conditional round (gates 34·44·49), *not* the
+  always-sweep bucket: nothing in the pipeline opens a browser, so a console check parked among the
+  mandatory gates could only ever be skipped or answered dishonestly. If the round did not run, the
+  report says so.
+- **The cross-AI reviewer may not restate our self-grade** (APW §7) — problems we missed, each with
+  a selector, a line number and a product that does it better, and a grade moved with a reason.
+  "9.0 confirmed" is a failed review, not a passed surface.
+- **States that do their job** (APW §4b): an error state offers a recovery action, an empty state
+  carries the CTA that fills it, and copy uses the product's own verb — never `Submit` / `Click me`.
+  Repo-wide, the only copy rules were about placeholder names and invented statistics.
+- **A failed clone is recorded as failed** (PUD Stage 1) with the reason and the user's call. All
+  three existing clone rules were on the "do not clone rashly" side; none covered what happens when
+  the fetch does not come back.
+- **The red-teamer is not the producer**, and where no independent reviewer exists the report says
+  "not independently red-teamed" rather than presenting a self-audit as a review.
+- **Run directories are dated, never ordinals** — no `v2` / `final`.
+- A variant readme also says **what the direction is NOT for**, and names each dependency and font
+  with its licence.
+- **Role locks** on the two shipped companions: `design-system` is a candidate input, never the
+  final token authority; `taste-skill` is the red-team, never the style generator.
+
+### Rejected — already covered
+| Source rule | Where it already lives |
+|---|---|
+| State coverage matrix | interactive states → gate 26; a data surface's loading + empty + error → `archetype-rules.md` data-dashboard; drag and selection → its bubble-physics rules |
+| Skeleton loaders over spinners | `taste-skill` §Loading |
+| Colour contrast; focus ring visible and instant | gates 40 · 41 · 15 · 26 |
+| `prefers-reduced-motion` fallback | motion-pool hard rule (gate 27 points at it) |
+| No horizontal scroll 320-1920 | gates 34 · 44 · 49 |
+| Light and dark both authored, never `invert` | `anchor-prototype-wave-dark-mode` mandates paired token values |
+| Anti-slop (card grid, centred hero, Lorem ipsum) | the whole of `slop-gates.md` |
+| Four stage signature blocks (`gate_owner` / date / notes) | a hook, a sentinel and a monotonic state machine already record the user's verbatim approval |
+
+### Rejected — nothing would read it
+| Source rule | Why |
+|---|---|
+| Doherty Threshold (feedback < 400ms) | a static prototype has no backend; there is no response time to measure |
+| Recognition over Recall | overlaps the accessible-name gate closely enough that a second phrasing adds noise, not coverage |
+| Every animation ≤ 500ms | durations come from chassis motion tokens and half the motion vocabulary is scroll-scrubbed — there is no ms to cap |
+| An atmospheric-effect budget per screen | the sweep runs once per batch against what the batch has in common; a per-screen count cannot be answered at that grain |
+| Cap a run at ~10 references | Stage 1 already proposes 3-5; a 25-reference run is not a failure this pipeline produces |
+| Stop when the user cannot say who it is for | the person answering that question already knows they cannot answer it; the rule only pays off for a stranger running the skill |
+| Lineage comments in ported code | Stage 3 authors originals; the porting track is the material library, which has a licence ledger and two gates |
+| P0 / P1 / P2 surface priorities, and the surface map they hang on | this pipeline has no surface map — Batch-1 ships the product face, and the wave's page list is the user's input. Adopting it would mean adding a pipeline stage, not a rule |
+| The 20-row orchestration remediation table | forensic knowledge, read only when something has already broken — and at that moment the source file beats a half-covering summary |
+| Stage 0 six-dimension 1-5 scoring; the Stage 0 archetype question | the scale was never defined in the source, and archetype is now derived per screen by the IA companion |
+| Directions must differ on ≥2 dimensions; the 3-screen bake-off | contradicts one-axis-per-batch and "Batch-1 ships the product face" |
+| `option-a` / `option-b` naming; "the director never produces" | contradicts `variant-<id>` + descriptor, and this skill runs inline in the parent by design |
+| Companion install instructions; the downstream handoff table | the plugin bundles its companions, and the table points at a skill it does not ship |
+| Obsidian vault sync, the v1/v2/v3 product version stack, the wave planning doc, the master gallery template | another project's private shapes; the equivalents here are the run ledger, `CHASSIS.md`, the pipeline-gate hook and the wave's own gallery |
+
 ## 0.3.2 — 2026-08-21
 
 ### Changed

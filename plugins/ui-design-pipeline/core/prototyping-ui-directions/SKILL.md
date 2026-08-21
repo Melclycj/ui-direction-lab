@@ -86,6 +86,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   `companion_skipped: competitive-teardown` on the stage output.
 - Stage 2: `Read ${CLAUDE_PLUGIN_ROOT}/authoring/design-system/SKILL.md` to shortlist 3-5
   reference systems from its catalog matching the brief's stance.
+  **Role lock**: a candidate input, never the final token authority (that is the LEAD's `token-candidates`).
 - Stage 3 authoring: `Read` **`frontend-design`** — NOT shipped (nominated).
   It is Anthropic's own skill, Apache-2.0, kept current upstream; install with
   `/plugin install frontend-design@claude-plugins-official`. Read it before
@@ -128,6 +129,7 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   its full ruleset (Inter ban, anti-emoji policy, hardware acceleration,
   card-overuse, tactile feedback, brand naming) to each variant. This
   catches ~6 findings main-thread audit typically misses.
+  **Role lock**: the red-team, never the style generator — it judges a variant, it does not author one.
 - Stage 3 parallelism (optional, if ≥4 variants): `Read`
   **`vendor/codex-dispatch/SKILL.md`** (same dual path) for the dispatch
   decision tree. Note it routes execution through the official
@@ -157,7 +159,8 @@ overhead exceeds the work for a 3-4 variant run.
 4. **Variant count**: default 3; cap at 5.
 5. **Output type**: HTML (default; browser-direct) or React/TSX (needs
    `package.json` + `npm run dev`). Not both in one variant.
-6. **Output dir**: default `output/<date>-<nickname>/`.
+6. **Output dir**: default `output/<date>-<nickname>/` — nickname is the product's name, never
+   a version ordinal (no `v2` / `final`). A second attempt is a new dated run.
 7. **IA info-spec (optional)**: if an `information-architecture` round-1 run exists, intake =
    the **hero screen's entry only** from its `info-spec.json` (+ `register`, `product`, and the
    hero's `link_map` rows for mocked-link context) — never the whole product (other screens
@@ -302,7 +305,7 @@ variable discipline the lab's testbed uses).
 `references/slop-gates.md`，引用不复制）**：每个 variant 出稿前先跑六轴自评
 （P/H/E/S/R/V 各 1-5 分；**任一轴 <3 强制返工一轮**再交人评），文件头留一行 stamp
 `/* pre-emit critique: P# H# E# S# R# V# */`；每批收尾对本批共性做**一次**
-slop-gate sweep（(a) 桶为主，命中条件才查 (b) 桶），结果记 run-notes 一行
+slop-gate sweep（(a) 与 (e) 两桶必扫，命中条件才查 (b) 桶，该屏有 archetype 才查 (d) 桶），结果记 run-notes 一行
 （`slop sweep: pass` / `FAIL: 门号`）。其中 **V (Variety) 轴按结构距离打分——换色/
 换皮不算 variety**：同批 variants 必须结构指纹互异，这是对既有「一批一轴」纪律的
 收紧（Batch-2 的 vocabulary-family 强制即此轴在 motion 面的同款约束）。
@@ -519,7 +522,9 @@ Then either `git clone` (if it's a public repo) or fetch key
 screenshots/pages. Write `reference-manifest.md` with one row per
 reference: source, license, intent, do-not-copy notes.
 
-**Never clone without confirmation. Never auto-pick references.**
+**Never clone without confirmation. Never auto-pick references.** A clone or fetch that fails
+(private repo, rate limit, network) is recorded in the manifest as `status: failed` with the
+reason and the user's call — skip or replace. Never quietly proceed as though it succeeded.
 
 ### Stage 2 — Research & analysis → `research/`
 
@@ -556,7 +561,8 @@ prototypes/variant-<id>/
 ├── token-candidates.css         ← full design tokens (color/type/spacing/radius/shadow/motion)
 ├── token-candidates.json        ← same, machine-readable
 ├── surface-<name>.html          ← OPTIONAL. Batch-1 ships the product face + tokens (enough to pick a LEAD); the full surface set is anchor-wave's job after the chassis locks
-└── readme.md                    ← rationale + dim decisions + what was borrowed
+└── readme.md                    ← rationale + dim decisions + what was borrowed + what this
+                                   direction is NOT for + each dependency / font with licence
 ```
 
 Rules for the variant:
@@ -624,12 +630,16 @@ grid, Lorem ipsum, palette.html looking nicer than the actual product
 mocks, variants that are differentiated only by accent color. If any
 hit, regenerate that variant.
 
+**The red-teamer is not the producer** — run the pass in the parent or a fresh subagent that
+did not author the variants. Where that is impossible, the report says *"not independently
+red-teamed"* instead of presenting a self-audit as a review.
+
 ### Report to user
 
 Single message:
 - N variants produced; file paths.
 - Comparison report URL.
-- Anything red-teamed and regenerated.
+- Anything red-teamed and regenerated, and by whom.
 - Anything the user needs to decide before downstream (which variant
   wins, or "merge X+Y into a new run").
 

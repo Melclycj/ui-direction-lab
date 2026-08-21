@@ -125,7 +125,7 @@ These rules supersede any conflicting authoring instinct. They were learned in p
 ## Authoring: slop gates + pre-emit 自评（lightweight pointer）
 
 Base Wave 铺面沿用 PUD 侧的出稿负面清单（`../prototyping-ui-directions/references/slop-gates.md`，
-hallmark 适配版——引用不复制）：**每 wave 扫一次 (a) 桶**（对本 wave 共性，结果记 run-notes 一行
+hallmark 适配版——引用不复制）：**每 wave 扫一次 (a) + (e) 两桶**（对本 wave 共性，结果记 run-notes 一行
 `slop sweep: pass` / `FAIL: 门号`）；每个 surface 出稿前跑六轴 pre-emit 自评，文件头留一行 stamp
 `/* pre-emit critique: P# H# E# S# R# V# */`（任一轴 <3 → 该 surface 返工一轮再交）。
 不加重 Base Wave 流程：sweep 是 wave 级一次、不是 per-surface 逐门过；instruction-layer 自查，非机器 gate。
@@ -372,6 +372,9 @@ In parallel with the soft-score grader, spawn a separate sonnet subagent to audi
 - **Affordance clarity** (Norman): what's clickable is obvious.
 - **Aesthetic-usability** (Kurosu & Kashimura): polished, calm, confident.
 - **Jakob's Law**: matches expectations from comparable products.
+- **States that do their job**: an error state offers a recovery action, not just "something went
+  wrong"; an empty state carries the CTA that fills it; button and link copy uses the product's
+  own verb ("Save case"), never a generic one ("Submit" / "Click me" / "提交").
 
 Output: `audits/<slug>.usability.md` with findings tagged BLOCKER/MAJOR/MINOR + fix recommendations + file:line citations. Separate from the contract audit — different lens. Findings are **informational** here (do NOT block PASS_9PLUS), but they feed `frontend-audit-polish` if the user runs it next.
 
@@ -399,6 +402,9 @@ over-designed just to pass. Pass `--quality-bar N` to override. Writes final ver
   stop on this surface (do NOT auto-PASS).
 
 ### 7. Cross-AI review (trigger matrix)
+- **The reviewer must not restate our self-grade.** Ask it for problems we missed, each citing a
+  selector and a line number and naming a product that solves it better, and for a grade moved
+  up or down with a reason — "9.0 confirmed" is a failed review, not a passed surface.
 - `REDO` or `FIX_NEEDED` surface that came back PASS on retry → required.
 - `PASS_9PLUS` surface → sample 15% (rounded up).
 - Overlay/drawer/full-page morphology where contract was ambiguous → required.
