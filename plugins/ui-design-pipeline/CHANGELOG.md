@@ -3,6 +3,23 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.6 — 2026-08-22
+
+### Fixed
+- **`check_registry_sync.py` could resolve the material corpus to a stale copy.** When the
+  installed-plugins record is missing or malformed the script falls back to walking the sibling
+  plugin layout — and it took the version directory that sorted first by name, which is the
+  *oldest*. `/plugin update` leaves the previous version directory in the cache, so "several
+  versions present" is the normal state after any update, not an edge case. It now takes the most
+  recently written one and names it in the result line. Modification time rather than version
+  order on purpose: an installed plugin's version segment is not always a semver — it can be the
+  literal `unknown` — and `0.2.10` sorts before `0.2.9` by name. Verified against four layouts,
+  including both of those.
+
+  Found by asking whether the release had actually been re-pulled, then checking instead of
+  assuming: the installed packages did match the remote byte for byte, but the check turned this
+  up on the way past.
+
 ## 0.3.5 — 2026-08-22
 
 Skill descriptions rewritten. They are the always-on discovery context — every session pays for

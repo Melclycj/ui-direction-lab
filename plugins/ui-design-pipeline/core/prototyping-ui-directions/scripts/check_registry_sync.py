@@ -100,13 +100,15 @@ def find_installed_corpus(here: Path):
 
     # 2) walk the sibling layout directly. The version segment is not always a
     #    semver — an installed plugin can carry the literal "unknown" — so it is
-    #    listed rather than guessed.
+    #    listed rather than guessed, and the NEWEST is taken by modification
+    #    time rather than by name: an update leaves the previous version dir in
+    #    the cache, so name order would hand back the stale corpus.
     base = plugins_dir / "cache" / "ui-material-library" / "ui-material-library"
     if base.is_dir():
-        for version_dir in sorted(base.iterdir()):
-            corpus = version_dir / "material"
-            if corpus.is_dir():
-                return corpus, "sibling plugin layout"
+        found = [d / "material" for d in base.iterdir() if (d / "material").is_dir()]
+        if found:
+            newest = max(found, key=lambda p: p.parent.stat().st_mtime)
+            return newest, f"sibling plugin layout ({newest.parent.name})"
     return None, ""
 
 
