@@ -116,9 +116,11 @@ inline keeps full Read access to companion SKILL.md files at each stage.
   reduced-motion policy live in `taste-skill` §8.
 - Stage 3 authoring (3D/canvas — conditional): if the brief or a variant
   direction calls for a 3D / particle canvas stage (signature hero, scroll-
-  driven 3D scene), `Read` the `three/*` skills (`three/threejs-fundamentals`
-  + `three/threejs-scroll-stage`; more as needed — vendored + lab-authored,
-  see `three/README.md`). 3D obeys the 2D pipeline: page choreography stays
+  driven 3D scene), `Read` the `three/*` skills
+  (`${CLAUDE_PLUGIN_ROOT}/three/threejs-fundamentals/SKILL.md`
+  + `${CLAUDE_PLUGIN_ROOT}/three/threejs-scroll-stage/SKILL.md`; more as needed —
+  vendored + lab-authored, see `${CLAUDE_PLUGIN_ROOT}/three/README.md`).
+  3D obeys the 2D pipeline: page choreography stays
   with GSAP ScrollTrigger (the canvas only receives progress via
   `setProgress(p)`), one `gsap.ticker` loop (never a second RAF), colors
   derive from the variant's tokens, full disposal on teardown, reduced-motion
@@ -384,7 +386,10 @@ Per nominated surface (nominate FEW — most surfaces need none):
    IA spec is present) plus the locked composition — into a
    `content_shape: {role, items, density}` (the 8 roles are `collection` / `comparison` /
    `sequence` / `metrics` / `spec` / `narrative` / `headline` / `figure`; the full contract
-   table is `testbed/material/content-roles.md`, **lab checkout only — not shipped**),
+   table is `content-roles.md`, which ships in the **`ui-material-library` package** — installed
+   separately, at `<that plugin's root>/material/content-roles.md`; on a lab checkout it is
+   `testbed/material/content-roles.md`. With neither present, the eight roles above ARE the
+   vocabulary and that file is optional depth),
    and you MAY pass that on the resolver input and OMIT the hand-built shortlist.
    The resolver then DISCOVERS every material that can host that content, runs
    buildability + semantic, and returns candidates cleanest-first (contracts §3.1)

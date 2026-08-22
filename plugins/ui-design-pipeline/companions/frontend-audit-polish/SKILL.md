@@ -102,7 +102,7 @@ Subagent returns:
 ### 5. Re-validate at parent level
 After all patch subagents complete, the parent runs the auto-detected validators across all patched files (not just the per-subagent self-checks):
 - Run `validate_surface.py` against each patched surface that has a contract.
-- Read `taste-skill/SKILL.md` and apply a light red-team pass over the patched files (catches drift the audit didn't anticipate).
+- Read `${CLAUDE_PLUGIN_ROOT}/authoring/taste-skill/SKILL.md` and apply a light red-team pass over the patched files (catches drift the audit didn't anticipate).
 - If `frontend-visual-regression` is set up against this target, run `mode=run` to detect unintended visual regressions.
 
 ### 6. Write closeout

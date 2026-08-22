@@ -131,7 +131,7 @@ Design the information structure for EVERY screen of this register, per contract
   a contract's clothes. It is assigned PER SCREEN, because a product has surfaces of different
   kinds; and it is orthogonal both to the L3 style (what it looks like) and to `content_shape`
   (what shape of content it carries). Kinds, iron rules and the six-dimension weight priors:
-  `prototyping-ui-directions/references/archetype-rules.md`.
+  `${CLAUDE_PLUGIN_ROOT}/core/prototyping-ui-directions/references/archetype-rules.md`.
 - **`link_map`**: every cross-screen information hand-off (`from`/`to`/`via`), `external: true`
   for exits out of the register.
 - **`task_paths[]` (optional, contract v1.1)**: declared task journeys — for each core job, the
@@ -201,8 +201,8 @@ like).
 
 > Seam status: **APPLIED 2026-07-03** (user-approved proposal) — `prototyping-ui-directions`
 > §Inputs 7 "IA info-spec" input mode + Stage-0 pre-fill + Stage-3 honor-the-structure rule +
-> composition-pattern recording at chassis lock. Proposal record:
-> `testbed/runs/2026-07-03-ia-mvp-verify/skill-edit-proposal-prototyping.md`.
+> composition-pattern recording at chassis lock. The proposal record stays in the lab and is
+> not shipped; the seam it describes is already applied in both skills above.
 
 ## Round-2 — wireframes for the other screens (built 2026-07-03; spike record:
 `round2-spike.md` in the build run; fixture-verified 2026-07-07 on loop-ia-ab —
@@ -253,8 +253,10 @@ non-hero screen list (default: all).
   cross-screen consistency lever, so a content shape that recurs across screens (a block whose
   `content_hint` is a hostable content role — the 8-term controlled vocabulary is `collection` /
   `comparison` / `sequence` / `metrics` / `spec` / `narrative` / `headline` / `figure`; the lab-side
-  contract table lives at `testbed/material/content-roles.md`, which ships only with the lab
-  checkout, so treat these eight as the vocabulary and that file as optional depth — appearing on
+  contract table `content-roles.md` ships in the **`ui-material-library` package** (installed
+  separately, at `<that plugin's root>/material/content-roles.md`; on a lab checkout,
+  `testbed/material/content-roles.md`), so treat these eight as the vocabulary and that file as
+  optional depth — appearing on
   more than one screen) is a consistency
   DECISION, not an automatic copy. Carry the role as a design-time annotation on the block (like
   the flow-wiring note above: the wave reads its meaning, never renders its text), and on its

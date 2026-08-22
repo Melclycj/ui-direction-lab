@@ -94,7 +94,8 @@ Concise spec for producing a reviewable hi-fi prototype wave from a locked chass
 
 5. **`motion_pipeline`** (optional): path to the run's `motion/` dir (carrying
    `pipeline-state.json` + `sectional-score.json` + `resolutions/` — produced by
-   `prototyping-ui-directions` per its `references/execution-contracts.md`).
+   `prototyping-ui-directions` per its
+   `${CLAUDE_PLUGIN_ROOT}/core/prototyping-ui-directions/references/execution-contracts.md`).
    When present, THIS wave is a **Base Wave**: stage 0 preflight is enforced,
    each surface's `sectional_score` contract is a hard authoring input, motion
    beyond the chassis stance + that contract is FORBIDDEN (see §Authoring:
@@ -193,7 +194,7 @@ Motion is **not** default-on. An overlay / form / dashboard should be calm — a
 - **Drive motion from chassis tokens** (duration / easing), never raw values — same discipline as the letter-spacing rule in §Authoring.
 - **Reduced-motion is mandatory.** Wrap motion in `gsap.matchMedia()` with a `(prefers-reduced-motion: reduce)` branch that reveals everything instantly (see `gsap-core` §matchMedia). Progressive enhancement: content must be present and visible even if the script never runs.
 - **Restraint over spectacle.** An app surface earns one or two intentional moments (a list reveal, a state transition via Flip) — not perpetual animation. `taste-skill` §8 owns the WHEN / taste policy; the `gsap-*` skills own the HOW.
-- **3D / canvas stages (conditional).** If a surface's contract calls for a 3D or particle canvas (`morphology: canvas`, or a contract note requesting a 3D stage), the parent `Read`s the `three/*` skills (`threejs-fundamentals` + `threejs-scroll-stage`, more as needed — see `three/README.md`) and inlines the needed patterns into that surface's subagent prompt (leaves don't read companions, same as GSAP above). 3D obeys the same discipline as DOM motion: ScrollTrigger drives, the canvas only receives progress (`setProgress(p)`); one `gsap.ticker` loop (never a second RAF); colors derive from chassis tokens; full disposal chain on teardown; reduced-motion static frame; never Framer Motion in the same tree. Honest boundary: the deterministic validators cannot see inside a `<canvas>` — canvas quality is judged by the human review loop, not the regex gates.
+- **3D / canvas stages (conditional).** If a surface's contract calls for a 3D or particle canvas (`morphology: canvas`, or a contract note requesting a 3D stage), the parent `Read`s the `three/*` skills (`${CLAUDE_PLUGIN_ROOT}/three/threejs-fundamentals/SKILL.md` + `${CLAUDE_PLUGIN_ROOT}/three/threejs-scroll-stage/SKILL.md`, more as needed — see `${CLAUDE_PLUGIN_ROOT}/three/README.md`) and inlines the needed patterns into that surface's subagent prompt (leaves don't read companions, same as GSAP above). 3D obeys the same discipline as DOM motion: ScrollTrigger drives, the canvas only receives progress (`setProgress(p)`); one `gsap.ticker` loop (never a second RAF); colors derive from chassis tokens; full disposal chain on teardown; reduced-motion static frame; never Framer Motion in the same tree. Honest boundary: the deterministic validators cannot see inside a `<canvas>` — canvas quality is judged by the human review loop, not the regex gates.
 
 The deterministic validators (`scripts/`) are motion-agnostic — they neither block nor reward GSAP. Motion quality is judged by the LLM grader (`interaction_quality`) + the usability audit, not the regex gates.
 
@@ -475,10 +476,10 @@ absent/false → skip this stage entirely (wave output unchanged).
     What you MAY do is **list externally-sourced references the wave surfaced** (a real font/effect/site found while
     building, with anchor + URL + provenance) as *candidates for the user to admit* — never self-add. Governance +
     per-pool rules (style = surface for human to eyeball; motion = only when real source code was read) live in
-    `prototyping-ui-directions/references/reference-sources.md` §5. Contrast with spec-promotion below, which DOES
+    `${CLAUDE_PLUGIN_ROOT}/core/prototyping-ui-directions/references/reference-sources.md` §5. Contrast with spec-promotion below, which DOES
     harden design *rules* into Contract Amendments — that's our own process output; reference *material* must stay
     externally-anchored.
-  - **Spec-promotion candidates** (REQUIRED): a list of findings that are *universal/authorable rules* — things that should be baked into the authoring brief for next time (i.e., Type A gaps), not left to the polish round to catch repeatedly. Each candidate cites the specific rule and where in `anchor-prototype-wave/SKILL.md` §Authoring it should live. Examples from past waves: Fitts 44px, aria-pressed on toggles, letter-spacing-via-tokens-only, responsive shell minimum, affordance contract.
+  - **Spec-promotion candidates** (REQUIRED): a list of findings that are *universal/authorable rules* — things that should be baked into the authoring brief for next time (i.e., Type A gaps), not left to the polish round to catch repeatedly. Each candidate cites the specific rule and where in this skill's §Authoring it should live. Examples from past waves: Fitts 44px, aria-pressed on toggles, letter-spacing-via-tokens-only, responsive shell minimum, affordance contract.
 
 Cross-cutting findings are the natural input for `frontend-audit-polish` on a follow-up iteration. Spec-promotion candidates feed back into the authoring spec so each polish round shrinks over time as the brief absorbs lessons.
 
@@ -515,8 +516,8 @@ Single message:
 Atomic effects decorate EXISTING UI (transform / opacity / filter /
 color·border·shadow / pseudo-elements / small overlays with no layout
 ownership). They are chosen by inspecting what the Base Wave actually built —
-never authored into it. Shapes: `prototyping-ui-directions/references/
-execution-contracts.md` §6.
+never authored into it. Shapes:
+`${CLAUDE_PLUGIN_ROOT}/core/prototyping-ui-directions/references/execution-contracts.md` §6.
 
 **Entry ceremony (machine-enforced)**:
 1. The user approves the atomic POLICY — a budget, not per-effect sign-off:

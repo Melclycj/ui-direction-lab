@@ -3,6 +3,37 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.4 — 2026-08-22
+
+Every path a shipped skill tells an agent to open now resolves from an install. Found by
+installing the two plugins on a clean machine for the first time and auditing what the skills
+point at — a skill is read with the *user's project* as the working directory, so a path that
+only ever existed in the lab ships as an instruction aimed at nothing.
+
+### Fixed
+- **Two skills claimed the material corpus "ships only with the lab checkout"** — false since
+  `ui-material-library` was published. Worse than a broken path: a reader told the file does not
+  ship will not go looking for it. `prototyping-ui-directions` and `information-architecture` now
+  name the package, the installed location, and the lab location, in that order.
+- **Four cross-skill references had no `${CLAUDE_PLUGIN_ROOT}` prefix** and so resolved against
+  the wrong directory: `execution-contracts.md` (×2) and `reference-sources.md` from
+  `anchor-prototype-wave`, `archetype-rules.md` from `information-architecture`. The first is the
+  starkest — `anchor-prototype-wave` has no `references/` directory at all.
+- **`three/*` and `taste-skill` references** likewise: they ship, but were addressed as if they
+  sat next to the reading skill. Now plugin-root addressed in `prototyping-ui-directions`,
+  `anchor-prototype-wave` and `frontend-audit-polish`; `threejs-scroll-stage` uses a working
+  relative link.
+- **A lab-only run record** (`testbed/runs/2026-07-03-ia-mvp-verify/…`) was cited as a source in
+  `information-architecture`. Replaced with what it was there to say.
+
+### Added
+- **`tools/check_skill_paths.py`** (lab-only, does not ship) — resolves every backticked path in
+  every `SKILL.md` and fails on any that an installed reader could not open. Escapes go in
+  `tools/skill-path-exemptions.json` and **each one must carry a written reason**; the gate aborts
+  on an empty reason rather than skipping the entry. Twelve are currently exempt: correctly
+  labelled lab alternatives, nominated-not-shipped third-party skills, run artefacts, and the two
+  corpus paths that exist only after the material package is assembled at release.
+
 ## 0.3.3 — 2026-08-22
 
 Backport from the pre-plugin copy of this skill, after reading all 3181 lines of the source.

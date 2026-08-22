@@ -6,7 +6,7 @@ description: Lab-authored Three.js patterns for scroll-driven brand-site 3D stag
 # Three.js Scroll Stage (LAB-AUTHORED)
 
 > ⚠️ **Provenance: this skill is authored by this lab. It is NOT part of the vendored
-> [CloudAI-X/threejs-skills](https://github.com/CloudAI-X/threejs-skills) set** (see `three/README.md`
+> [CloudAI-X/threejs-skills](https://github.com/CloudAI-X/threejs-skills) set** (see [`three/README.md`](../README.md)
 > distinction table). It fills the gap none of the audited upstream skill packs cover: particle
 > formation morphing, the scroll→canvas bridge, and mouse parallax. Every pattern cites its
 > external learning sources (three.js official examples / GreenSock official docs / Codrops).
