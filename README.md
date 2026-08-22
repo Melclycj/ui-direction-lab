@@ -16,7 +16,7 @@ The premise: taste is not automatable, but everything around it is. Machines che
 
 Three pages produced end-to-end by the pipeline: a home page with a WebGL systems gallery, a delivered-work page, and a booking page wired to a Cloudflare Pages Function and a transactional email backend. Design tokens are a single locked chassis shared across all three.
 
-Production-ready; awaiting a domain. Repo: `Melclycj/landing_page` (private). This is also the
+Production-ready; awaiting a domain; its repository is not public. This is also the
 run photographed in [What a run actually looks like](#what-a-run-actually-looks-like) below —
 every artifact in that walkthrough came from building this site.
 
@@ -243,30 +243,34 @@ tell a good outcome from a lucky one. Choosing from mechanisms already built and
 that variance out of the decision, leaving only the question a human can actually answer: does
 this motion suit this product?
 
-### What ships, and what stays in the lab
+### What ships where
 
-The plugin ships the **decision layer**: a motion pool of 31 numbered mechanisms, plus 3D,
+This plugin ships the **decision layer**: a motion pool of 31 numbered mechanisms, plus 3D,
 component, palette, font and style pools. Every entry carries a build recipe against the GSAP
 skills — which GSAP plugin, which call, what to stagger — so the pool is usable on its own.
 
-What the plugin does **not** ship is the layer underneath: each of those entries also points at
-the lab module that proves it. The pools reference `material/…` modules 73 times, and those
-pointers only resolve on a lab checkout. That is also where the per-entry tags come from —
-driver, mechanism, carrier, content register, and a compute-cost rating — none of which can be
-written honestly from watching a demo video. Somebody built the thing, ran it, and measured it.
+The layer underneath ships as a package of its own. Each of those entries also points at the
+module that proves it — the pools reference `material/…` modules 74 times — and those modules
+are published as [**ui-material-library**](https://github.com/Melclycj/ui-material-library),
+installed separately ([why they are not bundled](#where-this-comes-from)). The per-entry tags
+come from that corpus too — driver, mechanism, carrier, content register, and a compute-cost
+rating — none of which can be written honestly from watching a demo video. Somebody built the
+thing, ran it, and measured it.
 
 That is the library's real job: a motion decision is only worth making if the mechanism behind
 it has been built once and its cost is known.
 
-**What you lose without it** is one optional, off-by-default feature — a pre-filter that proposes
-candidate modules by content shape. When the corpus is absent the resolver says so and refuses
-rather than quietly returning nothing. A separate `ui-material-library` package is planned
-([why they are not bundled](#where-this-comes-from)).
+**Without the library installed** the pipeline still runs whole; it just stops pretending. A
+described mechanism degrades to *described but not built*, said in so many words, and the
+optional pre-filter that proposes candidate modules by content shape refuses rather than
+quietly returning nothing. With both installed, the pipeline's reconciliation script finds the
+library and every pointer resolves again — `check_registry_sync.py --material-root` pins the
+location explicitly if it cannot.
 
-### The library itself — 55 verified modules
+### The library itself — 54 verified modules
 
 **Not an output of this pipeline — an input to it.** Each module was extracted by hand from a
-real implementation, not generated, then frozen by a verification harness that stays in the lab.
+real implementation, not generated, then frozen by a verification harness before anything ships.
 
 Scroll-driven WebGL scenes, shader transitions, physics slideshows, layout-FLIP choreography,
 pointer-reactive grids. Each is one applyable module plus a demo that consumes that same module —
@@ -279,7 +283,7 @@ byte-identical to what was verified. Seven are in production on the Vernata site
 | ![Scroll-rotated gallery built from pure CSS 3D transforms — no canvas](docs/media/piece-css3d-scroll-rotate.jpg) | ![Triangle-mesh image transition, two switchable variations](docs/media/piece-polygon-image-transition.jpg) |
 | ![Pointer-driven RGB-shift distortion over a hovered image](docs/media/piece-motion-hover-distortion.jpg) | ![Three thousand particles morphing through a scroll-scrubbed sequence](docs/media/piece-particle-shape-morph.jpg) |
 
-*Six of fifty-five. Every frame above was captured by running the module's own demo — the same file a consuming page imports.*
+*Six of fifty-four. Every frame above was captured by running the module's own demo — the same file a consuming page imports.*
 
 ---
 
@@ -339,7 +343,7 @@ Stated up front, because a tool that overstates itself is worse than one that do
 - **It stops at the front end — for now.** Variants and produced surfaces are static review code; cross-page links are mocked and labelled as such. An explicit interface for wiring a prototype to a real backend is the next thing being built, rather than left to ad-hoc glue per project.
 - One run serves one register. A marketing site and an app console are two runs and two chassis.
 - **The extensions are the least-proven part of the plugin.** See [Optional extensions](#optional-extensions) for what that means concretely.
-- **The reference pools are Chinese-primary.** The skills are English, but the pools they draw candidates from — motion, 3D, style, palette, type — are written in Chinese with English technical terms. The pipeline behaves identically either way; it is a readability gap for anyone who opens one. Translating the descriptive layer is planned, minus the machine-parsed keys and the human-verdict provenance, which stay verbatim.
+- **The reference pools keep some Chinese on purpose.** Their descriptive layer is written in English, but recorded human verdicts are quoted verbatim in the language they were given in — mostly Chinese — and a handful of machine-parsed identifiers stay untouched because tooling matches on them exactly. What remains is provenance, not an untranslated backlog; the pipeline behaves identically either way.
 
 ---
 
@@ -433,17 +437,20 @@ screenshots would otherwise land on every installer's disk.
 ### Where this comes from
 
 This repository is the published face of a working lab that stays private. The lab holds
-what a published package should not: the 55-piece material corpus with its demos and
-verification receipts, third-party skills kept for local use and deliberately not
-redistributed, and a work ledger that quotes its author and names clients.
+what a published repository should not: third-party skills kept for local use and
+deliberately not redistributed, the raw iteration runs behind every admitted module, and a
+work ledger that quotes its author and names clients.
 
-The material library stays behind for two reasons past size. It grows in batches while the
-pipeline's skills stay stable, so shipping both under one version number would mean bumping
-the pipeline every time a module lands; and each piece needs a provenance pass before it can be
-redistributed — two of the original 57 have already been withdrawn on licence grounds.
+The 54-piece material corpus is published too — as
+[**ui-material-library**](https://github.com/Melclycj/ui-material-library), its own package
+rather than part of this one, for two reasons past size. It grows in batches while the
+pipeline's skills stay stable, so one shared version number would mean bumping the pipeline
+every time a module lands. And each piece has to clear a provenance pass before it can be
+redistributed — three of the original 57 have been withdrawn on licence grounds — a rhythm
+that belongs to the library, not the pipeline.
 
-Everything here is generated from the lab by a one-way sync; nothing is edited here
-directly.
+Both public repositories are generated from the lab by a one-way sync; nothing is edited in
+either of them directly.
 
 ---
 
