@@ -63,6 +63,20 @@ def parse_pool(path: Path, pool: str) -> tuple[set[str], list[str]]:
     return ids, problems
 
 
+def _version_key(text: str):
+    """Order two declared plugin versions, or refuse to.
+
+    Returns None for anything that is not a dotted numeric version — an
+    installed plugin can declare the literal "unknown" — so the caller can tell
+    "older than" from "not comparable" instead of treating them alike. Numeric
+    comparison also settles 0.2.10 vs 0.2.9, which string order gets backwards.
+    """
+    parts = text.split(".")
+    if len(parts) < 2 or not all(p.isdigit() for p in parts):
+        return None
+    return tuple(int(p) for p in parts)
+
+
 def find_installed_corpus(here: Path):
     """Locate an installed ui-material-library, returning (path, how_it_was_found).
 
@@ -98,17 +112,39 @@ def find_installed_corpus(here: Path):
         except Exception:
             pass  # malformed or a changed schema: fall through to the walk
 
-    # 2) walk the sibling layout directly. The version segment is not always a
-    #    semver — an installed plugin can carry the literal "unknown" — so it is
-    #    listed rather than guessed, and the NEWEST is taken by modification
-    #    time rather than by name: an update leaves the previous version dir in
-    #    the cache, so name order would hand back the stale corpus.
+    # 2) walk the sibling layout directly. An update leaves the previous version
+    #    directory in the cache, so several are normally present and the choice
+    #    has to be made deliberately: each one declares its own version in its
+    #    manifest, which is data, unlike a directory's modification time.
+    #    Undecidable is a real outcome — see below — and is never guessed past.
     base = plugins_dir / "cache" / "ui-material-library" / "ui-material-library"
     if base.is_dir():
-        found = [d / "material" for d in base.iterdir() if (d / "material").is_dir()]
-        if found:
-            newest = max(found, key=lambda p: p.parent.stat().st_mtime)
-            return newest, f"sibling plugin layout ({newest.parent.name})"
+        candidates = []
+        for d in sorted(base.iterdir()):
+            corpus = d / "material"
+            if not corpus.is_dir():
+                continue
+            declared = None
+            manifest = d / ".claude-plugin" / "plugin.json"
+            if manifest.is_file():
+                try:
+                    declared = json.loads(manifest.read_text(encoding="utf-8")).get("version")
+                except Exception:
+                    pass
+            candidates.append((corpus, str(declared or d.name)))
+        if len(candidates) == 1:
+            corpus, version = candidates[0]
+            return corpus, f"sibling plugin layout, {version}"
+        if candidates:
+            ranked = [(_version_key(v), c, v) for c, v in candidates]
+            keys = [k for k, _, _ in ranked]
+            if all(k is not None for k in keys) and len(set(keys)) == len(keys):
+                _, corpus, version = max(ranked, key=lambda r: r[0])
+                return corpus, f"sibling plugin layout, newest of {len(ranked)}: {version}"
+            # Versions that cannot be ordered (a literal "unknown", or a tie).
+            # Picking one would be a coin flip that silently decides which corpus
+            # every path below is checked against.
+            return None, "AMBIGUOUS:" + ",".join(sorted(v for _, _, v in ranked))
     return None, ""
 
 
@@ -220,6 +256,13 @@ def main() -> int:
         material_note = f"material paths verified ({checked}) against {mat_root} (found via {found_how})"
     elif material_scope:
         material_note = f"material paths verified ({checked})"
+    elif found_how.startswith("AMBIGUOUS:"):
+        # Several cached versions and no way to order them. Say which, and say
+        # what settles it, rather than checking against a corpus picked by luck.
+        listed = found_how[len("AMBIGUOUS:"):].replace(",", ", ")
+        material_note = (f"material paths SKIPPED (several ui-material-library versions cached "
+                         f"[{listed}] and no installed-plugins record to say which is live — "
+                         f"pass --material-root or UI_MATERIAL_ROOT to choose)")
     else:
         material_note = ("material paths SKIPPED (no material corpus in scope — pass "
                          "--material-root or UI_MATERIAL_ROOT if ui-material-library is installed)")

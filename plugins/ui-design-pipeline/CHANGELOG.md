@@ -3,6 +3,30 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.7 — 2026-08-22
+
+### Changed
+- **The corpus fallback now reads each cached version's declared version, and refuses to guess
+  when it cannot order them.** 0.3.6 fixed the stale-corpus bug by taking the most recently
+  modified directory; that worked but leaned on a filesystem side-effect — a restore, a copy or a
+  backup tool rewrites mtime, and then the "newest" corpus is whichever one was touched last.
+  Every cached version already states its version in its own manifest, which is data. The walk
+  now reads that, takes the highest, and names it in the result line.
+
+  When the versions cannot be ordered — a literal `unknown`, or two directories declaring the
+  same version — it **skips and says which candidates it found**, instead of picking one by luck
+  and silently deciding which corpus 70 path checks were run against. The installed-plugins
+  record and `--material-root` both still win outright; this only governs the last-resort walk.
+
+  Seven layouts verified, including `0.2.10` vs `0.2.9` (string order gets that backwards), a
+  directory name that disagrees with its manifest, and both undecidable cases.
+
+### Context
+- Old version directories accumulate: `/plugin update` leaves the previous one in the cache, and
+  no command prunes them (`plugin prune` removes unused dependency plugins, not stale versions).
+  Observed across four consecutive updates. It costs disk — this package is ~1.5 MB a copy, but
+  `ui-material-library` is ~22 MB — and it is why the fallback needs a deliberate rule at all.
+
 ## 0.3.6 — 2026-08-22
 
 ### Fixed
