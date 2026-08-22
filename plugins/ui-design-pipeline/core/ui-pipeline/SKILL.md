@@ -2,15 +2,13 @@
 name: ui-pipeline
 version: 1.0.0
 description: >
-  Entry point for the UI design pipeline — start a new run, or resume one that
-  was interrupted. Routes by screen count: a single screen goes straight to
-  `prototyping-ui-directions`; two or more start at `information-architecture`
-  round 1, so layout is settled once and inherited rather than re-invented per
-  page. Owns the run root and `RUN.md`, the human-readable resume pointer that
-  survives a cleared session. Trigger: "design this product", "give me a few UI
-  directions", "explore UI directions", "build the pages for X", "continue the
-  UI run", "where did the design run stop", "做几版 UI 方向", "设计这个产品",
-  "接着上次的 UI 流程".
+  Front door for the UI design pipeline — start a new run, or resume one that was interrupted.
+  Routes by screen count: one screen goes straight to variant exploration, two or more start
+  with information architecture, so layout is settled once rather than re-invented per page.
+  Owns the run root and the resume pointer that survives a cleared session. Enter here rather
+  than naming a downstream skill. Triggers: "design this product", "give me a few UI
+  directions", "explore UI directions", "build the pages for X", "continue the UI run", "where
+  did the design run stop", "做几版 UI 方向", "设计这个产品", "接着上次的 UI 流程".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 

@@ -2,17 +2,13 @@
 name: prototyping-ui-directions
 version: 1.1.0
 description: >
-  Turn a vague product idea into N variant UI direction prototypes for
-  decision review (not for production). Walks through idea intake →
-  reference selection → research → per-variant prototype package (HTML
-  mocks + palette.json + token-candidates + readme + comparison report).
-  Pairs downstream with `anchor-prototype-wave` — once the user picks a
-  winning variant, that variant's token-candidates become the chassis
-  for the anchor-wave run. NORMALLY ENTERED VIA `ui-pipeline`, which routes
-  here directly only for a SINGLE-screen product; with a second screen
-  `information-architecture` round 1 runs first and its approved hero spec
-  becomes this skill's intake. Trigger: "explore N UI directions",
-  "generate variant prototypes for review", "from idea to prototype package".
+  Turn a vague product idea into several competing UI direction prototypes for a human to
+  choose between — for decision review, not production. Covers intake, reference selection,
+  research, and one prototype package per variant. The chosen variant's tokens become the
+  locked chassis that `anchor-prototype-wave` builds every remaining page against. Usually
+  reached through `ui-pipeline`; name it directly only for a single screen. Triggers: "explore
+  a few UI directions", "generate variant prototypes for review", "from idea to prototype
+  package", "单屏直接出几版方向".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, WebFetch
 ---
 

@@ -1,15 +1,12 @@
 ---
 name: frontend-audit-polish
 description: >
-  Standalone skill that applies audit-document findings as batched
-  patches across a frontend directory. Generic — works on any directory
-  of HTML/CSS/JSX files where you have (a) a set of files and (b) one or
-  more audit docs listing per-file or cross-cutting fixes. Spawns one
-  patch subagent per affected file in parallel, re-validates with
-  project validators (anchor-wave Python scripts, taste-skill, etc.),
-  writes a closeout. Closes the iterative-development loop. Triggers:
-  "apply this audit to the wave", "polish round on these files",
-  "batch-fix Pattern A across these surfaces".
+  Apply the findings in an audit document as batched patches across a directory of frontend
+  files. Works on any HTML/CSS/JSX directory where you have the files plus one or more audit
+  docs listing per-file or cross-cutting fixes: patches files in parallel, re-validates with
+  whatever validators the project has, and writes a closeout. This is the fix half of the
+  audit loop, not the audit itself. Triggers: "apply this audit to the wave", "polish round on
+  these files", "batch-fix this pattern across these surfaces", "按审计意见批量修这批页面", "打磨这批页面".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 

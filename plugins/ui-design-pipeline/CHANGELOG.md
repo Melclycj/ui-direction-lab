@@ -3,6 +3,41 @@
 All notable changes to `ui-design-pipeline`. Versions follow the `version` field in
 `.claude-plugin/plugin.json` — bump it on every release, or installers never see the update.
 
+## 0.3.5 — 2026-08-22
+
+Skill descriptions rewritten. They are the always-on discovery context — every session pays for
+them whether or not a skill is used — and they were carrying text that did no routing work.
+**1210 → 1000 tokens across the seven registered skills (−18%).**
+
+### Changed
+- **`information-architecture` was shipping lab bookkeeping** (−37%, the largest cut): fixture
+  names, verification dates and internal jargon — `fixture-verified 2026-07-07, loop-ia-ab`,
+  `Stage-A altitude-③ normalization` — sat in the description of every session. Nobody outside
+  the lab can act on any of it. Same defect class as the lab paths fixed in 0.3.4: an internal
+  fact shipped on a user-facing surface.
+- **`prototyping-ui-directions`** (−26%): dropped the file-by-file output inventory and the long
+  explanation of how `ui-pipeline` routes by screen count — `ui-pipeline`'s own description
+  already states it, so two skills were paying for one fact. It now says "enter here" once.
+- **`anchor-prototype-wave`** (−13%): dropped internal mechanics the router cannot use (retry
+  count, validator inventory) and gained a boundary line instead — it is not the skill for
+  deciding what the design should be.
+- **The rest** trimmed for consistency: one `Triggers:` label everywhere (was three spellings),
+  no `Standalone skill that…` preambles, and Chinese trigger phrases added to the four skills
+  that lacked them.
+
+### Verified
+- Twelve routing probes (eight English, four Chinese), run twice before and twice after, land
+  **12/12 identically**. The trim moved no routing decision.
+- **The probes caught a regression this release would otherwise have shipped.** A Chinese trigger
+  added to `prototyping-ui-directions` — "做几版视觉方向" — is a synonym of `ui-pipeline`'s
+  "做几版 UI 方向", and it took the request off the front door: stable across two runs, so not
+  noise. Entering there skips the run root and the screen-count routing that stops every page
+  inventing its own layout. The phrase is now scoped to the case that legitimately bypasses the
+  front door ("单屏直接出几版方向"), and the probes returned to baseline.
+- The Chinese probes already routed correctly before any Chinese trigger existed, so those
+  additions are a readability gain, not a fix — with the one exception above, where adding one
+  did harm until it was scoped.
+
 ## 0.3.4 — 2026-08-22
 
 Every path a shipped skill tells an agent to open now resolves from an install. Found by

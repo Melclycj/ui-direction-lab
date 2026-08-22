@@ -2,15 +2,12 @@
 name: anchor-prototype-wave
 version: 1.5.0
 description: >
-  Take a locked visual anchor (chassis tokens) + a page list and produce
-  a reviewable hi-fi prototype wave: master gallery index.html + N per-surface
-  <slug>/index.html files. Spawns parallel surface subagents under strict
-  write-scope, runs deterministic Python validators (regex checks for known
-  failure patterns), LLM grader, scorer with maturity-aware floor, and a
-  fix-on-fail loop up to 3 retries. Pairs upstream with
-  `prototyping-ui-directions` (for variant exploration before the anchor
-  is locked). Trigger: "generate the wave from this anchor",
-  "make hi-fi mocks from chassis + pages".
+  Take a locked chassis (design tokens) plus a page list and produce the whole set of hi-fi
+  surfaces in parallel — a master gallery plus one page per surface — each validated, scored
+  and repaired on failure before you ever see it. Runs after a direction is locked;
+  `prototyping-ui-directions` is what locks it. Not for deciding what the design should be.
+  Triggers: "generate the wave from this anchor", "build the pages from the locked chassis",
+  "make hi-fi mocks from chassis + pages", "按锁定的 chassis 铺页面", "把剩下的页面都做出来".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 

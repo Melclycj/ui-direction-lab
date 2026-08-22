@@ -2,22 +2,14 @@
 name: information-architecture
 version: 1.3.1
 description: >
-  Design a product's INFORMATION structure before (and after) the visual
-  pipeline: what each screen holds, what dominates (tier), the scan path,
-  grouping, within-page flow, cross-screen link map, and which screen is
-  the hero. Round-1 (built; fixture-verified 2026-07-07, loop-ia-ab —
-  Stage-A altitude-③ normalization + variants-honor-structure both
-  exercised with evidence): 3-altitude intake → normalized sections →
-  whole-product layout-OPEN info-spec + grey-box review board (human gate)
-  → hero spec feeds `prototyping-ui-directions`. Round-2 (built;
-  fixture-verified 2026-07-07 — declared-pattern path + flag-don't-invent
-  full loop both exercised live): after chassis lock, extract the composition
-  pattern (shell vs content regions + role→region mapping), generalize it
-  into grey-box wireframes for the other screens (flag-don't-invent) →
-  `anchor-prototype-wave` colors them. Owns information structure ONLY — composition (sidebar vs
-  topnav, table vs bento, density) stays prototyping's to vary. Trigger:
-  "信息架构 / 信息结构 / 每屏放什么信息 / information architecture /
-  info spec / IA round-1 / screen map / IA wireframes (round-2)".
+  Decide a product's INFORMATION structure — what each screen holds, what dominates, the scan
+  path, grouping, the cross-screen link map, and which screen is the hero. Runs twice: round 1
+  before any visuals, producing a layout-open info spec plus a grey-box board for human
+  approval; round 2 after the chassis is locked, generalising the locked composition into
+  grey-box wireframes for the screens nobody has designed yet — flagging gaps, never inventing
+  content. Owns information structure ONLY: where things sit (sidebar vs top nav, table vs
+  bento, density) stays `prototyping-ui-directions`' to vary. Triggers: "information
+  architecture", "info spec", "screen map", "IA wireframes", "信息架构", "信息结构", "每屏放什么信息".
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 

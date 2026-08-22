@@ -1,13 +1,11 @@
 ---
 name: frontend-visual-regression
 description: >
-  Standalone skill that sets up Playwright visual regression for any
-  directory of HTML files. Handles install of @playwright/test, scaffolds
-  verify/ infra, captures baselines, and runs regression checks. Generic
-  — works on anchor-prototype-wave output, a standalone static site, or
-  any directory with one index.html per subfolder. Trigger phrases:
-  "set up visual regression", "playwright baseline for these surfaces",
-  "capture visual baselines", "regression check the frontend".
+  Set up and run Playwright visual regression for any directory of HTML files — installs the
+  tooling, scaffolds the harness, captures baselines, and diffs against them on later runs.
+  Works on pipeline output, a standalone static site, or any directory with one index.html per
+  subfolder. Triggers: "set up visual regression", "capture visual baselines", "regression
+  check the frontend", "配置视觉回归", "给这些页面拍基线".
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
